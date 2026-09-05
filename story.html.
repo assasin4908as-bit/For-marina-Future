@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>For Marina ❤️</title>
+    <title>Our Story ❤️</title>
 
     <style>
         * {
@@ -14,78 +14,185 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #fff0f5, #ffe4ec);
-            color: #4a2632;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 25px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 700px;
-            text-align: center;
-        }
-
-        .heart {
-            font-size: 70px;
-            animation: heartbeat 1.5s infinite;
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-size: 44px;
-            margin-bottom: 15px;
-        }
-
-        .subtitle {
-            font-size: 19px;
-            line-height: 1.6;
-            margin-bottom: 35px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.85);
-            border-radius: 25px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(100, 40, 60, 0.15);
-            margin-bottom: 25px;
-        }
-
-        .card h2 {
-            margin-bottom: 15px;
-            font-size: 27px;
-        }
-
-        .card p {
-            font-size: 17px;
+            font-family: Georgia, "Times New Roman", serif;
+            background: #fff7f9;
+            color: #4b2733;
             line-height: 1.7;
         }
 
-        .story-button {
-            display: inline-block;
-            text-decoration: none;
-            padding: 16px 30px;
-            border-radius: 30px;
-            font-size: 17px;
-            background: #ff6f91;
-            color: white;
-            transition: 0.3s;
-            box-shadow: 0 6px 18px rgba(255, 111, 145, 0.3);
+        /* Верхний экран */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 30px;
+            background:
+                radial-gradient(circle at top, #ffffff 0%, transparent 45%),
+                linear-gradient(160deg, #ffe8ef, #fff7f9);
         }
 
-        .story-button:hover {
+        .hero-content {
+            max-width: 650px;
+            animation: appear 1.5s ease;
+        }
+
+        .small-heart {
+            font-size: 55px;
+            margin-bottom: 20px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 12vw, 82px);
+            font-weight: normal;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            opacity: 0.8;
+        }
+
+        .scroll {
+            margin-top: 60px;
+            font-size: 14px;
+            opacity: 0.6;
+        }
+
+        /* Основная часть */
+
+        .content {
+            max-width: 750px;
+            margin: auto;
+            padding: 70px 22px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            font-weight: normal;
+        }
+
+        .section-title p {
+            margin-top: 10px;
+            opacity: 0.7;
+        }
+
+        /* Карточки воспоминаний */
+
+        .memory {
+            background: white;
+            border-radius: 28px;
+            padding: 32px;
+            margin-bottom: 30px;
+            box-shadow: 0 12px 35px rgba(80, 35, 50, 0.10);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .memory::before {
+            content: "♥";
+            position: absolute;
+            right: 25px;
+            top: 15px;
+            font-size: 50px;
+            opacity: 0.06;
+        }
+
+        .date {
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.55;
+            margin-bottom: 10px;
+        }
+
+        .memory h3 {
+            font-size: 27px;
+            font-weight: normal;
+            margin-bottom: 15px;
+        }
+
+        .memory p {
+            font-size: 17px;
+        }
+
+        /* Фото */
+
+        .photo-placeholder {
+            height: 280px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #ffdce6, #fff1f5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #8b5262;
+        }
+
+        .photo-placeholder span {
+            font-size: 18px;
+        }
+
+        /* Финал */
+
+        .final {
+            text-align: center;
+            padding: 100px 25px;
+            background: linear-gradient(160deg, #fff0f4, #ffe1ea);
+        }
+
+        .final-heart {
+            font-size: 70px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .final h2 {
+            font-size: 40px;
+            font-weight: normal;
+            margin: 20px 0;
+        }
+
+        .final p {
+            max-width: 550px;
+            margin: auto;
+            font-size: 18px;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 14px 28px;
+            border-radius: 30px;
+            background: #ff6f91;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .back-button:hover {
             transform: scale(1.05);
         }
 
         footer {
-            margin-top: 30px;
-            font-size: 14px;
-            opacity: 0.7;
+            text-align: center;
+            padding: 25px;
+            font-size: 13px;
+            opacity: 0.55;
         }
 
         @keyframes heartbeat {
@@ -97,46 +204,197 @@
                 transform: scale(1.15);
             }
         }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .hero h1 {
+                font-size: 52px;
+            }
+
+            .hero p {
+                font-size: 18px;
+            }
+
+            .memory {
+                padding: 25px;
+            }
+
+            .memory h3 {
+                font-size: 24px;
+            }
+
+            .photo-placeholder {
+                height: 220px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="container">
+    <!-- Первый экран -->
 
-        <div class="heart">❤️</div>
+    <section class="hero">
 
-        <h1>For Marina</h1>
+        <div class="hero-content">
 
-        <p class="subtitle">
-            A little place on the internet<br>
-            made especially for you.
-        </p>
+            <div class="small-heart">❤️</div>
 
-        <div class="card">
-
-            <h2>🌸 Our little story</h2>
+            <h1>Our Story</h1>
 
             <p>
-                Sometimes people appear in our lives
-                unexpectedly and become very special.
-                This website is a small place
-                for our memories.
+                A story about two people,<br>
+                unexpected meetings and beautiful memories.
+            </p>
+
+            <div class="scroll">
+                ↓ Scroll to discover our story
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- История -->
+
+    <main class="content">
+
+        <div class="section-title">
+
+            <h2>Our memories</h2>
+
+            <p>
+                Every little moment matters.
             </p>
 
         </div>
 
-        <a href="story.html" class="story-button">
-            Open our story ❤️
+
+        <!-- Первое воспоминание -->
+
+        <div class="memory">
+
+            <div class="date">
+                The beginning
+            </div>
+
+            <h3>🌸 The day we met</h3>
+
+            <p>
+                Sometimes you meet someone without knowing
+                how important that person may become.
+                This is where our story began.
+            </p>
+
+        </div>
+
+
+        <!-- Фото -->
+
+        <div class="memory">
+
+            <div class="photo-placeholder">
+
+                <span>
+                    📸<br><br>
+                    Our first photo
+                </span>
+
+            </div>
+
+            <h3>One moment</h3>
+
+            <p>
+                A small moment that became
+                a part of our story.
+            </p>
+
+        </div>
+
+
+        <!-- Второе воспоминание -->
+
+        <div class="memory">
+
+            <div class="date">
+                A memory
+            </div>
+
+            <h3>💕 Our time together</h3>
+
+            <p>
+                Every conversation, every walk,
+                every laugh and every little detail
+                became something worth remembering.
+            </p>
+
+        </div>
+
+
+        <!-- Будущее -->
+
+        <div class="memory">
+
+            <div class="date">
+                The future
+            </div>
+
+            <h3>✨ To be continued...</h3>
+
+            <p>
+                Our story is still being written.
+                There are many places to see,
+                many memories to make,
+                and many chapters waiting for us.
+            </p>
+
+        </div>
+
+    </main>
+
+
+    <!-- Финал -->
+
+    <section class="final">
+
+        <div class="final-heart">
+            ❤️
+        </div>
+
+        <h2>For Marina</h2>
+
+        <p>
+            I don't know exactly what the future will bring,
+            but I'm grateful that our paths crossed.
+            And I'm happy that this story exists.
+        </p>
+
+        <a href="index.html" class="back-button">
+            ← Back to the beginning
         </a>
 
-        <footer>
-            Made with love ❤️
-        </footer>
+    </section>
 
-    </div>
+
+    <footer>
+        Made especially for Marina ❤️
+    </footer>
 
 </body>
 </html>
 ```
+
 
