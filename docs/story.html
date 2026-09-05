@@ -1,1166 +1,3695 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Our Story — Alex & Marina ❤️</title>
+<title>Our Story — Oksy & Marina ❤️</title>
 
 <style>
-
-* {
-    box-sizing: border-box;
+*{
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
+body{
+    margin:0;
+    font-family:Georgia,"Times New Roman",serif;
+    color:#fff;
+    background:#05060a;
+    overflow-x:hidden;
+}
 
-    margin: 0;
+button,
+a{
+    font-family:inherit;
+}
 
-    color: #f3e8ee;
+button{
+    cursor:pointer;
+}
 
-    font-family:
-        Georgia,
-        "Times New Roman",
-        serif;
+/* =========================================================
+   GLOBAL CANVAS
+========================================================= */
+
+#world{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:0;
+    pointer-events:none;
+}
+
+/* =========================================================
+   BACKGROUND
+========================================================= */
+
+.background{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(108,67,91,.25),
+            transparent 32%
+        ),
+        linear-gradient(
+            180deg,
+            #080914 0%,
+            #100b16 45%,
+            #050609 100%
+        );
+}
+
+.background::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+        radial-gradient(
+            circle at 20% 40%,
+            rgba(160,92,120,.10),
+            transparent 25%
+        ),
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(70,100,160,.10),
+            transparent 25%
+        );
+}
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.top-nav{
+    position:fixed;
+    top:18px;
+    left:50%;
+    transform:translateX(-50%);
+
+    width:min(1100px,calc(100% - 30px));
+
+    z-index:500;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:10px 14px;
+
+    border:1px solid rgba(255,255,255,.14);
+    border-radius:40px;
+
+    background:rgba(5,6,10,.45);
+    backdrop-filter:blur(14px);
+
+    box-shadow:0 15px 50px rgba(0,0,0,.3);
+}
+
+.nav-logo{
+    color:#fff;
+    text-decoration:none;
+
+    font-size:15px;
+    letter-spacing:2px;
+}
+
+.nav-links{
+    display:flex;
+    gap:7px;
+}
+
+.nav-links a{
+    color:rgba(255,255,255,.8);
+    text-decoration:none;
+
+    padding:8px 13px;
+    border-radius:20px;
+
+    font-size:13px;
+
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#fff;
+    background:rgba(255,255,255,.1);
+}
+
+@media(max-width:700px){
+
+    .top-nav{
+        padding:8px 10px;
+    }
+
+    .nav-links a{
+        padding:7px 8px;
+        font-size:11px;
+    }
+
+    .nav-links a:nth-child(3){
+        display:none;
+    }
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero{
+    position:relative;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-align:center;
+
+    padding:100px 20px 80px;
+
+    overflow:hidden;
+}
+
+.moon{
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    top:12%;
+    right:12%;
+
+    border-radius:50%;
 
     background:
         radial-gradient(
-            circle at top,
-            #321b29 0%,
-            #100c12 45%,
-            #050507 100%
+            circle at 35% 30%,
+            #fffef1,
+            #e5dfbd 65%,
+            #aaa487
         );
 
-    min-height: 100vh;
+    box-shadow:
+        0 0 50px rgba(255,244,205,.25),
+        0 0 150px rgba(255,230,180,.08);
 
+    opacity:.85;
 }
 
+.moon::after{
+    content:"";
 
-/* =========================
-   HEADER
-========================= */
+    position:absolute;
 
-header {
+    width:20px;
+    height:20px;
 
-    min-height: 100vh;
+    border-radius:50%;
 
-    display: flex;
+    top:45px;
+    left:50px;
 
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
-
-    padding: 30px;
-
-    position: relative;
-
-    overflow: hidden;
-
-}
-
-
-header::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 500px;
-    height: 500px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(180,75,125,.22),
-            transparent 70%
-        );
-
-    filter: blur(20px);
-
-    animation:
-        glow 6s ease-in-out infinite alternate;
-
-}
-
-
-@keyframes glow {
-
-    from {
-        transform: scale(.9);
-        opacity: .5;
-    }
-
-    to {
-        transform: scale(1.15);
-        opacity: 1;
-    }
-
-}
-
-
-.hero {
-
-    position: relative;
-
-    z-index: 2;
-
-    max-width: 750px;
-
-}
-
-
-.small {
-
-    color: #c89db2;
-
-    letter-spacing: 4px;
-
-    font-size: 14px;
-
-    text-transform: uppercase;
-
-}
-
-
-h1 {
-
-    font-size:
-        clamp(48px, 10vw, 90px);
-
-    margin: 15px 0;
-
-    color: #f7dce8;
-
-}
-
-
-.hero-names {
-
-    font-size:
-        clamp(23px, 5vw, 35px);
-
-    color: #e2b6ca;
-
-}
-
-
-.hero-text {
-
-    max-width: 620px;
-
-    margin: 30px auto;
-
-    font-size: 19px;
-
-    line-height: 1.8;
-
-    color: #d9cbd2;
-
-}
-
-
-.scroll {
-
-    display: inline-block;
-
-    margin-top: 25px;
-
-    color: #cfa8ba;
-
-    text-decoration: none;
-
-    animation:
-        float 2.5s ease-in-out infinite;
-
-}
-
-
-@keyframes float {
-
-    50% {
-        transform: translateY(7px);
-    }
-
-}
-
-
-/* =========================
-   MAIN
-========================= */
-
-main {
-
-    max-width: 900px;
-
-    margin: auto;
-
-    padding: 30px 22px 100px;
-
-}
-
-
-.section {
-
-    margin-bottom: 70px;
-
-    padding: 35px;
-
-    border-radius: 18px;
-
-    background:
-        rgba(255,255,255,.035);
-
-    border:
-        1px solid rgba(255,255,255,.08);
+    background:rgba(120,115,95,.12);
 
     box-shadow:
-        0 20px 50px rgba(0,0,0,.25);
-
+        55px 35px 0 rgba(120,115,95,.09),
+        25px 75px 0 rgba(120,115,95,.08);
 }
 
+.hero-cloud{
+    position:absolute;
 
-.date {
+    width:500px;
+    height:100px;
 
-    color: #bd789a;
+    background:rgba(255,255,255,.025);
 
-    font-size: 14px;
+    border-radius:50%;
 
-    letter-spacing: 2px;
+    filter:blur(15px);
 
-    text-transform: uppercase;
-
+    animation:cloudMove 30s linear infinite;
 }
 
-
-.section h2 {
-
-    color: #f1c8d8;
-
-    font-size:
-        clamp(28px, 6vw, 42px);
-
-    margin:
-        10px 0 20px;
-
+.cloud-one{
+    top:25%;
+    left:-500px;
 }
 
+.cloud-two{
+    top:45%;
+    left:-700px;
 
-.section p {
-
-    font-size: 17px;
-
-    line-height: 1.9;
-
-    color: #ddd1d8;
-
+    animation-duration:40s;
+    animation-delay:7s;
 }
 
+@keyframes cloudMove{
 
-/* =========================
-   TIMELINE
-========================= */
+    from{
+        transform:translateX(0);
+    }
 
-.timeline {
-
-    position: relative;
-
+    to{
+        transform:translateX(calc(100vw + 1000px));
+    }
 }
 
+.hero-content{
+    position:relative;
+    z-index:10;
 
-.timeline::before {
-
-    content: "";
-
-    position: absolute;
-
-    left: 20px;
-
-    top: 0;
-    bottom: 0;
-
-    width: 1px;
-
-    background:
-        rgba(220,150,180,.25);
-
+    max-width:850px;
 }
 
+.hero-small{
+    font-size:12px;
+    letter-spacing:6px;
+    text-transform:uppercase;
 
-.event {
+    opacity:.55;
 
-    position: relative;
-
-    padding-left: 60px;
-
-    margin-bottom: 50px;
-
+    margin-bottom:25px;
 }
 
+.hero h1{
+    margin:0;
 
-.dot {
+    font-size:clamp(55px,11vw,125px);
 
-    position: absolute;
+    font-weight:normal;
 
-    left: 11px;
-    top: 5px;
+    letter-spacing:-4px;
 
-    width: 20px;
-    height: 20px;
-
-    border-radius: 50%;
-
-    background: #a95d7f;
-
-    box-shadow:
-        0 0 20px rgba(210,100,150,.4);
-
+    text-shadow:
+        0 0 30px rgba(255,180,200,.12);
 }
 
+.hero-heart{
+    margin:20px 0;
 
-.event h3 {
+    font-size:44px;
 
-    margin: 0 0 12px;
-
-    color: #edc3d4;
-
-    font-size: 25px;
-
+    animation:heartbeat 2s infinite;
 }
 
+@keyframes heartbeat{
 
-.event p {
+    0%,100%{
+        transform:scale(1);
+    }
 
-    margin: 0;
-
+    50%{
+        transform:scale(1.13);
+    }
 }
 
+.hero-subtitle{
+    font-size:clamp(18px,3vw,25px);
 
-/* =========================
-   BOOK CARD
-========================= */
+    font-style:italic;
 
-.book-card {
+    color:rgba(255,255,255,.72);
+}
 
-    text-align: center;
+.hero-date{
+    margin-top:25px;
 
-    padding: 55px 30px;
+    font-size:13px;
 
-    border-radius: 22px;
+    letter-spacing:3px;
 
+    opacity:.45;
+}
+
+.scroll-hint{
+    position:absolute;
+
+    bottom:35px;
+    left:50%;
+    transform:translateX(-50%);
+
+    opacity:.45;
+
+    font-size:12px;
+    letter-spacing:3px;
+
+    animation:scrollHint 2s infinite;
+}
+
+@keyframes scrollHint{
+
+    0%,100%{
+        transform:translate(-50%,0);
+    }
+
+    50%{
+        transform:translate(-50%,8px);
+    }
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+.section{
+    position:relative;
+
+    min-height:100vh;
+
+    padding:120px 20px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.section-inner{
+    width:min(1000px,100%);
+
+    position:relative;
+    z-index:10;
+}
+
+.section-label{
+    font-size:11px;
+
+    letter-spacing:5px;
+    text-transform:uppercase;
+
+    opacity:.45;
+
+    margin-bottom:15px;
+}
+
+.section-title{
+    margin:0 0 25px;
+
+    font-size:clamp(38px,7vw,75px);
+
+    font-weight:normal;
+}
+
+.section-intro{
+    max-width:700px;
+
+    color:rgba(255,255,255,.68);
+
+    font-size:18px;
+
+    line-height:1.9;
+}
+
+/* =========================================================
+   PROLOGUE
+========================================================= */
+
+.prologue{
     background:
         radial-gradient(
             circle at center,
-            rgba(140,55,100,.2),
-            transparent 70%
-        ),
-        rgba(0,0,0,.22);
+            rgba(130,70,100,.16),
+            transparent 50%
+        );
+}
 
-    border:
-        1px solid rgba(220,150,180,.16);
+.prologue-box{
+    padding:50px;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,.025);
+
+    backdrop-filter:blur(10px);
 
     box-shadow:
-        0 30px 70px rgba(0,0,0,.35);
-
+        0 30px 80px rgba(0,0,0,.25);
 }
 
+.prologue-box p{
+    font-size:19px;
 
-.book-icon {
+    line-height:2;
 
-    font-size: 75px;
-
-    animation:
-        bookFloat 3s ease-in-out infinite;
-
+    color:rgba(255,255,255,.78);
 }
 
+.prologue-signature{
+    margin-top:35px;
 
-@keyframes bookFloat {
+    font-style:italic;
 
-    50% {
-        transform: translateY(-8px);
-    }
-
+    color:#e5a7b8;
 }
 
+/* =========================================================
+   TIMELINE
+========================================================= */
 
-.book-card h2 {
-
-    font-size:
-        clamp(32px, 7vw, 48px);
-
-    color: #f2d4e0;
-
-    margin:
-        15px 0 10px;
-
+.timeline-section{
+    background:
+        linear-gradient(
+            180deg,
+            #090812,
+            #110b13,
+            #09070d
+        );
 }
 
+.timeline{
+    position:relative;
 
-.book-card .subtitle {
-
-    color: #c7a8b6;
-
-    font-size: 17px;
-
+    margin-top:70px;
 }
 
+.timeline::before{
+    content:"";
 
-.book-card p {
+    position:absolute;
 
-    max-width: 650px;
+    top:0;
+    bottom:0;
 
-    margin: 20px auto;
+    left:50%;
 
-    line-height: 1.8;
+    width:1px;
 
+    background:
+        linear-gradient(
+            transparent,
+            rgba(255,190,210,.3),
+            transparent
+        );
 }
 
+.timeline-item{
+    position:relative;
 
-.button {
+    width:50%;
 
-    display: inline-block;
+    padding:30px 55px;
 
-    margin-top: 15px;
+    opacity:0;
 
-    padding:
-        13px 27px;
+    transform:translateY(40px);
 
-    border-radius: 35px;
+    transition:
+        opacity .9s ease,
+        transform .9s ease;
+}
 
-    color: white;
+.timeline-item.visible{
+    opacity:1;
+    transform:translateY(0);
+}
 
-    text-decoration: none;
+.timeline-item:nth-child(odd){
+    left:0;
+    text-align:right;
+}
+
+.timeline-item:nth-child(even){
+    left:50%;
+}
+
+.timeline-dot{
+    position:absolute;
+
+    top:42px;
+
+    width:15px;
+    height:15px;
+
+    border-radius:50%;
+
+    background:#e7a7b8;
+
+    box-shadow:
+        0 0 20px rgba(230,150,180,.5);
+}
+
+.timeline-item:nth-child(odd) .timeline-dot{
+    right:-8px;
+}
+
+.timeline-item:nth-child(even) .timeline-dot{
+    left:-7px;
+}
+
+.timeline-card{
+    padding:30px;
+
+    border:1px solid rgba(255,255,255,.09);
+
+    border-radius:20px;
 
     background:
         linear-gradient(
             135deg,
-            #914b6a,
-            #5d2b45
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.015)
         );
 
-    border:
-        1px solid rgba(255,255,255,.12);
+    backdrop-filter:blur(10px);
 
-    transition: .3s;
-
+    transition:.4s;
 }
 
+.timeline-card:hover{
+    transform:translateY(-5px);
 
-.button:hover {
-
-    transform:
-        translateY(-3px);
+    border-color:rgba(255,180,200,.25);
 
     box-shadow:
-        0 12px 30px rgba(0,0,0,.4);
-
+        0 20px 50px rgba(0,0,0,.25);
 }
 
+.timeline-date{
+    color:#e5a4b5;
 
-/* =========================
-   SECRET BOOK
-========================= */
+    font-size:13px;
 
-.secret {
+    letter-spacing:2px;
 
-    margin-top: 60px;
+    margin-bottom:10px;
+}
 
-    padding: 45px 25px;
+.timeline-card h3{
+    margin:0 0 15px;
 
-    text-align: center;
+    font-size:27px;
 
-    border-radius: 22px;
+    font-weight:normal;
+}
 
-    position: relative;
+.timeline-card p{
+    margin:0;
 
-    overflow: hidden;
+    line-height:1.8;
+
+    color:rgba(255,255,255,.68);
+}
+
+@media(max-width:700px){
+
+    .timeline::before{
+        left:10px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even),
+    .timeline-item:nth-child(odd){
+        width:100%;
+
+        left:0;
+
+        text-align:left;
+
+        padding:25px 15px 25px 45px;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot,
+    .timeline-item:nth-child(even) .timeline-dot{
+        left:3px;
+        right:auto;
+    }
+}
+
+/* =========================================================
+   BETWEEN DATES
+========================================================= */
+
+.waiting-section{
+    min-height:90vh;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            rgba(80,70,120,.15),
+            transparent 60%
+        );
+}
+
+.waiting-content{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:40px;
+
+    align-items:center;
+}
+
+.waiting-text p{
+    color:rgba(255,255,255,.7);
+
+    font-size:18px;
+
+    line-height:2;
+}
+
+.waiting-visual{
+    min-height:400px;
+
+    position:relative;
+
+    border-radius:30px;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #111528,
+            #090b15
+        );
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.waiting-stars{
+    position:absolute;
+    inset:0;
+}
+
+.waiting-moon{
+    position:absolute;
+
+    top:50px;
+    right:50px;
+
+    width:100px;
+    height:100px;
+
+    border-radius:50%;
+
+    background:#ece5c8;
+
+    box-shadow:0 0 50px rgba(240,225,180,.2);
+}
+
+.waiting-ground{
+    position:absolute;
+
+    bottom:0;
+    left:0;
+    right:0;
+
+    height:100px;
+
+    background:
+        linear-gradient(
+            to top,
+            #050608,
+            transparent
+        );
+}
+
+.waiting-lantern{
+    position:absolute;
+
+    bottom:70px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:35px;
+    height:55px;
+
+    border:2px solid #8d8064;
+
+    border-radius:6px;
+
+    background:rgba(255,190,80,.08);
+
+    box-shadow:
+        0 0 25px rgba(255,190,80,.4);
+
+    animation:lanternPulse 2s infinite alternate;
+}
+
+@keyframes lanternPulse{
+
+    from{
+        box-shadow:
+            0 0 15px rgba(255,190,80,.25);
+    }
+
+    to{
+        box-shadow:
+            0 0 50px rgba(255,190,80,.7);
+    }
+}
+
+@media(max-width:750px){
+
+    .waiting-content{
+        grid-template-columns:1fr;
+    }
+}
+
+/* =========================================================
+   LITTLE THINGS
+========================================================= */
+
+.things-section{
+    background:
+        linear-gradient(
+            180deg,
+            #09070d,
+            #130b12
+        );
+}
+
+.things-grid{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:15px;
+
+    margin-top:50px;
+}
+
+.thing{
+    min-height:180px;
+
+    padding:25px;
+
+    border-radius:20px;
+
+    border:1px solid rgba(255,255,255,.08);
+
+    background:rgba(255,255,255,.025);
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-end;
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:.4s;
+}
+
+.thing::before{
+    content:"";
+
+    position:absolute;
+
+    width:150px;
+    height:150px;
+
+    border-radius:50%;
+
+    top:-70px;
+    right:-70px;
+
+    background:rgba(255,170,190,.07);
+
+    transition:.4s;
+}
+
+.thing:hover{
+    transform:translateY(-8px);
+
+    border-color:rgba(255,180,200,.25);
+}
+
+.thing:hover::before{
+    transform:scale(1.6);
+}
+
+.thing-icon{
+    font-size:35px;
+
+    margin-bottom:auto;
+}
+
+.thing h3{
+    margin:0 0 7px;
+
+    font-size:19px;
+
+    font-weight:normal;
+}
+
+.thing p{
+    margin:0;
+
+    color:rgba(255,255,255,.55);
+
+    font-size:13px;
+
+    line-height:1.6;
+}
+
+@media(max-width:800px){
+
+    .things-grid{
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+}
+
+@media(max-width:450px){
+
+    .things-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+/* =========================================================
+   GIFTS
+========================================================= */
+
+.gifts-section{
+    background:
+        radial-gradient(
+            circle at 20% 50%,
+            rgba(140,70,100,.12),
+            transparent 30%
+        );
+}
+
+.gifts-wrap{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:35px;
+}
+
+.gift-story{
+    padding:35px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,.025);
+
+    border:1px solid rgba(255,255,255,.08);
+}
+
+.gift-story p{
+    color:rgba(255,255,255,.68);
+
+    line-height:1.9;
+}
+
+.gift-list{
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.gift{
+    padding:18px 20px;
+
+    border-radius:15px;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(255,255,255,.07);
+
+    color:rgba(255,255,255,.75);
+
+    transition:.3s;
+}
+
+.gift:hover{
+    transform:translateX(7px);
+
+    background:rgba(255,180,200,.06);
+}
+
+@media(max-width:750px){
+
+    .gifts-wrap{
+        grid-template-columns:1fr;
+    }
+}
+
+/* =========================================================
+   31 AUGUST
+========================================================= */
+
+.third-date{
+    min-height:100vh;
 
     background:
         radial-gradient(
             circle at center,
-            rgba(0,100,160,.15),
-            transparent 65%
+            rgba(100,70,100,.2),
+            transparent 50%
         ),
-        #070b0f;
-
-    border:
-        1px solid rgba(90,170,205,.2);
-
-    box-shadow:
-        0 30px 70px rgba(0,0,0,.5);
-
+        #08070d;
 }
 
+.cinema-scene{
+    position:relative;
 
-.secret::before {
+    width:100%;
 
-    content: "";
+    min-height:500px;
 
-    position: absolute;
+    border-radius:30px;
 
-    width: 250px;
-    height: 250px;
+    overflow:hidden;
 
-    left: 50%;
-    top: 50%;
+    border:1px solid rgba(255,255,255,.08);
+
+    background:
+        linear-gradient(
+            180deg,
+            #080812,
+            #1a1018
+        );
+}
+
+.cinema-screen{
+    position:absolute;
+
+    top:50px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(650px,80%);
+
+    height:270px;
+
+    border-radius:8px;
+
+    background:
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(240,180,190,.2),
+            rgba(30,25,40,.8) 60%,
+            #08080d
+        );
+
+    box-shadow:
+        0 0 80px rgba(180,120,160,.08);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:30px;
+}
+
+.cinema-screen span{
+    font-size:clamp(25px,5vw,45px);
+
+    font-style:italic;
+
+    color:rgba(255,255,255,.7);
+}
+
+.cinema-seat{
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+    height:160px;
+
+    background:
+        radial-gradient(
+            ellipse at 20% 100%,
+            #040407 0 22%,
+            transparent 23%
+        ),
+        radial-gradient(
+            ellipse at 40% 100%,
+            #040407 0 22%,
+            transparent 23%
+        ),
+        radial-gradient(
+            ellipse at 60% 100%,
+            #040407 0 22%,
+            transparent 23%
+        ),
+        radial-gradient(
+            ellipse at 80% 100%,
+            #040407 0 22%,
+            transparent 23%
+        );
+}
+
+.third-date-text{
+    margin-top:35px;
+
+    max-width:720px;
+
+    margin-left:auto;
+    margin-right:auto;
+
+    text-align:center;
+}
+
+.third-date-text p{
+    color:rgba(255,255,255,.72);
+
+    font-size:18px;
+
+    line-height:2;
+}
+
+/* =========================================================
+   US NOW
+========================================================= */
+
+.now-section{
+    background:
+        linear-gradient(
+            180deg,
+            #100a11,
+            #07070b
+        );
+}
+
+.now-card{
+    padding:50px;
+
+    border-radius:30px;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,.045),
+            rgba(255,255,255,.015)
+        );
+
+    box-shadow:
+        0 30px 90px rgba(0,0,0,.3);
+}
+
+.now-card p{
+    max-width:760px;
+
+    color:rgba(255,255,255,.72);
+
+    font-size:18px;
+
+    line-height:2;
+}
+
+.learning{
+    margin-top:35px;
+
+    padding:25px;
+
+    border-left:2px solid #d99aac;
+
+    background:rgba(220,150,170,.04);
+}
+
+.learning strong{
+    display:block;
+
+    margin-bottom:10px;
+
+    color:#e4a9b9;
+
+    font-weight:normal;
+}
+
+/* =========================================================
+   BOOKS
+========================================================= */
+
+.books-section{
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(100,60,90,.15),
+            transparent 55%
+        );
+}
+
+.books-grid{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:25px;
+
+    margin-top:50px;
+}
+
+.book-card{
+    position:relative;
+
+    min-height:300px;
+
+    padding:35px;
+
+    border-radius:25px;
+
+    overflow:hidden;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    text-decoration:none;
+
+    color:white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #28131b,
+            #0c080b
+        );
+
+    transition:.5s;
+}
+
+.book-card:hover{
+    transform:translateY(-10px);
+
+    box-shadow:
+        0 30px 70px rgba(0,0,0,.45);
+}
+
+.book-card.secret{
+    background:
+        linear-gradient(
+            135deg,
+            #111b34,
+            #050711
+        );
+}
+
+.book-card::after{
+    content:"";
+
+    position:absolute;
+
+    width:200px;
+    height:200px;
+
+    border-radius:50%;
+
+    right:-80px;
+    bottom:-80px;
+
+    background:rgba(255,255,255,.04);
+
+    transition:.5s;
+}
+
+.book-card:hover::after{
+    transform:scale(1.4);
+}
+
+.book-icon{
+    font-size:45px;
+
+    margin-bottom:30px;
+}
+
+.book-card h3{
+    margin:0 0 12px;
+
+    font-size:30px;
+
+    font-weight:normal;
+}
+
+.book-card p{
+    max-width:430px;
+
+    color:rgba(255,255,255,.6);
+
+    line-height:1.7;
+}
+
+.book-open{
+    position:absolute;
+
+    bottom:25px;
+    right:25px;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+    opacity:.65;
+}
+
+@media(max-width:750px){
+
+    .books-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+/* =========================================================
+   LANTERN GARDEN
+========================================================= */
+
+.lantern-section{
+    min-height:120vh;
+
+    overflow:hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #07070c 0%,
+            #0a0d11 55%,
+            #070b0a 100%
+        );
+}
+
+.lantern-world{
+    position:absolute;
+    inset:0;
+
+    overflow:hidden;
+}
+
+/* distant moon */
+
+.garden-moon{
+    position:absolute;
+
+    top:10%;
+    right:12%;
+
+    width:130px;
+    height:130px;
+
+    border-radius:50%;
+
+    background:#e9e5cb;
+
+    box-shadow:
+        0 0 60px rgba(240,230,190,.2);
+}
+
+/* forest silhouettes */
+
+.garden-tree{
+    position:absolute;
+
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    border-left:80px solid transparent;
+    border-right:80px solid transparent;
+    border-bottom:300px solid #030505;
+
+    opacity:.9;
+}
+
+.gt1{left:3%;transform:scale(.8);}
+.gt2{left:15%;transform:scale(1.1);}
+.gt3{right:15%;transform:scale(.9);}
+.gt4{right:2%;transform:scale(1.2);}
+.gt5{left:42%;transform:scale(.7);}
+
+/* ground */
+
+.garden-ground{
+    position:absolute;
+
+    left:0;
+    right:0;
+    bottom:0;
+
+    height:230px;
+
+    background:
+        linear-gradient(
+            to top,
+            #020403,
+            transparent
+        );
+}
+
+/* vines */
+
+.vine-container{
+    position:absolute;
+
+    inset:0;
+
+    z-index:20;
+}
+
+.vine{
+    position:absolute;
+
+    width:180px;
+    height:500px;
+
+    cursor:pointer;
+
+    transition:
+        opacity 1.5s ease,
+        transform 1.5s ease,
+        filter 1.5s ease;
+}
+
+.vine::before{
+    content:"";
+
+    position:absolute;
+
+    width:9px;
+
+    height:100%;
+
+    left:50%;
+
+    transform:translateX(-50%) rotate(8deg);
+
+    border-radius:50%;
+
+    background:
+        linear-gradient(
+            180deg,
+            #18291d,
+            #07100a
+        );
+
+    box-shadow:
+        0 0 8px rgba(50,100,60,.2);
+}
+
+.vine::after{
+    content:"";
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    background:
+        radial-gradient(
+            ellipse at 30% 20%,
+            #263e29 0 8px,
+            transparent 9px
+        ),
+        radial-gradient(
+            ellipse at 70% 35%,
+            #1d3322 0 9px,
+            transparent 10px
+        ),
+        radial-gradient(
+            ellipse at 35% 55%,
+            #263d28 0 8px,
+            transparent 9px
+        ),
+        radial-gradient(
+            ellipse at 75% 75%,
+            #1b3020 0 9px,
+            transparent 10px
+        );
+}
+
+.vine:nth-child(1){
+    left:5%;
+    top:8%;
+    transform:rotate(-9deg);
+}
+
+.vine:nth-child(2){
+    left:25%;
+    top:0;
+    transform:rotate(8deg);
+}
+
+.vine:nth-child(3){
+    right:24%;
+    top:4%;
+    transform:rotate(-6deg);
+}
+
+.vine:nth-child(4){
+    right:4%;
+    top:10%;
+    transform:rotate(9deg);
+}
+
+.vine:nth-child(5){
+    left:43%;
+    top:18%;
+    transform:rotate(-13deg);
+    opacity:.8;
+}
+
+.vine.removing{
+    opacity:0;
 
     transform:
-        translate(-50%,-50%);
+        scale(.65)
+        rotate(25deg);
 
-    border-radius: 50%;
+    filter:blur(8px);
+}
+
+/* flowers */
+
+.flower-garden{
+    position:absolute;
+
+    inset:0;
+
+    z-index:15;
+
+    pointer-events:none;
+}
+
+.flower{
+    position:absolute;
+
+    opacity:0;
+
+    transform:
+        scale(.1)
+        translateY(30px);
+
+    transition:
+        opacity 1.5s ease,
+        transform 2s cubic-bezier(.2,.8,.2,1);
+}
+
+.flower.bloom{
+    opacity:1;
+
+    transform:
+        scale(1)
+        translateY(0);
+}
+
+.flower::before{
+    content:"";
+
+    display:block;
+
+    width:50px;
+    height:50px;
+
+    border-radius:50%;
 
     background:
         radial-gradient(
             circle,
-            rgba(0,150,255,.12),
-            transparent 70%
+            #f4c2cf 0 12%,
+            #e79bb1 13% 30%,
+            #bd6684 31% 48%,
+            transparent 49%
         );
-
-    filter: blur(15px);
-
-}
-
-
-.secret-content {
-
-    position: relative;
-
-    z-index: 2;
-
-}
-
-
-.secret-icon {
-
-    font-size: 65px;
 
     filter:
         drop-shadow(
-            0 0 18px rgba(0,160,255,.35)
+            0 0 12px rgba(255,160,190,.25)
         );
-
 }
 
-
-.secret h2 {
-
-    color: #b9dfea;
-
-    font-size:
-        clamp(29px, 6vw, 44px);
-
-    margin:
-        15px 0;
-
-}
-
-
-.secret p {
-
-    color: #91aeb8;
-
-    max-width: 600px;
-
-    margin:
-        12px auto;
-
-    line-height: 1.8;
-
-}
-
-
-.secret-button {
-
-    display: inline-block;
-
-    margin-top: 20px;
-
-    padding:
-        13px 27px;
-
-    border-radius: 35px;
-
-    color: #c9e9f4;
-
-    text-decoration: none;
-
+.rose::before{
     background:
-        rgba(50,120,150,.12);
-
-    border:
-        1px solid rgba(100,190,220,.25);
-
-    transition: .3s;
-
+        radial-gradient(
+            circle,
+            #f3b0c0 0 12%,
+            #d96883 13% 28%,
+            #9e344f 29% 45%,
+            transparent 46%
+        );
 }
 
+.flower-stem{
+    position:absolute;
 
-.secret-button:hover {
+    width:3px;
+    height:90px;
 
-    background:
-        rgba(50,150,190,.2);
+    left:23px;
+    top:45px;
 
-    transform:
-        translateY(-3px);
+    background:#314d31;
 
+    transform-origin:top;
+
+    transform:rotate(-10deg);
 }
 
-
-/* =========================
-   CURRENT CHAPTER
-========================= */
-
-.current {
-
-    text-align: center;
-
-    padding:
-        55px 30px;
-
+.flower:nth-child(1){
+    left:18%;
+    bottom:25%;
 }
 
+.flower:nth-child(2){
+    left:31%;
+    bottom:18%;
 
-.current-heart {
+    transition-delay:.2s;
+}
 
-    font-size: 65px;
+.flower:nth-child(3){
+    left:48%;
+    bottom:30%;
+
+    transition-delay:.4s;
+}
+
+.flower:nth-child(4){
+    right:28%;
+    bottom:18%;
+
+    transition-delay:.6s;
+}
+
+.flower:nth-child(5){
+    right:14%;
+    bottom:28%;
+
+    transition-delay:.8s;
+}
+
+.flower:nth-child(6){
+    left:58%;
+    bottom:12%;
+
+    transition-delay:1s;
+}
+
+/* falling petals */
+
+.petals{
+    position:absolute;
+
+    inset:0;
+
+    z-index:30;
+
+    pointer-events:none;
+}
+
+.petal{
+    position:absolute;
+
+    width:9px;
+    height:6px;
+
+    border-radius:100% 0 100% 0;
+
+    background:#e99ab0;
+
+    opacity:.75;
 
     animation:
-        heartbeat 2.5s infinite;
-
+        petalFall
+        linear
+        infinite;
 }
 
+@keyframes petalFall{
 
-@keyframes heartbeat {
-
-    0%,100% {
-        transform: scale(1);
+    0%{
+        transform:
+            translateY(-30px)
+            rotate(0deg);
     }
 
-    50% {
-        transform: scale(1.08);
+    100%{
+        transform:
+            translateY(100vh)
+            rotate(540deg);
     }
-
 }
 
+/* lantern */
 
-/* =========================
+.main-lantern{
+    position:absolute;
+
+    z-index:40;
+
+    left:50%;
+    bottom:150px;
+
+    transform:translateX(-50%);
+
+    width:100px;
+    height:150px;
+
+    cursor:pointer;
+
+    transition:.4s;
+}
+
+.main-lantern:hover{
+    transform:
+        translateX(-50%)
+        scale(1.04);
+}
+
+.lantern-top{
+    position:absolute;
+
+    top:0;
+    left:15px;
+
+    width:70px;
+    height:18px;
+
+    border-radius:50%;
+
+    background:#766c58;
+}
+
+.lantern-body{
+    position:absolute;
+
+    top:14px;
+    left:25px;
+
+    width:50px;
+    height:75px;
+
+    border:4px solid #706751;
+
+    border-radius:8px;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,214,105,.75),
+            rgba(255,170,50,.08) 55%,
+            transparent 70%
+        );
+
+    box-shadow:
+        0 0 35px rgba(255,190,70,.3);
+}
+
+.lantern-flame{
+    position:absolute;
+
+    left:50%;
+    top:30px;
+
+    width:15px;
+    height:30px;
+
+    transform:translateX(-50%);
+
+    border-radius:
+        50% 50% 45% 45%;
+
+    background:
+        linear-gradient(
+            to top,
+            #ff9c32,
+            #fff1aa
+        );
+
+    animation:flame 1s infinite alternate;
+}
+
+@keyframes flame{
+
+    from{
+        transform:
+            translateX(-50%)
+            scale(.85)
+            rotate(-3deg);
+    }
+
+    to{
+        transform:
+            translateX(-50%)
+            scale(1.1)
+            rotate(4deg);
+    }
+}
+
+.lantern-pole{
+    position:absolute;
+
+    left:47px;
+    top:88px;
+
+    width:7px;
+    height:90px;
+
+    background:#4e493c;
+}
+
+.lantern-base{
+    position:absolute;
+
+    bottom:-35px;
+    left:30px;
+
+    width:40px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:#4e493c;
+}
+
+.lantern-message{
+    position:absolute;
+
+    z-index:60;
+
+    left:50%;
+    bottom:45px;
+
+    transform:
+        translate(-50%,20px);
+
+    width:min(600px,90%);
+
+    text-align:center;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.lantern-message.show{
+    opacity:1;
+
+    transform:
+        translate(-50%,0);
+}
+
+.lantern-message h3{
+    font-size:clamp(25px,5vw,42px);
+
+    font-weight:normal;
+
+    margin-bottom:15px;
+}
+
+.lantern-message p{
+    color:rgba(255,255,255,.7);
+
+    line-height:1.8;
+}
+
+/* =========================================================
+   LANTERN FINAL TEXT
+========================================================= */
+
+.garden-content{
+    position:relative;
+
+    z-index:70;
+
+    width:min(850px,100%);
+
+    text-align:center;
+
+    margin-top:450px;
+
+    pointer-events:none;
+}
+
+.garden-content .section-label{
+    opacity:.55;
+}
+
+.garden-content h2{
+    font-size:clamp(42px,8vw,80px);
+
+    font-weight:normal;
+
+    margin:10px 0 20px;
+}
+
+.garden-content p{
+    color:rgba(255,255,255,.62);
+
+    line-height:1.9;
+
+    font-size:17px;
+}
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final-section{
+    min-height:100vh;
+
+    text-align:center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(120,70,100,.12),
+            transparent 50%
+        );
+}
+
+.final-heart{
+    font-size:60px;
+
+    animation:
+        heartbeat
+        2s
+        infinite;
+}
+
+.final-section h2{
+    margin:25px 0 15px;
+
+    font-size:clamp(45px,9vw,90px);
+
+    font-weight:normal;
+}
+
+.final-section p{
+    color:rgba(255,255,255,.55);
+
+    font-size:18px;
+
+    line-height:1.9;
+}
+
+.final-line{
+    margin-top:50px;
+
+    font-style:italic;
+
+    color:#dca0b1;
+}
+
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
-footer {
+footer{
+    position:relative;
 
-    text-align: center;
+    padding:50px 20px 70px;
 
-    padding:
-        50px 20px 70px;
+    text-align:center;
 
-    color: #8d7480;
+    color:rgba(255,255,255,.3);
 
+    font-size:12px;
+
+    letter-spacing:2px;
 }
 
+/* =========================================================
+   REVEAL
+========================================================= */
 
-footer .heart {
+.reveal{
+    opacity:0;
 
-    color: #d88aa9;
+    transform:translateY(35px);
 
-    font-size: 25px;
-
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
 }
 
+.reveal.visible{
+    opacity:1;
 
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:650px) {
-
-    .section {
-
-        padding: 27px 22px;
-
-    }
-
-    .section p {
-
-        font-size: 16px;
-
-    }
-
-    .event {
-
-        padding-left: 50px;
-
-    }
-
+    transform:translateY(0);
 }
 
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:600px){
+
+    .section{
+        padding:90px 18px;
+    }
+
+    .prologue-box,
+    .now-card{
+        padding:28px 22px;
+    }
+
+    .garden-content{
+        margin-top:430px;
+    }
+
+    .vine{
+        transform:scale(.75);
+    }
+
+    .vine:nth-child(1){
+        left:-15%;
+    }
+
+    .vine:nth-child(4){
+        right:-15%;
+    }
+
+    .main-lantern{
+        bottom:130px;
+    }
+}
 </style>
-
 </head>
-
 
 <body>
 
+<div class="background"></div>
 
-<header>
+<canvas id="world"></canvas>
 
-<div class="hero">
 
-<div class="small">
-A story written one day at a time
-</div>
+<!-- =========================================================
+     NAVIGATION
+========================================================= -->
 
-<h1>
-Our Story
-</h1>
+<nav class="top-nav">
 
-<div class="hero-names">
-Alex & Marina ❤️
-</div>
+    <a href="index.html" class="nav-logo">
+        Oksy & Marina ❤️
+    </a>
 
-<p class="hero-text">
+    <div class="nav-links">
+        <a href="#story">Story</a>
+        <a href="#books">Books</a>
+        <a href="#lantern">Lantern</a>
+        <a href="#end">End</a>
+    </div>
 
-Two people who met unexpectedly,
-started talking,
-started waiting for each other,
-and slowly became something
-more important than either of them expected.
+</nav>
 
-</p>
 
-<a href="#story" class="scroll">
-↓ Read our story
-</a>
+<!-- =========================================================
+     HERO
+========================================================= -->
 
-</div>
+<header class="hero" id="story">
+
+    <div class="moon"></div>
+
+    <div class="hero-cloud cloud-one"></div>
+    <div class="hero-cloud cloud-two"></div>
+
+    <div class="hero-content reveal">
+
+        <div class="hero-small">
+            A story about two people
+        </div>
+
+        <h1>
+            Oksy & Marina
+        </h1>
+
+        <div class="hero-heart">
+            ❤️
+        </div>
+
+        <div class="hero-subtitle">
+            Our Story
+        </div>
+
+        <div class="hero-date">
+            10 June 2026 — and everything that came after
+        </div>
+
+    </div>
+
+    <div class="scroll-hint">
+        ↓ SCROLL
+    </div>
 
 </header>
 
 
-<main id="story">
+<!-- =========================================================
+     PROLOGUE
+========================================================= -->
 
+<section class="section prologue">
 
-<!-- PROLOGUE -->
+    <div class="section-inner">
 
-<section class="section">
+        <div class="prologue-box reveal">
 
-<div class="date">
-The beginning
-</div>
+            <div class="section-label">
+                Prologue
+            </div>
 
-<h2>
-Before there was an "us"
-</h2>
+            <h2 class="section-title">
+                How It Started
+            </h2>
 
-<p>
+            <p>
+                Sometimes a story begins without either person
+                knowing how important it will become.
+            </p>
 
-Sometimes the most important people
-enter our lives in the most ordinary ways.
+            <p>
+                Oksy and Marina met through Badoo.
+                At first, it was simply two people talking,
+                getting to know each other and discovering
+                little things about one another.
+            </p>
 
-For us, it started with a simple meeting
-on Badoo.
+            <p>
+                Neither of us could know what the next few months
+                would bring.
+            </p>
 
-Neither of us knew where that first
-conversation would eventually lead.
+            <p>
+                But somewhere between the messages,
+                the waiting,
+                the meetings,
+                and all the small moments,
+                something started to grow.
+            </p>
 
-But something made us keep talking.
+            <div class="prologue-signature">
+                And this is where our story begins. ❤️
+            </div>
 
-</p>
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- TIMELINE -->
+<!-- =========================================================
+     TIMELINE
+========================================================= -->
 
-<section class="section">
+<section class="section timeline-section">
 
-<div class="timeline">
+    <div class="section-inner">
 
+        <div class="section-label">
+            Chapter One
+        </div>
 
-<!-- 27 JUNE -->
+        <h2 class="section-title">
+            The First Pages
+        </h2>
 
-<div class="event">
+        <p class="section-intro">
+            A few dates became memories.
+            Memories became something more.
+            And slowly, these moments started becoming our story.
+        </p>
 
-<div class="dot"></div>
 
-<h3>
-27 June — The First Date
-</h3>
+        <div class="timeline">
 
-<p>
 
-Our first date.
+            <!-- 27 JUNE -->
 
-We went shopping together.
+            <div class="timeline-item reveal">
 
-It was not some huge cinematic moment.
+                <div class="timeline-dot"></div>
 
-It was simply time together.
+                <div class="timeline-card">
 
-Walking around,
-talking,
-getting to know each other,
-and slowly becoming comfortable
-with each other's presence.
+                    <div class="timeline-date">
+                        27 JUNE 2026
+                    </div>
 
-</p>
+                    <h3>
+                        The First Date 🛍️
+                    </h3>
 
-</div>
+                    <p>
+                        Our first date.
+                        We went shopping together,
+                        walked around,
+                        talked,
+                        and spent time discovering
+                        what it felt like to be together in real life.
+                    </p>
 
+                </div>
 
-<!-- WAITING -->
+            </div>
 
-<div class="event">
 
-<div class="dot"></div>
+            <!-- BETWEEN -->
 
-<h3>
-Between the Dates
-</h3>
+            <div class="timeline-item reveal">
 
-<p>
+                <div class="timeline-dot"></div>
 
-Then came the waiting.
+                <div class="timeline-card">
 
-Waiting for another meeting.
+                    <div class="timeline-date">
+                        BETWEEN THE DATES
+                    </div>
 
-Missing each other.
+                    <h3>
+                        The Waiting ⏳
+                    </h3>
 
-Thinking about when we would
-see each other again.
+                    <p>
+                        There was something special about the time
+                        between our meetings.
+                        Waiting for messages.
+                        Missing each other.
+                        Thinking about the next time
+                        we would see each other.
+                    </p>
 
-And somehow even the waiting
-became part of our story.
+                </div>
 
-Because knowing that another
-day together was coming made
-the distance feel different.
+            </div>
 
-</p>
 
-</div>
+            <!-- 18 JULY -->
 
+            <div class="timeline-item reveal">
 
-<!-- 18 JULY -->
+                <div class="timeline-dot"></div>
 
-<div class="event">
+                <div class="timeline-card">
 
-<div class="dot"></div>
+                    <div class="timeline-date">
+                        18 JULY 2026
+                    </div>
 
-<h3>
-18 July — The Second Date
-</h3>
+                    <h3>
+                        The Second Date 🧩
+                    </h3>
 
-<p>
+                    <p>
+                        We built LEGO together,
+                        spent time outside,
+                        talked,
+                        laughed,
+                        and created another memory.
+                        It was another small step
+                        toward becoming closer.
+                    </p>
 
-Our second date.
+                </div>
 
-LEGO.
+            </div>
 
-Another day together.
 
-And something else that became
-important to us — creating a shared
-bank account.
+            <!-- RINGS -->
 
-It may sound like a small thing.
+            <div class="timeline-item reveal">
 
-But for me, it felt like another
-little step toward building
-something together.
+                <div class="timeline-dot"></div>
 
-</p>
+                <div class="timeline-card">
 
-</div>
+                    <div class="timeline-date">
+                        A LITTLE SOMETHING
+                    </div>
 
+                    <h3>
+                        Our Rings 💍
+                    </h3>
 
-<!-- GIFTS -->
+                    <p>
+                        Some objects are small,
+                        but the meaning behind them
+                        can be much bigger.
+                        Our rings became one of those little things
+                        connected to our story.
+                    </p>
 
-<div class="event">
+                </div>
 
-<div class="dot"></div>
+            </div>
 
-<h3>
-The Gifts
-</h3>
 
-<p>
+            <!-- 31 AUGUST -->
 
-Over time, I started preparing
-little surprises for you.
+            <div class="timeline-item reveal">
 
-Some were bought.
+                <div class="timeline-dot"></div>
 
-Some were made by my own hands.
+                <div class="timeline-card">
 
-The important thing was never
-the price.
+                    <div class="timeline-date">
+                        31 AUGUST 2026
+                    </div>
 
-It was the thought behind them.
+                    <h3>
+                        The Third Date 🎬
+                    </h3>
 
-I wanted to give you something
-that would make you smile.
+                    <p>
+                        We went to the cinema.
+                        We spent another day together.
+                        And somewhere during that day,
+                        I finally said what I had been carrying
+                        inside me.
+                    </p>
 
-</p>
+                </div>
 
-</div>
+            </div>
 
 
-<!-- 31 AUGUST -->
+            <!-- US -->
 
-<div class="event">
+            <div class="timeline-item reveal">
 
-<div class="dot"></div>
+                <div class="timeline-dot"></div>
 
-<h3>
-31 August — The Third Date
-</h3>
+                <div class="timeline-card">
 
-<p>
+                    <div class="timeline-date">
+                        31 AUGUST 2026
+                    </div>
 
-Cinema.
+                    <h3>
+                        When We Became Us ❤️
+                    </h3>
 
-Another day together.
+                    <p>
+                        I told you that I love you.
+                        And that day became something different
+                        from the days before it.
+                        We started dating.
+                    </p>
 
-And then I finally said what
-had been growing inside me.
+                </div>
 
-I love you.
+            </div>
 
-That day, our relationship
-changed.
 
-We stopped being just two people
-who were getting to know each other.
+        </div>
 
-We became a couple.
-
-</p>
-
-</div>
-
-
-<!-- ENGLISH -->
-
-<div class="event">
-
-<div class="dot"></div>
-
-<h3>
-A Promise to Keep Learning
-</h3>
-
-<p>
-
-There is also something I started
-because of you.
-
-English.
-
-I know the language barrier can
-make things difficult sometimes.
-
-So I decided to keep learning.
-
-Not because I need to become perfect.
-
-But because I want to understand you
-better.
-
-I want to be able to talk with you
-without words getting in the way.
-
-And I promised myself that I would
-keep going.
-
-</p>
-
-</div>
-
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- CURRENT -->
+<!-- =========================================================
+     WAITING
+========================================================= -->
 
-<section class="section current">
+<section class="section waiting-section">
 
-<div class="current-heart">
-❤️
-</div>
+    <div class="section-inner">
 
-<div class="date">
-5 September 2026
-</div>
+        <div class="waiting-content">
 
-<h2>
-Our Story Is Still Being Written
-</h2>
+            <div class="waiting-text reveal">
 
-<p>
+                <div class="section-label">
+                    The moments between
+                </div>
 
-We have already created memories.
+                <h2 class="section-title">
+                    Sometimes Waiting Matters
+                </h2>
 
-But there are still many pages
-that haven't been written.
+                <p>
+                    Not every important moment happens during a date.
+                </p>
 
-More walks.
+                <p>
+                    Sometimes it happens while waiting for a message.
+                    Sometimes while looking at the clock.
+                    Sometimes when you suddenly realize
+                    that you really miss someone.
+                </p>
 
-More conversations.
+                <p>
+                    The distance between two meetings
+                    can make the next meeting feel even more special.
+                </p>
 
-More ordinary days.
-
-More surprises.
-
-More memories.
-
-I don't know exactly what every
-next page will look like.
-
-But I'm happy that the story
-is still continuing.
-
-</p>
-
-</section>
+            </div>
 
 
-<!-- FIRST BOOK -->
+            <div class="waiting-visual reveal">
 
-<section class="book-card">
+                <div class="waiting-stars"></div>
 
-<div class="book-icon">
-📖
-</div>
+                <div class="waiting-moon"></div>
 
-<h2>
-Before You
-</h2>
+                <div class="waiting-lantern"></div>
 
-<p class="subtitle">
-A story about Alex.
-</p>
+                <div class="waiting-ground"></div>
 
-<p>
+            </div>
 
-There is a part of my life
-you don't know yet.
+        </div>
 
-My childhood.
-
-The things that hurt me.
-
-The fears I carried.
-
-The life I built.
-
-The places I saw.
-
-And the person I became
-before you entered my life.
-
-</p>
-
-<p>
-
-If you want to know me a little deeper,
-this book is for you.
-
-</p>
-
-<a
-    href="book.html"
-    class="button">
-
-Open the book ❤️
-
-</a>
+    </div>
 
 </section>
 
 
-<!-- SECRET BOOK -->
+<!-- =========================================================
+     LITTLE THINGS
+========================================================= -->
 
-<section class="secret">
+<section class="section things-section">
 
-<div class="secret-content">
+    <div class="section-inner">
 
-<div class="secret-icon">
-🔒
-</div>
+        <div class="section-label">
+            Our little universe
+        </div>
 
-<h2>
-There is something else...
-</h2>
+        <h2 class="section-title reveal">
+            The Little Things
+        </h2>
 
-<p>
+        <p class="section-intro reveal">
+            A relationship isn't made only from big moments.
+            Sometimes it's made from small things
+            that slowly become unforgettable.
+        </p>
 
-Another book is waiting somewhere
-in this story.
 
-But this one is different.
+        <div class="things-grid">
 
-It isn't ready yet.
+            <div class="thing reveal">
 
-</p>
+                <div class="thing-icon">
+                    🛍️
+                </div>
 
-<p>
+                <h3>
+                    First Shopping Trip
+                </h3>
 
-Some things should stay secret
-until the right moment.
+                <p>
+                    The first time we spent a whole date
+                    discovering places together.
+                </p>
 
-</p>
+            </div>
 
-<p>
 
-<strong>
-Soon you will know...
-</strong>
+            <div class="thing reveal">
 
-</p>
+                <div class="thing-icon">
+                    🧩
+                </div>
 
-<a
-    href="secret-book.html"
-    class="secret-button">
+                <h3>
+                    LEGO
+                </h3>
 
-Something is waiting →
+                <p>
+                    A simple activity that became
+                    another memory of us.
+                </p>
 
-</a>
+            </div>
 
-</div>
+
+            <div class="thing reveal">
+
+                <div class="thing-icon">
+                    🍣
+                </div>
+
+                <h3>
+                    Sushi
+                </h3>
+
+                <p>
+                    Food tastes different
+                    when you're sharing the moment with someone.
+                </p>
+
+            </div>
+
+
+            <div class="thing reveal">
+
+                <div class="thing-icon">
+                    🎬
+                </div>
+
+                <h3>
+                    Cinema
+                </h3>
+
+                <p>
+                    One of the memories connected
+                    with the day everything changed.
+                </p>
+
+            </div>
+
+
+            <div class="thing reveal">
+
+                <div class="thing-icon">
+                    🌹
+                </div>
+
+                <h3>
+                    Roses
+                </h3>
+
+                <p>
+                    A small symbol of affection,
+                    care and thought.
+                </p>
+
+            </div>
+
+
+            <div class="thing reveal">
+
+                <div class="thing-icon">
+                    💍
+                </div>
+
+                <h3>
+                    Rings
+                </h3>
+
+                <p>
+                    Something small that carries
+                    a bigger memory.
+                </p>
+
+            </div>
+
+
+            <div class="thing reveal">
+
+                <div class="thing-icon">
+                    💌
+                </div>
+
+                <h3>
+                    Messages
+                </h3>
+
+                <p>
+                    The conversations that filled
+                    the spaces between meetings.
+                </p>
+
+            </div>
+
+
+            <div class="thing reveal">
+
+                <div class="thing-icon">
+                    🚆
+                </div>
+
+                <h3>
+                    Journeys
+                </h3>
+
+                <p>
+                    Distance, trains and roads
+                    became part of the story too.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
 
 </section>
 
 
-</main>
+<!-- =========================================================
+     GIFTS
+========================================================= -->
+
+<section class="section gifts-section">
+
+    <div class="section-inner">
+
+        <div class="section-label">
+            The little things I chose for you
+        </div>
+
+        <h2 class="section-title reveal">
+            Gifts With Meaning
+        </h2>
+
+        <div class="gifts-wrap">
+
+            <div class="gift-story reveal">
+
+                <p>
+                    I have always believed that a gift is not only
+                    about what is inside the box.
+                </p>
+
+                <p>
+                    Sometimes the meaning is in the time spent choosing it,
+                    preparing it,
+                    wrapping it,
+                    and imagining the moment
+                    when the other person opens it.
+                </p>
+
+                <p>
+                    Some of the things I gave you became
+                    small pieces of our story.
+                </p>
+
+            </div>
+
+
+            <div class="gift-list">
+
+                <div class="gift reveal">
+                    💻 MacBook
+                </div>
+
+                <div class="gift reveal">
+                    🎨 A painting from our second date
+                </div>
+
+                <div class="gift reveal">
+                    💎 Handmade resin pendants
+                </div>
+
+                <div class="gift reveal">
+                    🌹 A rose
+                </div>
+
+                <div class="gift reveal">
+                    💌 Little letters and notes
+                </div>
+
+                <div class="gift reveal">
+                    🍫 Sweets and small surprises
+                </div>
+
+                <div class="gift reveal">
+                    🎁 Things chosen especially for you
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     THIRD DATE
+========================================================= -->
+
+<section class="section third-date">
+
+    <div class="section-inner">
+
+        <div class="section-label">
+            31 August 2026
+        </div>
+
+        <h2 class="section-title reveal">
+            The Day Everything Changed
+        </h2>
+
+
+        <div class="cinema-scene reveal">
+
+            <div class="cinema-screen">
+
+                <span>
+                    Sometimes one evening<br>
+                    becomes a memory for a lifetime.
+                </span>
+
+            </div>
+
+            <div class="cinema-seat"></div>
+
+        </div>
+
+
+        <div class="third-date-text reveal">
+
+            <p>
+                We went to the cinema.
+            </p>
+
+            <p>
+                We spent time together.
+            </p>
+
+            <p>
+                And I finally stopped keeping my feelings
+                only inside myself.
+            </p>
+
+            <p>
+                I told you that I love you.
+            </p>
+
+            <p>
+                And that became the beginning
+                of something new for both of us.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     NOW
+========================================================= -->
+
+<section class="section now-section">
+
+    <div class="section-inner">
+
+        <div class="section-label">
+            5 September 2026
+        </div>
+
+        <h2 class="section-title reveal">
+            Where We Are Now
+        </h2>
+
+        <div class="now-card reveal">
+
+            <p>
+                Right now, our story is still very young.
+            </p>
+
+            <p>
+                We are still learning about each other.
+                We are still discovering how our lives fit together.
+                And there is still a lot we don't know.
+            </p>
+
+            <p>
+                But I am happy that our story exists.
+            </p>
+
+            <p>
+                I don't want to rush the future.
+                I want to enjoy the moments we have,
+                learn from each other,
+                support each other,
+                and keep building memories together.
+            </p>
+
+
+            <div class="learning">
+
+                <strong>
+                    🇬🇧 One promise I want to keep
+                </strong>
+
+                I started learning English because
+                I want to be able to speak with you more freely.
+                I know it will take time,
+                but I am going to keep learning.
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     BOOKS
+========================================================= -->
+
+<section class="section books-section" id="books">
+
+    <div class="section-inner">
+
+        <div class="section-label">
+            Two more stories
+        </div>
+
+        <h2 class="section-title reveal">
+            The Books
+        </h2>
+
+        <p class="section-intro reveal">
+            Our Story is not the only story here.
+            There are also pages about the person behind it,
+            and one book that isn't ready to be opened yet.
+        </p>
+
+
+        <div class="books-grid">
+
+
+            <a href="book.html" class="book-card reveal">
+
+                <div class="book-icon">
+                    📖
+                </div>
+
+                <h3>
+                    Before You
+                </h3>
+
+                <p>
+                    The story of Oksy —
+                    where he came from,
+                    what shaped him,
+                    what hurt him,
+                    what he achieved,
+                    and where he wants to go next.
+                </p>
+
+                <div class="book-open">
+                    OPEN BOOK →
+                </div>
+
+            </a>
+
+
+            <a href="secret-book.html" class="book-card secret reveal">
+
+                <div class="book-icon">
+                    🔒
+                </div>
+
+                <h3>
+                    The Secret Book
+                </h3>
+
+                <p>
+                    Some pages aren't ready yet.
+                    Some stories need time.
+                    And some surprises are better
+                    when you wait for them.
+                </p>
+
+                <div class="book-open">
+                    NOT YET →
+                </div>
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     LANTERN / VINES / SAKURA / ROSES
+========================================================= -->
+
+<section class="section lantern-section" id="lantern">
+
+    <div class="lantern-world">
+
+        <div class="garden-moon"></div>
+
+        <div class="garden-tree gt1"></div>
+        <div class="garden-tree gt2"></div>
+        <div class="garden-tree gt3"></div>
+        <div class="garden-tree gt4"></div>
+        <div class="garden-tree gt5"></div>
+
+        <div class="garden-ground"></div>
+
+
+        <!-- VINES -->
+
+        <div class="vine-container">
+
+            <div class="vine" onclick="removeVine(this)"></div>
+            <div class="vine" onclick="removeVine(this)"></div>
+            <div class="vine" onclick="removeVine(this)"></div>
+            <div class="vine" onclick="removeVine(this)"></div>
+            <div class="vine" onclick="removeVine(this)"></div>
+
+        </div>
+
+
+        <!-- FLOWERS -->
+
+        <div class="flower-garden">
+
+            <div class="flower sakura">
+                <div class="flower-stem"></div>
+            </div>
+
+            <div class="flower rose">
+                <div class="flower-stem"></div>
+            </div>
+
+            <div class="flower sakura">
+                <div class="flower-stem"></div>
+            </div>
+
+            <div class="flower rose">
+                <div class="flower-stem"></div>
+            </div>
+
+            <div class="flower sakura">
+                <div class="flower-stem"></div>
+            </div>
+
+            <div class="flower rose">
+                <div class="flower-stem"></div>
+            </div>
+
+        </div>
+
+
+        <!-- PETALS -->
+
+        <div class="petals" id="petals"></div>
+
+
+        <!-- LANTERN -->
+
+        <div
+            class="main-lantern"
+            id="mainLantern"
+            onclick="activateLantern()"
+        >
+
+            <div class="lantern-top"></div>
+
+            <div class="lantern-body">
+
+                <div class="lantern-flame"></div>
+
+            </div>
+
+            <div class="lantern-pole"></div>
+
+            <div class="lantern-base"></div>
+
+        </div>
+
+
+        <div
+            class="lantern-message"
+            id="lanternMessage"
+        >
+
+            <h3>
+                Even the darkest places can bloom. 🌸
+            </h3>
+
+            <p>
+                Some things only need a little time,
+                a little care,
+                and someone who believes they can grow.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="garden-content">
+
+        <div class="section-label">
+            A little secret
+        </div>
+
+        <h2>
+            The Garden
+        </h2>
+
+        <p>
+            There are still a few things hidden here.
+        </p>
+
+        <p>
+            Look carefully.
+            Some things disappear when you touch them.
+            And sometimes,
+            when something disappears,
+            something more beautiful can grow in its place.
+        </p>
+
+        <p>
+            Try touching the vines. 🌿
+        </p>
+
+        <p>
+            And when you're ready,
+            touch the lantern. 🏮
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================================================
+     FINAL
+========================================================= -->
+
+<section class="section final-section" id="end">
+
+    <div class="section-inner reveal">
+
+        <div class="final-heart">
+            ❤️
+        </div>
+
+        <h2>
+            To Be Continued...
+        </h2>
+
+        <p>
+            This story already has its first pages.
+        </p>
+
+        <p>
+            But there are still many pages
+            we haven't written yet.
+        </p>
+
+        <div class="final-line">
+            This is not the end of our story.<br>
+            It's only the first pages.
+        </div>
+
+    </div>
+
+</section>
 
 
 <footer>
 
-<div class="heart">
-♥
-</div>
+    Oksy & Marina ❤️
 
-<p>
-Made with love for Marina.
-</p>
+    <br><br>
 
-<p>
-Our story is still being written.
-</p>
+    2026
 
 </footer>
 
+
+<script>
+
+/* =========================================================
+   CANVAS — STARS / FIREFLIES / PARTICLES
+========================================================= */
+
+const canvas =
+    document.getElementById("world");
+
+const ctx =
+    canvas.getContext("2d");
+
+let width =
+    canvas.width =
+    window.innerWidth;
+
+let height =
+    canvas.height =
+    window.innerHeight;
+
+
+window.addEventListener("resize",function(){
+
+    width =
+        canvas.width =
+        window.innerWidth;
+
+    height =
+        canvas.height =
+        window.innerHeight;
+
+});
+
+
+const particles = [];
+
+const PARTICLE_COUNT =
+    Math.min(
+        260,
+        Math.floor(window.innerWidth / 4)
+    );
+
+
+for(let i=0;i<PARTICLE_COUNT;i++){
+
+    particles.push({
+
+        x:Math.random()*width,
+
+        y:Math.random()*height,
+
+        r:Math.random()*1.8+.3,
+
+        alpha:Math.random()*.7+.1,
+
+        speed:Math.random()*.25+.05,
+
+        phase:Math.random()*Math.PI*2
+
+    });
+
+}
+
+
+function drawParticles(time){
+
+    ctx.clearRect(
+        0,
+        0,
+        width,
+        height
+    );
+
+
+    particles.forEach(function(p){
+
+        p.y -= p.speed;
+
+        if(p.y < -10){
+
+            p.y = height + 10;
+            p.x = Math.random()*width;
+
+        }
+
+        const pulse =
+            p.alpha +
+            Math.sin(
+                time*.001+p.phase
+            )*.2;
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.r,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fillStyle =
+            "rgba(255,230,235,"+
+            Math.max(.05,pulse)+")";
+
+        ctx.fill();
+
+    });
+
+
+    requestAnimationFrame(drawParticles);
+
+}
+
+
+requestAnimationFrame(drawParticles);
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+    new IntersectionObserver(
+
+        function(entries){
+
+            entries.forEach(function(entry){
+
+                if(entry.isIntersecting){
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                }
+
+            });
+
+        },
+
+        {
+            threshold:.12
+        }
+
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(function(el){
+
+        observer.observe(el);
+
+    });
+
+
+/* =========================================================
+   WAITING STARS
+========================================================= */
+
+const waitingStars =
+    document.querySelector(
+        ".waiting-stars"
+    );
+
+
+for(let i=0;i<70;i++){
+
+    const star =
+        document.createElement("span");
+
+    star.style.position =
+        "absolute";
+
+    star.style.width =
+        Math.random()*2+1+"px";
+
+    star.style.height =
+        star.style.width;
+
+    star.style.borderRadius =
+        "50%";
+
+    star.style.background =
+        "rgba(255,255,255,"+
+        (Math.random()*.7+.2)+")";
+
+    star.style.left =
+        Math.random()*100+"%";
+
+    star.style.top =
+        Math.random()*75+"%";
+
+    star.style.animation =
+        "heartbeat "+
+        (Math.random()*3+1)+
+        "s infinite";
+
+    star.style.animationDelay =
+        Math.random()*2+"s";
+
+    waitingStars.appendChild(star);
+
+}
+
+
+/* =========================================================
+   VINE INTERACTION
+========================================================= */
+
+let removedVines = 0;
+
+
+function removeVine(vine){
+
+    if(vine.classList.contains("removing")){
+        return;
+    }
+
+
+    vine.classList.add("removing");
+
+    removedVines++;
+
+
+    const flowers =
+        document.querySelectorAll(
+            ".flower"
+        );
+
+
+    const flowerIndex =
+        Math.min(
+            removedVines-1,
+            flowers.length-1
+        );
+
+
+    if(flowers[flowerIndex]){
+
+        setTimeout(function(){
+
+            flowers[
+                flowerIndex
+            ].classList.add("bloom");
+
+        },700);
+
+    }
+
+
+    createBloomParticles(vine);
+
+
+    setTimeout(function(){
+
+        vine.style.display =
+            "none";
+
+    },1600);
+
+}
+
+
+/* =========================================================
+   BLOOM PARTICLES
+========================================================= */
+
+function createBloomParticles(vine){
+
+    const rect =
+        vine.getBoundingClientRect();
+
+
+    for(let i=0;i<22;i++){
+
+        const particle =
+            document.createElement(
+                "span"
+            );
+
+        particle.style.position =
+            "fixed";
+
+        particle.style.left =
+            rect.left+
+            rect.width/2+
+            "px";
+
+        particle.style.top =
+            rect.top+
+            rect.height/2+
+            "px";
+
+        particle.style.width =
+            "5px";
+
+        particle.style.height =
+            "5px";
+
+        particle.style.borderRadius =
+            "50%";
+
+        particle.style.background =
+            i%2===0
+                ? "#e9a3b6"
+                : "#f6d9e2";
+
+        particle.style.pointerEvents =
+            "none";
+
+        particle.style.zIndex =
+            "1000";
+
+        document.body.appendChild(
+            particle
+        );
+
+
+        const angle =
+            Math.random()*
+            Math.PI*2;
+
+        const distance =
+            Math.random()*100+30;
+
+
+        const x =
+            Math.cos(angle)*
+            distance;
+
+        const y =
+            Math.sin(angle)*
+            distance;
+
+
+        particle.animate(
+
+            [
+
+                {
+                    transform:
+                        "translate(0,0) scale(1)",
+                    opacity:1
+                },
+
+                {
+                    transform:
+                        "translate("+
+                        x+
+                        "px,"+
+                        y+
+                        "px) scale(0)",
+                    opacity:0
+                }
+
+            ],
+
+            {
+                duration:
+                    900+
+                    Math.random()*700,
+
+                easing:
+                    "cubic-bezier(.2,.8,.2,1)"
+            }
+
+        ).onfinish =
+            function(){
+
+                particle.remove();
+
+            };
+
+    }
+
+}
+
+
+/* =========================================================
+   PETALS
+========================================================= */
+
+const petals =
+    document.getElementById(
+        "petals"
+    );
+
+
+for(let i=0;i<35;i++){
+
+    const petal =
+        document.createElement(
+            "span"
+        );
+
+    petal.className =
+        "petal";
+
+    petal.style.left =
+        Math.random()*100+"%";
+
+    petal.style.animationDuration =
+        Math.random()*8+7+"s";
+
+    petal.style.animationDelay =
+        Math.random()*10+"s";
+
+    petal.style.opacity =
+        Math.random()*.6+.2;
+
+    petals.appendChild(
+        petal
+    );
+
+}
+
+
+/* =========================================================
+   LANTERN
+========================================================= */
+
+let lanternActivated =
+    false;
+
+
+function activateLantern(){
+
+    const message =
+        document.getElementById(
+            "lanternMessage"
+        );
+
+
+    if(!lanternActivated){
+
+        lanternActivated =
+            true;
+
+        message.classList.add(
+            "show"
+        );
+
+
+        createLanternParticles();
+
+
+    }else{
+
+        message.classList.remove(
+            "show"
+        );
+
+        lanternActivated =
+            false;
+
+    }
+
+}
+
+
+/* =========================================================
+   LANTERN PARTICLES
+========================================================= */
+
+function createLanternParticles(){
+
+    for(let i=0;i<35;i++){
+
+        const firefly =
+            document.createElement(
+                "span"
+            );
+
+        firefly.style.position =
+            "fixed";
+
+        firefly.style.left =
+            "50%";
+
+        firefly.style.bottom =
+            "190px";
+
+        firefly.style.width =
+            "4px";
+
+        firefly.style.height =
+            "4px";
+
+        firefly.style.borderRadius =
+            "50%";
+
+        firefly.style.background =
+            "#ffe7a0";
+
+        firefly.style.boxShadow =
+            "0 0 12px #ffd86a";
+
+        firefly.style.zIndex =
+            "1000";
+
+        firefly.style.pointerEvents =
+            "none";
+
+        document.body.appendChild(
+            firefly
+        );
+
+
+        const x =
+            (Math.random()-.5)*
+            500;
+
+        const y =
+            -(Math.random()*450+100);
+
+
+        firefly.animate(
+
+            [
+
+                {
+                    transform:
+                        "translate(0,0)",
+                    opacity:0
+                },
+
+                {
+                    transform:
+                        "translate("+
+                        x+
+                        "px,"+
+                        y+
+                        "px)",
+                    opacity:1
+                },
+
+                {
+                    transform:
+                        "translate("+
+                        (x*1.3)+
+                        "px,"+
+                        (y*1.4)+
+                        "px)",
+                    opacity:0
+                }
+
+            ],
+
+            {
+                duration:
+                    2500+
+                    Math.random()*2500,
+
+                easing:
+                    "ease-out"
+            }
+
+        ).onfinish =
+            function(){
+
+                firefly.remove();
+
+            };
+
+    }
+
+}
+
+
+/* =========================================================
+   PARALLAX
+========================================================= */
+
+let mouseX = 0;
+let mouseY = 0;
+
+
+document.addEventListener(
+    "mousemove",
+    function(e){
+
+        mouseX =
+            (e.clientX /
+            window.innerWidth -
+            .5);
+
+        mouseY =
+            (e.clientY /
+            window.innerHeight -
+            .5);
+
+
+        const moon =
+            document.querySelector(
+                ".moon"
+            );
+
+
+        if(moon){
+
+            moon.style.transform =
+                "translate("+
+                mouseX*12+
+                "px,"+
+                mouseY*8+
+                "px)";
+
+        }
+
+    }
+);
+
+
+/* =========================================================
+   SMOOTH ANCHOR
+========================================================= */
+
+document
+    .querySelectorAll(
+        'a[href^="#"]'
+    )
+    .forEach(function(link){
+
+        link.addEventListener(
+            "click",
+            function(e){
+
+                const id =
+                    this.getAttribute(
+                        "href"
+                    );
+
+                const target =
+                    document.querySelector(
+                        id
+                    );
+
+
+                if(target){
+
+                    e.preventDefault();
+
+                    target.scrollIntoView({
+                        behavior:"smooth"
+                    });
+
+                }
+
+            }
+        );
+
+    });
+
+</script>
 
 </body>
 </html>
