@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Story ❤️</title>
+    <title>For Marina ❤️</title>
 
     <style>
         * {
@@ -13,90 +13,114 @@
             padding: 0;
         }
 
-        body {
-            min-height: 100vh;
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #fff0f5, #ffe4ec);
-            color: #4a2632;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 25px;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .container {
-            width: 100%;
-            max-width: 700px;
+        body {
+            font-family: Georgia, "Times New Roman", serif;
+            background: #fff8fa;
+            color: #42242d;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            padding: 30px;
+            background: linear-gradient(145deg, #ffe1ea, #fff8fa);
+        }
+
+        .hero-content {
+            max-width: 650px;
         }
 
         .heart {
-            font-size: 65px;
-            animation: heartbeat 1.5s infinite;
-            margin-bottom: 20px;
+            font-size: 70px;
+            margin-bottom: 25px;
+            animation: beat 1.5s infinite;
         }
 
         h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
+            font-size: clamp(52px, 14vw, 90px);
+            font-weight: normal;
+            letter-spacing: 2px;
         }
 
-        .subtitle {
-            font-size: 19px;
-            line-height: 1.6;
-            margin-bottom: 35px;
-        }
-
-        .card {
-            background: rgba(255,255,255,0.8);
-            border-radius: 25px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(100, 40, 60, 0.15);
-            margin-bottom: 25px;
-        }
-
-        .card h2 {
-            margin-bottom: 15px;
-            font-size: 27px;
-        }
-
-        .card p {
-            font-size: 17px;
-            line-height: 1.7;
-        }
-
-        button {
-            border: none;
-            padding: 15px 28px;
-            border-radius: 30px;
-            font-size: 17px;
-            cursor: pointer;
-            background: #ff6f91;
-            color: white;
-            transition: 0.3s;
-        }
-
-        button:hover {
-            transform: scale(1.05);
-        }
-
-        #secret {
-            display: none;
-            margin-top: 25px;
-            font-size: 20px;
-            line-height: 1.7;
-        }
-
-        footer {
-            margin-top: 25px;
-            font-size: 14px;
+        .names {
+            font-size: 25px;
+            margin-top: 10px;
             opacity: 0.7;
         }
 
-        @keyframes heartbeat {
+        .description {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-top: 30px;
+            opacity: 0.75;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 45px;
+            padding: 16px 32px;
+            border-radius: 40px;
+            background: #ff718f;
+            color: white;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-size: 17px;
+            box-shadow: 0 8px 25px rgba(255, 113, 143, 0.3);
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: translateY(-3px);
+        }
+
+        .scroll {
+            margin-top: 55px;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            opacity: 0.5;
+        }
+
+        .intro {
+            padding: 80px 25px;
+            text-align: center;
+            background: white;
+        }
+
+        .intro h2 {
+            font-size: 36px;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
+
+        .intro p {
+            max-width: 600px;
+            margin: auto;
+            font-size: 18px;
+            line-height: 1.8;
+            opacity: 0.7;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: white;
+            font-family: Arial, sans-serif;
+            font-size: 13px;
+            opacity: 0.6;
+        }
+
+        @keyframes beat {
             0%, 100% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.15);
             }
@@ -106,63 +130,61 @@
 
 <body>
 
-    <div class="container">
+    <section class="hero">
 
-        <div class="heart">❤️</div>
+        <div class="hero-content">
 
-        <h1>Our Story</h1>
+            <div class="heart">❤️</div>
 
-        <p class="subtitle">
-            A little place on the internet<br>
-            made especially for Marina.
+            <h1>For Marina</h1>
+
+            <div class="names">
+                Alex & Marina
+            </div>
+
+            <p class="description">
+                A little place made especially for you.
+                <br>
+                A place for our memories,
+                our moments and our story.
+            </p>
+
+            <a href="story.html" class="button">
+                Open our story ❤️
+            </a>
+
+            <div class="scroll">
+                ↓ There is more below
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <section class="intro">
+
+        <h2>Our story is just beginning 🌸</h2>
+
+        <p>
+            Some people enter our lives unexpectedly.
+            Then, little by little, they become part
+            of our memories.
+
+            <br><br>
+
+            This website is a small place
+            to keep those memories.
         </p>
 
-        <div class="card">
-            <h2>How it started 🌸</h2>
+    </section>
 
-            <p>
-                Sometimes the most important people
-                enter our lives unexpectedly.
-                And somehow, one meeting can become
-                the beginning of something beautiful.
-            </p>
-        </div>
 
-        <div class="card">
-            <h2>Our memories 📖</h2>
-
-            <p>
-                Every meeting, every conversation,
-                every little moment becomes a part
-                of our story.
-            </p>
-        </div>
-
-        <button onclick="showSecret()">
-            Open something for you ❤️
-        </button>
-
-        <div id="secret">
-            <p>
-                Marina,<br><br>
-                I don't know what the future will bring,
-                but I'm happy that our paths crossed.
-                ❤️
-            </p>
-        </div>
-
-        <footer>
-            Made with love ❤️
-        </footer>
-
-    </div>
-
-    <script>
-        function showSecret() {
-            document.getElementById("secret").style.display = "block";
-        }
-    </script>
+    <footer>
+        Made especially for Marina ❤️
+    </footer>
 
 </body>
 </html>
 ```
+
