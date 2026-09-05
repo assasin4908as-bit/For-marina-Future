@@ -8,7 +8,6 @@
 <title>Our Story — Alex & Marina ❤️</title>
 
 <style>
-
 * {
     box-sizing: border-box;
 }
@@ -21,18 +20,14 @@ body {
     margin: 0;
     font-family: Georgia, "Times New Roman", serif;
     color: #432a32;
-
     background:
-        radial-gradient(circle at 10% 10%, rgba(255,255,255,.9), transparent 30%),
+        radial-gradient(circle at 10% 10%, rgba(255,255,255,.95), transparent 30%),
         radial-gradient(circle at 90% 30%, rgba(255,210,220,.7), transparent 30%),
         linear-gradient(135deg, #fff8fa, #ffe8ee, #fff5f7);
-
     overflow-x: hidden;
 }
 
-/* =========================
-   FLOATING HEARTS
-========================= */
+/* FLOATING HEARTS */
 
 .heart {
     position: fixed;
@@ -68,7 +63,6 @@ body {
 }
 
 @keyframes floatHeart {
-
     0% {
         transform: translateY(0) rotate(0deg);
         opacity: 0;
@@ -84,75 +78,76 @@ body {
     }
 }
 
-
-/* =========================
-   SIDE MENU
-========================= */
+/* SIDE MENU */
 
 .side-menu {
     position: fixed;
-
     right: 18px;
     top: 50%;
-
     transform: translateY(-50%);
 
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 13px;
 
-    z-index: 100;
+    z-index: 999;
 }
 
 .side-button {
-
     width: 58px;
     height: 58px;
 
     border-radius: 50%;
 
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 
     text-decoration: none;
-
     font-size: 29px;
 
-    background: rgba(255,255,255,.92);
+    background: rgba(255,255,255,.96);
 
     box-shadow:
-        0 8px 25px rgba(100,40,60,.18);
+        0 8px 25px rgba(100,40,60,.20);
 
-    border: 1px solid rgba(180,90,110,.12);
+    border: 1px solid rgba(180,90,110,.15);
 
-    transition: .3s;
+    transition: .3s ease;
 }
 
 .side-button:hover {
     transform: scale(1.15) rotate(-5deg);
 }
 
+/* BLACK HEART */
 
-/* =========================
-   MAIN
-========================= */
+.black-heart {
+    background: #181418;
+    border: 2px solid #30272d;
+    box-shadow:
+        0 8px 25px rgba(0,0,0,.30);
+}
+
+.black-heart:hover {
+    background: #000;
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.45);
+}
+
+/* MAIN */
 
 .main {
     position: relative;
     z-index: 2;
 
     width: min(900px, 86%);
-
     margin: auto;
 
     padding: 80px 0 100px;
 }
 
-
-/* =========================
-   HERO
-========================= */
+/* HERO */
 
 .hero {
     text-align: center;
@@ -161,7 +156,6 @@ body {
 
     display: flex;
     flex-direction: column;
-
     justify-content: center;
     align-items: center;
 }
@@ -170,14 +164,12 @@ body {
     color: #a85d70;
 
     letter-spacing: 3px;
-
     font-size: 14px;
 
     margin-bottom: 20px;
 }
 
 .hero h1 {
-
     font-size: clamp(42px, 8vw, 72px);
 
     margin: 0;
@@ -186,11 +178,9 @@ body {
 }
 
 .hero p {
-
     max-width: 600px;
 
     font-size: 20px;
-
     line-height: 1.8;
 
     color: #68414c;
@@ -202,14 +192,12 @@ body {
     margin-top: 40px;
 
     font-size: 14px;
-
     color: #a85d70;
 
     animation: pulse 2s infinite;
 }
 
 @keyframes pulse {
-
     0%,100% {
         opacity: .4;
     }
@@ -219,20 +207,16 @@ body {
     }
 }
 
-
-/* =========================
-   CHAPTERS
-========================= */
+/* CHAPTERS */
 
 .chapter {
-
     margin: 55px 0;
 
     padding: 42px;
 
     border-radius: 30px;
 
-    background: rgba(255,255,255,.82);
+    background: rgba(255,255,255,.84);
 
     box-shadow:
         0 15px 45px rgba(120,50,70,.10);
@@ -243,18 +227,15 @@ body {
 }
 
 .chapter-number {
-
     color: #b26779;
 
     font-size: 13px;
-
     letter-spacing: 3px;
 
     text-transform: uppercase;
 }
 
 .chapter h2 {
-
     margin: 10px 0 8px;
 
     font-size: 31px;
@@ -263,7 +244,6 @@ body {
 }
 
 .date {
-
     color: #bd7182;
 
     font-size: 14px;
@@ -272,16 +252,13 @@ body {
 }
 
 .chapter p {
-
     font-size: 18px;
-
     line-height: 1.9;
 
     margin: 17px 0;
 }
 
 .highlight {
-
     margin-top: 30px;
 
     padding: 22px;
@@ -297,13 +274,9 @@ body {
     line-height: 1.7;
 }
 
-
-/* =========================
-   BUTTON
-========================= */
+/* BUTTON */
 
 .button {
-
     display: inline-block;
 
     margin-top: 18px;
@@ -324,19 +297,14 @@ body {
 }
 
 .button:hover {
-
     transform: translateY(-3px);
 
     background: #813148;
 }
 
-
-/* =========================
-   BETWEEN DATES
-========================= */
+/* WAITING */
 
 .waiting {
-
     text-align: center;
 
     padding: 35px 20px;
@@ -347,26 +315,20 @@ body {
 }
 
 .waiting .symbol {
-
     font-size: 35px;
 
     margin-bottom: 10px;
 }
 
-
-/* =========================
-   SECRET SECTION
-========================= */
+/* SECRET */
 
 .secret-section {
-
     text-align: center;
 
     margin-top: 70px;
 }
 
 .secret-card {
-
     background: linear-gradient(145deg, #241c22, #100d10);
 
     color: #eee;
@@ -375,44 +337,37 @@ body {
 
     padding: 45px 30px;
 
-    box-shadow: 0 20px 55px rgba(0,0,0,.25);
+    box-shadow:
+        0 20px 55px rgba(0,0,0,.25);
 }
 
 .secret-card h2 {
-
     color: white;
 
     margin-top: 0;
 }
 
 .secret-card p {
-
     color: #d7cbd0;
 
     line-height: 1.8;
 }
 
-
-/* =========================
-   COUNTDOWN
-========================= */
+/* COUNTDOWN */
 
 .countdown {
-
     text-align: center;
 
     margin: 90px 0 60px;
 }
 
 .countdown h2 {
-
     font-size: 31px;
 
     color: #963e55;
 }
 
 .timer {
-
     margin-top: 25px;
 
     font-size: clamp(22px, 5vw, 35px);
@@ -422,13 +377,9 @@ body {
     color: #8f4054;
 }
 
-
-/* =========================
-   LOCKED NEW YEAR
-========================= */
+/* LOCKED NEW YEAR */
 
 .locked {
-
     position: relative;
 
     overflow: hidden;
@@ -443,28 +394,25 @@ body {
 
     border: 2px dashed #d38a9d;
 
-    box-shadow: 0 15px 40px rgba(120,50,70,.10);
+    box-shadow:
+        0 15px 40px rgba(120,50,70,.10);
 }
 
 .lock-icon {
-
     font-size: 58px;
 
     margin-bottom: 15px;
 }
 
 .locked h2 {
-
     color: #963e55;
 }
 
 .locked p {
-
     line-height: 1.7;
 }
 
 .secret-text {
-
     margin-top: 25px;
 
     padding: 25px;
@@ -480,13 +428,9 @@ body {
     user-select: none;
 }
 
-
-/* =========================
-   END
-========================= */
+/* END */
 
 .end {
-
     text-align: center;
 
     margin-top: 90px;
@@ -497,7 +441,6 @@ body {
 }
 
 .footer {
-
     text-align: center;
 
     margin-top: 20px;
@@ -507,10 +450,7 @@ body {
     font-size: 14px;
 }
 
-
-/* =========================
-   MOBILE
-========================= */
+/* MOBILE */
 
 @media (max-width: 650px) {
 
@@ -529,7 +469,6 @@ body {
 
     .chapter {
         padding: 28px 22px;
-
         border-radius: 24px;
     }
 
@@ -543,28 +482,24 @@ body {
     }
 
     .side-menu {
-        right: 7px;
-        gap: 8px;
+        right: 8px;
+        gap: 9px;
     }
 
     .side-button {
-        width: 45px;
-        height: 45px;
+        width: 47px;
+        height: 47px;
         font-size: 22px;
     }
 
     .locked {
         padding: 38px 20px;
     }
-
 }
-
 </style>
 </head>
 
-
 <body>
-
 
 <!-- FLOATING HEARTS -->
 
@@ -578,24 +513,21 @@ body {
 
 <div class="side-menu">
 
-    <a
-        href="roses.html"
-        class="side-button"
-        title="Roses for Marina">
+    <a href="roses.html"
+       class="side-button"
+       title="Roses for Marina">
         🌹
     </a>
 
-    <a
-        href="envelope.html"
-        class="side-button"
-        title="Red Envelope">
+    <a href="envelope.html"
+       class="side-button"
+       title="Red Envelope">
         ❤️
     </a>
 
-    <a
-        href="black-envelope.html"
-        class="side-button"
-        title="Black Envelope">
+    <a href="black-envelope.html"
+       class="side-button black-heart"
+       title="Black Envelope">
         🖤
     </a>
 
@@ -604,10 +536,7 @@ body {
 
 <main class="main">
 
-
-<!-- =========================
-     HERO
-========================= -->
+<!-- HERO -->
 
 <section class="hero">
 
@@ -632,10 +561,7 @@ body {
 </section>
 
 
-
-<!-- =========================
-     PROLOGUE
-========================= -->
+<!-- PROLOGUE -->
 
 <section class="chapter">
 
@@ -670,10 +596,7 @@ body {
 </section>
 
 
-
-<!-- =========================
-     27 JUNE
-========================= -->
+<!-- 27 JUNE -->
 
 <section class="chapter">
 
@@ -720,10 +643,7 @@ body {
 </section>
 
 
-
-<!-- =========================
-     WAITING
-========================= -->
+<!-- WAITING -->
 
 <div class="waiting">
 
@@ -750,10 +670,7 @@ body {
 </div>
 
 
-
-<!-- =========================
-     18 JULY
-========================= -->
+<!-- 18 JULY -->
 
 <section class="chapter">
 
@@ -794,10 +711,7 @@ body {
 </section>
 
 
-
-<!-- =========================
-     GIFTS
-========================= -->
+<!-- GIFTS -->
 
 <section class="chapter">
 
@@ -834,10 +748,7 @@ body {
 </section>
 
 
-
-<!-- =========================
-     31 AUGUST
-========================= -->
+<!-- 31 AUGUST -->
 
 <section class="chapter">
 
@@ -884,10 +795,7 @@ body {
 </section>
 
 
-
-<!-- =========================
-     ENGLISH
-========================= -->
+<!-- ENGLISH -->
 
 <section class="chapter">
 
@@ -896,7 +804,7 @@ body {
     </div>
 
     <h2>
-        Learning your language 🇬🇧❤️
+        Learning English for you 🇬🇧❤️
     </h2>
 
     <p>
@@ -926,10 +834,7 @@ body {
 </section>
 
 
-
-<!-- =========================
-     TODAY
-========================= -->
+<!-- TODAY -->
 
 <section class="chapter">
 
@@ -976,10 +881,7 @@ body {
 </section>
 
 
-
-<!-- =========================
-     ROSES
-========================= -->
+<!-- ROSES -->
 
 <section class="chapter" style="text-align:center;">
 
@@ -999,19 +901,14 @@ body {
         Each rose has its own little message.
     </p>
 
-    <a
-        href="roses.html"
-        class="button">
+    <a href="roses.html" class="button">
         Open the roses 🌹
     </a>
 
 </section>
 
 
-
-<!-- =========================
-     RED ENVELOPE
-========================= -->
+<!-- RED ENVELOPE -->
 
 <section class="secret-section">
 
@@ -1026,9 +923,7 @@ body {
             inside the red envelope.
         </p>
 
-        <a
-            href="envelope.html"
-            class="button">
+        <a href="envelope.html" class="button">
             Open the red envelope ❤️
         </a>
 
@@ -1037,10 +932,7 @@ body {
 </section>
 
 
-
-<!-- =========================
-     BLACK ENVELOPE
-========================= -->
+<!-- BLACK ENVELOPE -->
 
 <section class="secret-section">
 
@@ -1055,9 +947,7 @@ body {
             than to say face to face.
         </p>
 
-        <a
-            href="black-envelope.html"
-            class="button">
+        <a href="black-envelope.html" class="button">
             Open the black envelope 🖤
         </a>
 
@@ -1066,10 +956,7 @@ body {
 </section>
 
 
-
-<!-- =========================
-     COUNTDOWN
-========================= -->
+<!-- COUNTDOWN -->
 
 <section class="countdown">
 
@@ -1081,19 +968,14 @@ body {
         Some things are worth waiting for.
     </p>
 
-    <div
-        class="timer"
-        id="timer">
+    <div class="timer" id="timer">
         Loading...
     </div>
 
 </section>
 
 
-
-<!-- =========================
-     LOCKED NEW YEAR
-========================= -->
+<!-- LOCKED NEW YEAR -->
 
 <section class="locked">
 
@@ -1139,7 +1021,6 @@ body {
 </section>
 
 
-
 <div class="end">
     To be continued... ❤️
 </div>
@@ -1148,9 +1029,7 @@ body {
     Made with love by Alex for Marina
 </div>
 
-
 </main>
-
 
 
 <script>
@@ -1169,7 +1048,6 @@ function updateCountdown() {
     const timer =
         document.getElementById("timer");
 
-
     if (difference <= 0) {
 
         timer.innerHTML =
@@ -1178,13 +1056,11 @@ function updateCountdown() {
         return;
     }
 
-
     const days =
         Math.floor(
             difference /
             (1000 * 60 * 60 * 24)
         );
-
 
     const hours =
         Math.floor(
@@ -1192,13 +1068,11 @@ function updateCountdown() {
             (1000 * 60 * 60)) % 24
         );
 
-
     const minutes =
         Math.floor(
             (difference /
             (1000 * 60)) % 60
         );
-
 
     const seconds =
         Math.floor(
@@ -1206,14 +1080,12 @@ function updateCountdown() {
             1000) % 60
         );
 
-
     timer.innerHTML =
         days + " days " +
         hours + " hours " +
         minutes + " minutes " +
         seconds + " seconds";
 }
-
 
 updateCountdown();
 
