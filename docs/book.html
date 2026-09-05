@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Before You — For Marina ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at center, #302040 0%, #120d18 55%, #08060a 100%);
+    color: #f8edf5;
+    font-family: Georgia, "Times New Roman", serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.book-container {
+    width: 92vw;
+    max-width: 900px;
+    height: 82vh;
+    max-height: 650px;
+    perspective: 1800px;
+}
+
+.book {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+}
+
+.page {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    padding: 45px;
+    background: linear-gradient(135deg, #fffafc, #f3e8ef);
+    color: #29202a;
+    border-radius: 0 12px 12px 0;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.45);
+    overflow-y: auto;
+}
+
+.left-page {
+    left: 0;
+    border-radius: 12px 0 0 12px;
+    background: linear-gradient(135deg, #f7edf3, #eadce5);
+}
+
+.cover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(145deg, #351a38, #140b18);
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.65);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: transform 1.3s ease;
+    transform-origin: left center;
+    z-index: 10;
+    backface-visibility: hidden;
+}
+
+.cover.open {
+    transform: rotateY(-180deg);
+}
+
+.cover h1 {
+    font-size: clamp(42px, 7vw, 76px);
+    margin: 0;
+    font-weight: normal;
+    letter-spacing: 2px;
+}
+
+.cover h2 {
+    font-size: 20px;
+    font-weight: normal;
+    margin-top: 20px;
+    opacity: 0.8;
+}
+
+.cover .heart {
+    font-size: 48px;
+    margin-bottom: 25px;
+}
+
+.open-button {
+    margin-top: 40px;
+    padding: 14px 32px;
+    border: 1px solid rgba(255,255,255,0.4);
+    border-radius: 30px;
+    background: rgba(255,255,255,0.08);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.open-button:hover {
+    background: rgba(255,255,255,0.18);
+    transform: scale(1.05);
+}
+
+.chapter {
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #9b648d;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 32px;
+    margin-top: 5px;
+    margin-bottom: 25px;
+    font-weight: normal;
+}
+
+h3 {
+    font-size: 22px;
+    font-weight: normal;
+    margin-top: 25px;
+}
+
+p {
+    font-size: 17px;
+    line-height: 1.75;
+    margin: 0 0 18px;
+}
+
+.quote {
+    margin: 30px 0;
+    padding: 20px;
+    border-left: 3px solid #9b648d;
+    font-style: italic;
+    color: #5e4659;
+}
+
+.page-number {
+    position: absolute;
+    bottom: 18px;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 13px;
+    opacity: 0.5;
+}
+
+.controls {
+    position: fixed;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 20;
+}
+
+.controls button {
+    border: none;
+    border-radius: 25px;
+    padding: 12px 24px;
+    background: rgba(255,255,255,0.12);
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+    backdrop-filter: blur(8px);
+}
+
+.controls button:hover {
+    background: rgba(255,255,255,0.22);
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 700px) {
+    .book-container {
+        height: 75vh;
+    }
+
+    .page {
+        width: 100%;
+        left: 0;
+        border-radius: 12px;
+        padding: 30px;
+    }
+
+    .left-page {
+        display: none;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    h2 {
+        font-size: 27px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="book-container">
+
+<div class="book">
+
+<!-- COVER -->
+
+<div class="cover" id="cover">
+
+    <div class="heart">❤️</div>
+
+    <h1>Before You</h1>
+
+    <h2>
+        The story of who I was<br>
+        before you came into my life.
+    </h2>
+
+    <button class="open-button" onclick="openBook()">
+        Open the book
+    </button>
+
+</div>
+
+
+<!-- LEFT PAGE -->
+
+<div class="page left-page">
+
+    <div class="chapter">My Story</div>
+
+    <h2>Before You</h2>
+
+    <p>
+        This book is not only about the things that happened
+        between us.
+    </p>
+
+    <p>
+        It is about me.
+    </p>
+
+    <p>
+        About where I came from, what I experienced,
+        what hurt me, what I achieved, and what I still dream about.
+    </p>
+
+    <p>
+        Maybe there are parts of me you don't know yet.
+    </p>
+
+    <p>
+        So I wanted you to see them.
+    </p>
+
+    <div class="page-number">1</div>
+
+</div>
+
+
+<!-- RIGHT PAGE -->
+
+<div class="page" id="page1">
+
+    <div class="chapter">Chapter I</div>
+
+    <h2>Who I Am</h2>
+
+    <p>
+        My name is Alex.
+    </p>
+
+    <p>
+        I am a kind, calm and caring person.
+        I always try to care about the people who are important
+        to me and make them feel good.
+    </p>
+
+    <p>
+        Sometimes I can be stubborn about some things,
+        but I know that this is also a part of who I am.
+    </p>
+
+    <p>
+        I love walking around the city, watching anime,
+        and making other people happy.
+    </p>
+
+    <p>
+        Sometimes, seeing someone smile because of something
+        I did means more to me than anything else.
+    </p>
+
+    <div class="page-number">2</div>
+
+</div>
+
+
+<!-- CHAPTER I SECOND PAGE -->
+
+<div class="page hidden" id="page2">
+
+    <div class="chapter">Chapter I</div>
+
+    <h2>Who I Am</h2>
+
+    <p>
+        One of the things I want most in life is to help people.
+    </p>
+
+    <p>
+        I want to be someone who can make another person's
+        life a little easier, even if it is just through small things.
+    </p>
+
+    <p>
+        I also want to live beside the person I truly love.
+    </p>
+
+    <p>
+        I don't need a perfect life.
+        I just want to have someone important beside me,
+        share ordinary days together, help each other
+        and keep moving forward.
+    </p>
+
+    <p>
+        Right now, I may be a little tired of life.
+        There are moments when everything feels difficult.
+        But I know that I cannot stop here.
+    </p>
+
+    <p>
+        I have dreams.
+    </p>
+
+    <p>
+        I want to change my laziness.
+        I want to stop wasting the time I have and dedicate
+        myself to the things I truly want.
+    </p>
+
+    <div class="page-number">3</div>
+
+</div>
+
+
+<!-- CHAPTER II -->
+
+<div class="page hidden" id="page3">
+
+    <div class="chapter">Chapter II</div>
+
+    <h2>Where I Came From</h2>
+
+    <p>
+        I was born in Zhytomyr, Ukraine, on June 21, 2006.
+    </p>
+
+    <p>
+        My zodiac sign is Taurus.
+    </p>
+
+    <p>
+        When I was a child, I was quiet.
+        I was not the loudest person in the room.
+        I mostly kept things inside and watched what was happening.
+    </p>
+
+    <p>
+        Some of my childhood memories are connected with my family.
+    </p>
+
+    <p>
+        I remember trips to Lake Svitiaz with my father.
+        I remember going to the cinema and parks with my brothers.
+    </p>
+
+    <p>
+        These may seem like simple moments,
+        but they became part of my memories and part of who I am.
+    </p>
+
+    <div class="page-number">4</div>
+
+</div>
+
+
+<!-- CHAPTER II SECOND PAGE -->
+
+<div class="page hidden" id="page4">
+
+    <div class="chapter">Chapter II</div>
+
+    <h2>Where I Came From</h2>
+
+    <p>
+        Then I lost my father.
+    </p>
+
+    <p>
+        Losing him changed me.
+    </p>
+
+    <div class="quote">
+        Do good for the person you value,
+        and always protect them.
+    </div>
+
+    <p>
+        I still remember those words.
+    </p>
+
+    <p>
+        My independent life started when I was sixteen,
+        when I got my first job.
+    </p>
+
+    <p>
+        From that moment, I started learning what it means
+        to take responsibility for myself and my own life.
+    </p>
+
+    <p>
+        Life was not always kind to me.
+    </p>
+
+    <p>
+        I experienced betrayal from friends.
+        I experienced loneliness.
+        I lost people who were important to me.
+    </p>
+
+    <div class="page-number">5</div>
+
+</div>
+
+
+<!-- CHAPTER II FINAL -->
+
+<div class="page hidden" id="page5">
+
+    <div class="chapter">Chapter II</div>
+
+    <h2>Still Here</h2>
+
+    <p>
+        There were periods when life became very difficult for me emotionally.
+    </p>
+
+    <p>
+        But I did not break.
+    </p>
+
+    <p>
+        I kept going.
+    </p>
+
+    <p>
+        Even without what I would call a normal education,
+        I still managed to build my own path and show people
+        that I could become someone they could look up to.
+    </p>
+
+    <p>
+        Maybe my story is not perfect.
+    </p>
+
+    <p>
+        Maybe I made many mistakes.
+    </p>
+
+    <p>
+        But everything I went through made me stronger.
+    </p>
+
+    <h3>I am still here.</h3>
+
+    <p>
+        Still moving forward.
+    </p>
+
+    <p>
+        Still trying to become better than the person I was yesterday.
+    </p>
+
+    <div class="page-number">6</div>
+
+</div>
+
+</div>
+</div>
+
+
+<div class="controls">
+
+    <button id="nextButton" onclick="nextPage()">
+        Turn the page →
+    </button>
+
+</div>
+
+
+<script>
+
+let currentPage = 1;
+
+function openBook() {
+
+    document.getElementById("cover").classList.add("open");
+
+}
+
+function nextPage() {
+
+    const current = document.getElementById("page" + currentPage);
+    const next = document.getElementById("page" + (currentPage + 1));
+
+    if (next) {
+
+        current.classList.add("hidden");
+        next.classList.remove("hidden");
+
+        currentPage++;
+
+    } else {
+
+        document.getElementById("nextButton").innerText = "More coming soon ❤️";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
