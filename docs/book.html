@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Before You — For Marina ❤️</title>
+<title>Before You ❤️</title>
 
 <style>
 * {
@@ -14,205 +14,283 @@ body {
     margin: 0;
     min-height: 100vh;
     background:
-        radial-gradient(circle at center, #302040 0%, #120d18 55%, #08060a 100%);
-    color: #f8edf5;
-    font-family: Georgia, "Times New Roman", serif;
+        radial-gradient(circle at center, #20202a 0%, #09090d 65%, #030305 100%);
+    color: #eee;
+    font-family: Georgia, serif;
+    overflow-x: hidden;
+}
+
+.book-wrapper {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
-}
-
-.book-container {
-    width: 92vw;
-    max-width: 900px;
-    height: 82vh;
-    max-height: 650px;
-    perspective: 1800px;
+    padding: 30px 15px;
 }
 
 .book {
+    width: min(900px, 95vw);
+    min-height: 620px;
     position: relative;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
+    perspective: 1800px;
 }
 
 .page {
     position: absolute;
-    width: 50%;
-    height: 100%;
-    top: 0;
-    left: 50%;
-    padding: 45px;
-    background: linear-gradient(135deg, #fffafc, #f3e8ef);
-    color: #29202a;
-    border-radius: 0 12px 12px 0;
-    box-shadow: 0 10px 35px rgba(0,0,0,0.45);
-    overflow-y: auto;
-}
-
-.left-page {
-    left: 0;
-    border-radius: 12px 0 0 12px;
-    background: linear-gradient(135deg, #f7edf3, #eadce5);
+    inset: 0;
+    min-height: 620px;
+    padding: 55px;
+    border-radius: 8px;
+    background:
+        linear-gradient(135deg, #f4eee1, #ddd3c0);
+    color: #211d19;
+    box-shadow: 0 20px 60px rgba(0,0,0,.65);
+    overflow: hidden;
 }
 
 .cover {
-    position: absolute;
-    width: 100%;
-    height: 100%;
+    z-index: 20;
     background:
-        linear-gradient(145deg, #351a38, #140b18);
-    border-radius: 15px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.65);
+        radial-gradient(circle at center, #38252d, #120e13 70%);
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    transition: transform 1.3s ease;
     transform-origin: left center;
-    z-index: 10;
-    backface-visibility: hidden;
+    transition: transform 1.4s ease;
 }
 
 .cover.open {
-    transform: rotateY(-180deg);
+    transform: rotateY(-175deg);
+    pointer-events: none;
 }
 
 .cover h1 {
-    font-size: clamp(42px, 7vw, 76px);
-    margin: 0;
-    font-weight: normal;
-    letter-spacing: 2px;
+    font-size: clamp(45px, 8vw, 80px);
+    margin: 10px 0;
 }
 
-.cover h2 {
-    font-size: 20px;
-    font-weight: normal;
-    margin-top: 20px;
-    opacity: 0.8;
+.cover p {
+    color: #d9c6cb;
+    font-size: 18px;
+    max-width: 500px;
 }
 
-.cover .heart {
-    font-size: 48px;
-    margin-bottom: 25px;
-}
-
-.open-button {
-    margin-top: 40px;
-    padding: 14px 32px;
-    border: 1px solid rgba(255,255,255,0.4);
-    border-radius: 30px;
-    background: rgba(255,255,255,0.08);
+.open-btn,
+.next-btn,
+.back-btn {
+    border: 1px solid rgba(255,255,255,.3);
+    background: rgba(255,255,255,.1);
     color: white;
-    font-size: 16px;
+    padding: 13px 25px;
+    border-radius: 30px;
     cursor: pointer;
-    transition: 0.3s;
-}
-
-.open-button:hover {
-    background: rgba(255,255,255,0.18);
-    transform: scale(1.05);
-}
-
-.chapter {
-    font-size: 13px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #9b648d;
-    margin-bottom: 10px;
-}
-
-h2 {
-    font-size: 32px;
-    margin-top: 5px;
-    margin-bottom: 25px;
-    font-weight: normal;
-}
-
-h3 {
-    font-size: 22px;
-    font-weight: normal;
+    font-size: 16px;
     margin-top: 25px;
 }
 
-p {
-    font-size: 17px;
-    line-height: 1.75;
-    margin: 0 0 18px;
+.open-btn:hover,
+.next-btn:hover,
+.back-btn:hover {
+    background: rgba(255,255,255,.2);
 }
 
-.quote {
-    margin: 30px 0;
-    padding: 20px;
-    border-left: 3px solid #9b648d;
-    font-style: italic;
-    color: #5e4659;
-}
-
-.page-number {
-    position: absolute;
-    bottom: 18px;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    font-size: 13px;
-    opacity: 0.5;
-}
-
-.controls {
-    position: fixed;
-    bottom: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 12px;
-    z-index: 20;
-}
-
-.controls button {
-    border: none;
-    border-radius: 25px;
-    padding: 12px 24px;
-    background: rgba(255,255,255,0.12);
-    color: white;
-    cursor: pointer;
-    font-size: 15px;
-    backdrop-filter: blur(8px);
-}
-
-.controls button:hover {
-    background: rgba(255,255,255,0.22);
-}
-
-.hidden {
+.content {
     display: none;
 }
 
-@media (max-width: 700px) {
-    .book-container {
-        height: 75vh;
-    }
+.content.active {
+    display: block;
+}
 
+.page h1 {
+    font-size: 42px;
+    margin-top: 0;
+}
+
+.page h2 {
+    font-size: 27px;
+    margin-top: 0;
+}
+
+.page p {
+    font-size: 18px;
+    line-height: 1.75;
+}
+
+.chapter-number {
+    color: #76545c;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 13px;
+}
+
+.divider {
+    width: 70px;
+    height: 2px;
+    background: #76545c;
+    margin: 20px 0 30px;
+}
+
+.controls {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.scene {
+    min-height: 470px;
+    border-radius: 15px;
+    background:
+        radial-gradient(circle at 50% 45%, #30303b 0%, #111117 35%, #050508 75%);
+    position: relative;
+    overflow: hidden;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+}
+
+.scene.active {
+    display: flex;
+}
+
+.scene h2 {
+    font-size: 32px;
+}
+
+.scene p {
+    max-width: 600px;
+    padding: 0 20px;
+    color: #ddd;
+}
+
+.click-object {
+    font-size: 75px;
+    cursor: pointer;
+    filter: drop-shadow(0 0 15px rgba(255,255,255,.25));
+    transition: transform .3s;
+}
+
+.click-object:hover {
+    transform: scale(1.12);
+}
+
+.fog {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 60%, rgba(210,210,220,.08), transparent 20%),
+        radial-gradient(circle at 75% 40%, rgba(210,210,220,.07), transparent 25%);
+    pointer-events: none;
+}
+
+.dark {
+    background:
+        radial-gradient(circle at center, #191922, #030305 75%);
+}
+
+.forest {
+    background:
+        linear-gradient(rgba(4,5,8,.35), rgba(2,3,5,.9)),
+        radial-gradient(circle at center, #18201a, #050806 75%);
+}
+
+.river {
+    background:
+        linear-gradient(#111923, #05070b);
+}
+
+.light {
+    background:
+        radial-gradient(circle at center, #e5d9a8 0%, #554e32 20%, #08090a 65%);
+}
+
+.knight {
+    background:
+        radial-gradient(circle at center, #332a2d, #080708 70%);
+}
+
+.grave {
+    background:
+        radial-gradient(circle at center, #25242a, #050507 75%);
+}
+
+.train-scene {
+    background:
+        linear-gradient(to bottom, #10131c 0%, #050609 65%);
+    position: relative;
+}
+
+.moon {
+    position: absolute;
+    top: 35px;
+    right: 50px;
+    font-size: 55px;
+}
+
+.train {
+    font-size: 100px;
+    cursor: pointer;
+    transition: transform .4s;
+}
+
+.train:hover {
+    transform: translateX(20px);
+}
+
+.country {
+    font-size: 70px;
+    margin: 15px;
+}
+
+.station {
+    font-size: 15px;
+    letter-spacing: 4px;
+    color: #aaa;
+}
+
+.locked {
+    text-align: center;
+    padding-top: 100px;
+}
+
+.lock {
+    font-size: 70px;
+}
+
+.locked p {
+    color: #777;
+}
+
+@media (max-width: 650px) {
     .page {
-        width: 100%;
-        left: 0;
-        border-radius: 12px;
-        padding: 30px;
+        padding: 30px 25px 75px;
     }
 
-    .left-page {
-        display: none;
+    .page h1 {
+        font-size: 31px;
     }
 
-    p {
-        font-size: 15px;
+    .page p {
+        font-size: 16px;
     }
 
-    h2 {
-        font-size: 27px;
+    .book,
+    .page {
+        min-height: 700px;
+    }
+
+    .scene {
+        min-height: 540px;
     }
 }
 </style>
@@ -220,336 +298,590 @@ p {
 
 <body>
 
-<div class="book-container">
-
+<div class="book-wrapper">
 <div class="book">
 
 <!-- COVER -->
 
-<div class="cover" id="cover">
-
-    <div class="heart">❤️</div>
-
+<div class="page cover" id="cover">
+    <div style="font-size:60px;">❤️</div>
     <h1>Before You</h1>
-
-    <h2>
-        The story of who I was<br>
-        before you came into my life.
-    </h2>
-
-    <button class="open-button" onclick="openBook()">
-        Open the book
-    </button>
-
+    <p>The story of who I was before you came into my life.</p>
+    <button class="open-btn" onclick="openBook()">Open the book</button>
 </div>
 
 
-<!-- LEFT PAGE -->
+<!-- CHAPTER I -->
 
-<div class="page left-page">
+<div class="page content active" id="page1">
+    <div class="chapter-number">Chapter I</div>
+    <h1>Who I Am</h1>
+    <div class="divider"></div>
 
-    <div class="chapter">My Story</div>
-
-    <h2>Before You</h2>
+    <p>My name is Alex.</p>
 
     <p>
-        This book is not only about the things that happened
-        between us.
+    I am a kind, calm and caring person. I always try to care about
+    the people who are important to me and make them feel good.
     </p>
 
     <p>
-        It is about me.
+    I love walking around the city, watching anime, and making other
+    people happy.
     </p>
 
     <p>
-        About where I came from, what I experienced,
-        what hurt me, what I achieved, and what I still dream about.
+    One of the things I want most in life is to help people.
+    I want to be someone who can make another person's life a little easier.
     </p>
 
     <p>
-        Maybe there are parts of me you don't know yet.
+    I have dreams. I want to keep moving forward and become the person
+    I want to be.
     </p>
 
-    <p>
-        So I wanted you to see them.
-    </p>
-
-    <div class="page-number">1</div>
-
-</div>
-
-
-<!-- RIGHT PAGE -->
-
-<div class="page" id="page1">
-
-    <div class="chapter">Chapter I</div>
-
-    <h2>Who I Am</h2>
-
-    <p>
-        My name is Alex.
-    </p>
-
-    <p>
-        I am a kind, calm and caring person.
-        I always try to care about the people who are important
-        to me and make them feel good.
-    </p>
-
-    <p>
-        Sometimes I can be stubborn about some things,
-        but I know that this is also a part of who I am.
-    </p>
-
-    <p>
-        I love walking around the city, watching anime,
-        and making other people happy.
-    </p>
-
-    <p>
-        Sometimes, seeing someone smile because of something
-        I did means more to me than anything else.
-    </p>
-
-    <div class="page-number">2</div>
-
-</div>
-
-
-<!-- CHAPTER I SECOND PAGE -->
-
-<div class="page hidden" id="page2">
-
-    <div class="chapter">Chapter I</div>
-
-    <h2>Who I Am</h2>
-
-    <p>
-        One of the things I want most in life is to help people.
-    </p>
-
-    <p>
-        I want to be someone who can make another person's
-        life a little easier, even if it is just through small things.
-    </p>
-
-    <p>
-        I also want to live beside the person I truly love.
-    </p>
-
-    <p>
-        I don't need a perfect life.
-        I just want to have someone important beside me,
-        share ordinary days together, help each other
-        and keep moving forward.
-    </p>
-
-    <p>
-        Right now, I may be a little tired of life.
-        There are moments when everything feels difficult.
-        But I know that I cannot stop here.
-    </p>
-
-    <p>
-        I have dreams.
-    </p>
-
-    <p>
-        I want to change my laziness.
-        I want to stop wasting the time I have and dedicate
-        myself to the things I truly want.
-    </p>
-
-    <div class="page-number">3</div>
-
+    <div class="controls">
+        <button class="next-btn" onclick="showPage('page2')">Turn the page →</button>
+    </div>
 </div>
 
 
 <!-- CHAPTER II -->
 
-<div class="page hidden" id="page3">
-
-    <div class="chapter">Chapter II</div>
-
-    <h2>Where I Came From</h2>
+<div class="page content" id="page2">
+    <div class="chapter-number">Chapter II</div>
+    <h1>Where I Came From</h1>
+    <div class="divider"></div>
 
     <p>
-        I was born in Zhytomyr, Ukraine, on June 21, 2006.
+    I was born in Zhytomyr, Ukraine, on June 21, 2006.
     </p>
 
     <p>
-        My zodiac sign is Taurus.
+    When I was a child, I was quiet. I mostly kept things inside
+    and watched what was happening around me.
     </p>
 
     <p>
-        When I was a child, I was quiet.
-        I was not the loudest person in the room.
-        I mostly kept things inside and watched what was happening.
+    I remember trips to Lake Svitiaz with my father.
+    I remember going to the cinema and parks with my brothers.
     </p>
 
     <p>
-        Some of my childhood memories are connected with my family.
+    Then I lost my father.
+    Losing him changed me.
     </p>
 
     <p>
-        I remember trips to Lake Svitiaz with my father.
-        I remember going to the cinema and parks with my brothers.
+    I still remember his words:
+    <br><br>
+    <i>Do good for the person you value, and always protect them.</i>
     </p>
 
     <p>
-        These may seem like simple moments,
-        but they became part of my memories and part of who I am.
+    Life was not always kind to me.
+    But I did not break.
+    I kept going.
     </p>
 
-    <div class="page-number">4</div>
-
+    <div class="controls">
+        <button class="back-btn" onclick="showPage('page1')">← Back</button>
+        <button class="next-btn" onclick="showPage('chapter3')">Chapter III →</button>
+    </div>
 </div>
 
 
-<!-- CHAPTER II SECOND PAGE -->
+<!-- CHAPTER III -->
 
-<div class="page hidden" id="page4">
+<div class="page content" id="chapter3">
 
-    <div class="chapter">Chapter II</div>
+    <div class="chapter-number">Chapter III</div>
+    <h1>The Things That Hurt</h1>
 
-    <h2>Where I Came From</h2>
+    <div class="scene active dark" id="scene1">
+        <div class="fog"></div>
 
-    <p>
-        Then I lost my father.
-    </p>
+        <div class="click-object" onclick="nextScene(2)">
+            🏮
+        </div>
 
-    <p>
-        Losing him changed me.
-    </p>
+        <h2>The Lantern</h2>
 
-    <div class="quote">
-        Do good for the person you value,
-        and always protect them.
+        <p>
+        Some things are easier to see in the dark.
+        </p>
+
+        <p>
+        Click the flame.
+        </p>
     </div>
 
-    <p>
-        I still remember those words.
-    </p>
 
-    <p>
-        My independent life started when I was sixteen,
-        when I got my first job.
-    </p>
+    <div class="scene forest" id="scene2">
+        <div class="fog"></div>
 
-    <p>
-        From that moment, I started learning what it means
-        to take responsibility for myself and my own life.
-    </p>
+        <div class="click-object" onclick="nextScene(3)">
+            👦
+        </div>
 
-    <p>
-        Life was not always kind to me.
-    </p>
+        <h2>The Boy</h2>
 
-    <p>
-        I experienced betrayal from friends.
-        I experienced loneliness.
-        I lost people who were important to me.
-    </p>
+        <p>
+        Somewhere inside the darkness, there is a little boy.
+        </p>
 
-    <div class="page-number">5</div>
+        <p>
+        He is afraid.
+        He doesn't know where to go.
+        </p>
 
-</div>
+        <p>
+        Click on him.
+        </p>
+    </div>
 
 
-<!-- CHAPTER II FINAL -->
+    <div class="scene knight" id="scene3">
 
-<div class="page hidden" id="page5">
+        <div class="click-object" onclick="nextScene(4)">
+            ⚔️
+        </div>
 
-    <div class="chapter">Chapter II</div>
+        <h2>The Wounded Knight</h2>
 
-    <h2>Still Here</h2>
+        <p>
+        Betrayal hurts the most when it comes from someone you trusted.
+        </p>
 
-    <p>
-        There were periods when life became very difficult for me emotionally.
-    </p>
+        <p>
+        Sometimes the deepest wounds are caused by people
+        we believed would never hurt us.
+        </p>
 
-    <p>
-        But I did not break.
-    </p>
+        <p>
+        Click the sword.
+        </p>
+    </div>
 
-    <p>
+
+    <div class="scene grave" id="scene4">
+
+        <div class="click-object" onclick="nextScene(5)">
+            🪦
+        </div>
+
+        <h2>The Grave</h2>
+
+        <p>
+        Some people leave our lives,
+        but they never leave our memories.
+        </p>
+
+        <p>
+        I remember them.
+        And I always will.
+        </p>
+
+        <p>
+        Click the grave.
+        </p>
+    </div>
+
+
+    <div class="scene light" id="scene5">
+
+        <div class="click-object" onclick="nextScene(6)">
+            ✨
+        </div>
+
+        <h2>Never Give Up</h2>
+
+        <p>
+        There were moments when life felt too heavy.
+        </p>
+
+        <p>
+        There were moments when I could have stopped walking.
+        </p>
+
+        <p>
+        But I didn't.
+        </p>
+
+        <p>
         I kept going.
-    </p>
+        </p>
 
-    <p>
-        Even without what I would call a normal education,
-        I still managed to build my own path and show people
-        that I could become someone they could look up to.
-    </p>
+        <p>
+        Click the light.
+        </p>
+    </div>
 
-    <p>
-        Maybe my story is not perfect.
-    </p>
 
-    <p>
-        Maybe I made many mistakes.
-    </p>
+    <div class="scene river" id="scene6">
 
-    <p>
-        But everything I went through made me stronger.
-    </p>
+        <div class="click-object" onclick="nextScene(7)">
+            👦🌊
+        </div>
 
-    <h3>I am still here.</h3>
+        <h2>The River</h2>
 
-    <p>
-        Still moving forward.
-    </p>
+        <p>
+        The boy is waiting for me again.
+        </p>
 
-    <p>
-        Still trying to become better than the person I was yesterday.
-    </p>
+        <p>
+        But this time, he isn't alone.
+        </p>
 
-    <div class="page-number">6</div>
+        <p>
+        He walks forward and shows me the way.
+        </p>
+
+        <p>
+        There is a river ahead.
+        </p>
+
+        <p>
+        Follow him.
+        </p>
+    </div>
+
+
+    <div class="scene light" id="scene7">
+
+        <div class="click-object" onclick="showPage('chapter4')">
+            🌅
+        </div>
+
+        <h2>The Other Side</h2>
+
+        <p>
+        Life doesn't end here.
+        </p>
+
+        <p>
+        The forest is behind me now.
+        The darkness is behind me.
+        </p>
+
+        <p>
+        I don't know what waits ahead.
+        </p>
+
+        <p>
+        But I know one thing:
+        </p>
+
+        <p>
+        <strong>I will keep walking.</strong>
+        </p>
+
+        <p>
+        Click the light to continue.
+        </p>
+    </div>
+
+</div>
+
+
+<!-- CHAPTER IV -->
+
+<div class="page content" id="chapter4">
+
+    <div class="chapter-number">Chapter IV</div>
+    <h1>The Life I Built</h1>
+
+    <div class="scene active train-scene" id="train1">
+
+        <div class="moon">🌙</div>
+
+        <div class="train" onclick="trainNext(2)">
+            🚆
+        </div>
+
+        <h2>The Journey</h2>
+
+        <p>
+        After everything I went through,
+        my life started to change.
+        </p>
+
+        <p>
+        I began building my own path.
+        </p>
+
+        <p>
+        A train became a symbol of my life.
+        You leave one station behind
+        and travel toward another.
+        </p>
+
+        <p>
+        Click the train.
+        </p>
+    </div>
+
+
+    <div class="scene train-scene" id="train2">
+
+        <div class="moon">🌙</div>
+
+        <div class="country">🇦🇹</div>
+
+        <div class="station">
+            AUSTRIA
+        </div>
+
+        <p>
+        One station.
+        One country.
+        One more memory.
+        </p>
+
+        <div class="click-object" onclick="trainNext(3)">
+            🚆
+        </div>
+    </div>
+
+
+    <div class="scene train-scene" id="train3">
+
+        <div class="moon">🌙</div>
+
+        <div class="country">🇨🇿</div>
+
+        <div class="station">
+            CZECHIA
+        </div>
+
+        <p>
+        Different streets.
+        Different people.
+        Something new around every corner.
+        </p>
+
+        <div class="click-object" onclick="trainNext(4)">
+            🚆
+        </div>
+    </div>
+
+
+    <div class="scene train-scene" id="train4">
+
+        <div class="moon">🌙</div>
+
+        <div class="country">🇸🇰</div>
+
+        <div class="station">
+            SLOVAKIA
+        </div>
+
+        <p>
+        Every journey showed me something new.
+        </p>
+
+        <div class="click-object" onclick="trainNext(5)">
+            🚆
+        </div>
+    </div>
+
+
+    <div class="scene train-scene" id="train5">
+
+        <div class="moon">🌙</div>
+
+        <div class="country">🇩🇪</div>
+
+        <div class="station">
+            GERMANY
+        </div>
+
+        <p>
+        The train keeps moving.
+        And so do I.
+        </p>
+
+        <div class="click-object" onclick="trainNext(6)">
+            🚆
+        </div>
+    </div>
+
+
+    <div class="scene train-scene" id="train6">
+
+        <div class="moon">🌙</div>
+
+        <div class="country">🇮🇹</div>
+
+        <div class="station">
+            ITALY
+        </div>
+
+        <p>
+        Five countries.
+        Five different places.
+        Five different memories.
+        </p>
+
+        <div class="click-object" onclick="trainNext(7)">
+            🚆
+        </div>
+    </div>
+
+
+    <div class="scene train-scene" id="train7">
+
+        <div class="country">🚆</div>
+
+        <h2>What I Achieved</h2>
+
+        <p>
+        I started with very little.
+        </p>
+
+        <p>
+        I made mistakes.
+        I learned.
+        I kept working.
+        </p>
+
+        <p>
+        I became someone who could take responsibility
+        for himself.
+        </p>
+
+        <p>
+        I don't want to stop here.
+        </p>
+
+        <p>
+        I want to learn more.
+        Discover new places.
+        And build a life I can be proud of.
+        </p>
+
+        <div class="click-object" onclick="trainNext(8)">
+            🌅
+        </div>
+    </div>
+
+
+    <div class="scene light" id="train8">
+
+        <h2>The Next Station</h2>
+
+        <p>
+        My journey is still moving.
+        </p>
+
+        <p>
+        I don't know what the next station will be.
+        </p>
+
+        <p>
+        But I'm ready to find out.
+        </p>
+
+        <p>
+        <strong>The journey continues.</strong>
+        </p>
+
+        <div class="click-object" onclick="showPage('locked')">
+            ❤️
+        </div>
+
+        <p>
+        Click to continue.
+        </p>
+    </div>
+
+</div>
+
+
+<!-- CHAPTER V / VI LOCKED -->
+
+<div class="page content" id="locked">
+
+    <div class="locked">
+
+        <div class="lock">🔒</div>
+
+        <div class="chapter-number">Chapter V</div>
+
+        <h1>Coming Soon</h1>
+
+        <div class="divider" style="margin-left:auto;margin-right:auto;"></div>
+
+        <p>
+        Some chapters are not ready to be opened yet.
+        </p>
+
+        <p>
+        Maybe one day they will be.
+        </p>
+
+        <br>
+
+        <div class="lock">🔒</div>
+
+        <div class="chapter-number">Chapter VI</div>
+
+        <h1>The Future</h1>
+
+        <p>
+        This chapter is waiting for its time.
+        </p>
+
+        <p>
+        Soon...
+        </p>
+
+    </div>
+
+    <div class="controls">
+        <button class="back-btn" onclick="showPage('chapter4')">
+            ← Back
+        </button>
+    </div>
 
 </div>
 
 </div>
-</div>
-
-
-<div class="controls">
-
-    <button id="nextButton" onclick="nextPage()">
-        Turn the page →
-    </button>
-
 </div>
 
 
 <script>
 
-let currentPage = 1;
-
 function openBook() {
-
     document.getElementById("cover").classList.add("open");
-
 }
 
-function nextPage() {
+function showPage(id) {
 
-    const current = document.getElementById("page" + currentPage);
-    const next = document.getElementById("page" + (currentPage + 1));
+    document.querySelectorAll(".content").forEach(page => {
+        page.classList.remove("active");
+    });
 
-    if (next) {
+    document.getElementById(id).classList.add("active");
+}
 
-        current.classList.add("hidden");
-        next.classList.remove("hidden");
+function nextScene(number) {
 
-        currentPage++;
+    document.querySelectorAll("#chapter3 .scene").forEach(scene => {
+        scene.classList.remove("active");
+    });
 
-    } else {
+    document.getElementById("scene" + number).classList.add("active");
+}
 
-        document.getElementById("nextButton").innerText = "More coming soon ❤️";
+function trainNext(number) {
 
-    }
+    document.querySelectorAll("#chapter4 .scene").forEach(scene => {
+        scene.classList.remove("active");
+    });
 
+    document.getElementById("train" + number).classList.add("active");
 }
 
 </script>
