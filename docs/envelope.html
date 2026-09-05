@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>A Little Something For Marina ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Georgia, "Times New Roman", serif;
+            background:
+                radial-gradient(circle at top, #fff5f8, #ffdce7 55%, #fff 100%);
+            color: #542c3b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+
+        .hearts {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -30px;
+            font-size: 20px;
+            opacity: 0.3;
+            animation: float 10s linear infinite;
+        }
+
+        .heart:nth-child(1) {
+            left: 10%;
+            animation-duration: 9s;
+        }
+
+        .heart:nth-child(2) {
+            left: 35%;
+            animation-duration: 12s;
+            animation-delay: 2s;
+        }
+
+        .heart:nth-child(3) {
+            left: 65%;
+            animation-duration: 10s;
+            animation-delay: 1s;
+        }
+
+        .heart:nth-child(4) {
+            left: 85%;
+            animation-duration: 13s;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(0);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.3;
+            }
+
+            to {
+                transform: translateY(-110vh);
+                opacity: 0;
+            }
+        }
+
+        .page {
+            width: min(900px, 94%);
+            text-align: center;
+            padding: 50px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .title {
+            margin-bottom: 35px;
+        }
+
+        .title-small {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 12px;
+            color: #a65b73;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            color: #8b2949;
+            font-size: clamp(34px, 8vw, 58px);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #825060;
+            font-size: 17px;
+        }
+
+        /* BIG ENVELOPE */
+
+        .big-envelope-area {
+            min-height: 360px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .big-envelope {
+            width: 280px;
+            height: 190px;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+            filter: drop-shadow(0 18px 20px rgba(100, 30, 55, 0.2));
+        }
+
+        .big-envelope:hover {
+            transform: translateY(-8px) scale(1.03);
+        }
+
+        .envelope-body {
+            position: absolute;
+            inset: 0;
+            background: #b72f50;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .envelope-body::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            border-style: solid;
+            border-width: 0 140px 100px 140px;
+            border-color: transparent transparent #9f2443 transparent;
+        }
+
+        .envelope-body::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            border-style: solid;
+            border-width: 100px 140px 0 0;
+            border-color: #d04463 transparent transparent transparent;
+        }
+
+        .flap {
+            position: absolute;
+            z-index: 5;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 140px solid transparent;
+            border-right: 140px solid transparent;
+            border-top: 105px solid #d94a69;
+            transform-origin: top;
+            transition: transform 0.8s ease;
+        }
+
+        .seal {
+            position: absolute;
+            z-index: 10;
+            top: 75px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #7e1735;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            transition: opacity 0.4s ease;
+        }
+
+        .open-text {
+            margin-top: 25px;
+            color: #8b2949;
+            font-size: 16px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.6;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* SMALL ENVELOPES */
+
+        .little-envelopes {
+            display: none;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-top: 20px;
+            animation: appear 0.8s ease forwards;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .little {
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .little:hover {
+            transform: translateY(-10px);
+        }
+
+        .small-envelope {
+            height: 120px;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 10px 22px rgba(80, 30, 50, 0.15);
+            overflow: hidden;
+        }
+
+        .small-envelope::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            clip-path: polygon(0 0, 100% 0, 50% 55%);
+        }
+
+        .green {
+            background: #79a96b;
+        }
+
+        .green::before {
+            background: #92bd82;
+        }
+
+        .pink {
+            background: #e58da8;
+        }
+
+        .pink::before {
+            background: #f1aac0;
+        }
+
+        .blue {
+            background: #739cc2;
+        }
+
+        .blue::before {
+            background: #91b5d5;
+        }
+
+        .purple {
+            background: #9b7bb5;
+        }
+
+        .purple::before {
+            background: #b596ca;
+        }
+
+        .little-label {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #6f3d50;
+        }
+
+        /* MESSAGE */
+
+        .message {
+            display: none;
+            margin: 35px auto 0;
+            max-width: 650px;
+            background: rgba(255,255,255,0.9);
+            padding: 35px;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(90,30,55,0.12);
+            animation: appear 0.6s ease;
+        }
+
+        .message-icon {
+            font-size: 55px;
+            margin-bottom: 15px;
+        }
+
+        .message h2 {
+            color: #8b2949;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .message p {
+            font-size: 18px;
+            line-height: 1.7;
+        }
+
+        .close-message {
+            margin-top: 25px;
+            border: none;
+            background: #8b2949;
+            color: white;
+            padding: 11px 22px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 40px;
+            color: #8b2949;
+            text-decoration: none;
+            border-bottom: 1px solid #d995aa;
+            padding-bottom: 3px;
+        }
+
+        @media (max-width: 700px) {
+            .little-envelopes {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+
+            .big-envelope {
+                width: 240px;
+                height: 165px;
+            }
+
+            .flap {
+                border-left-width: 120px;
+                border-right-width: 120px;
+                border-top-width: 90px;
+            }
+
+            .envelope-body::before {
+                border-width: 0 120px 90px 120px;
+            }
+
+            .envelope-body::after {
+                border-width: 90px 120px 0 0;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .little-envelopes {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .small-envelope {
+                height: 100px;
+            }
+
+            .message {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="hearts">
+    <div class="heart">❤️</div>
+    <div class="heart">♡</div>
+    <div class="heart">❤️</div>
+    <div class="heart">♡</div>
+</div>
+
+<div class="page">
+
+    <div class="title">
+        <div class="title-small">A little surprise</div>
+
+        <h1>For Marina ❤️</h1>
+
+        <p class="subtitle">
+            There are a few little things I want you to remember.
+        </p>
+    </div>
+
+
+    <div class="big-envelope-area">
+
+        <div class="big-envelope" id="bigEnvelope" onclick="openEnvelope()">
+
+            <div class="envelope-body"></div>
+
+            <div class="flap" id="flap"></div>
+
+            <div class="seal" id="seal">
+                ❤️
+            </div>
+
+        </div>
+
+        <div class="open-text" id="openText">
+            Click the envelope ❤️
+        </div>
+
+    </div>
+
+
+    <div class="little-envelopes" id="littleEnvelopes">
+
+        <div class="little" onclick="showMessage('green')">
+
+            <div class="small-envelope green"></div>
+
+            <div class="little-label">
+                🍀 For your luck
+            </div>
+
+        </div>
+
+
+        <div class="little" onclick="showMessage('pink')">
+
+            <div class="small-envelope pink"></div>
+
+            <div class="little-label">
+                🌸 When you feel alone
+            </div>
+
+        </div>
+
+
+        <div class="little" onclick="showMessage('blue')">
+
+            <div class="small-envelope blue"></div>
+
+            <div class="little-label">
+                💙 When things are hard
+            </div>
+
+        </div>
+
+
+        <div class="little" onclick="showMessage('purple')">
+
+            <div class="small-envelope purple"></div>
+
+            <div class="little-label">
+                💜 Don't forget yourself
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="message" id="message">
+
+        <div class="message-icon" id="messageIcon"></div>
+
+        <h2 id="messageTitle"></h2>
+
+        <p id="messageText"></p>
+
+        <button class="close-message" onclick="closeMessage()">
+            Close ❤️
+        </button>
+
+    </div>
+
+
+    <a href="story.html" class="back">
+        ← Back to our story
+    </a>
+
+</div>
+
+
+<script>
+
+    function openEnvelope() {
+
+        const flap = document.getElementById("flap");
+        const seal = document.getElementById("seal");
+        const littleEnvelopes = document.getElementById("littleEnvelopes");
+        const openText = document.getElementById("openText");
+
+        flap.style.transform = "rotateX(180deg)";
+        seal.style.opacity = "0";
+
+        openText.textContent = "Choose one ❤️";
+
+        setTimeout(function() {
+            littleEnvelopes.style.display = "grid";
+        }, 650);
+    }
+
+
+    function showMessage(type) {
+
+        const message = document.getElementById("message");
+        const icon = document.getElementById("messageIcon");
+        const title = document.getElementById("messageTitle");
+        const text = document.getElementById("messageText");
+
+        if (type === "green") {
+
+            icon.textContent = "🍀";
+
+            title.textContent = "A little luck for you";
+
+            text.innerHTML =
+                "You can do anything in this life.<br><br>" +
+                "I believe in you, Marina. ❤️";
+        }
+
+
+        if (type === "pink") {
+
+            icon.textContent = "🌸";
+
+            title.textContent = "You are not alone";
+
+            text.innerHTML =
+                "Even when it feels like you have to deal with everything by yourself, " +
+                "remember that you don't have to carry everything alone.<br><br>" +
+                "I'm here. ❤️";
+        }
+
+
+        if (type === "blue") {
+
+            icon.textContent = "💙";
+
+            title.textContent = "You are strong";
+
+            text.innerHTML =
+                "You are strong, Marina.<br><br>" +
+                "And whatever comes your way, I believe you can handle it.";
+        }
+
+
+        if (type === "purple") {
+
+            icon.textContent = "💜";
+
+            title.textContent = "Don't forget yourself";
+
+            text.innerHTML =
+                "Don't forget to rest, Marina.<br><br>" +
+                "Sleep. Take a break. Breathe.<br><br>" +
+                "You don't always have to keep going.";
+        }
+
+
+        message.style.display = "block";
+
+        setTimeout(function() {
+            message.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }, 100);
+    }
+
+
+    function closeMessage() {
+
+        document.getElementById("message").style.display = "none";
+    }
+
+</script>
+
+</body>
+</html>
