@@ -3,148 +3,222 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>For Marina ❤️</title>
 
 <style>
-    * {
-        box-sizing: border-box;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, serif;
+    background: linear-gradient(135deg, #fff0f5, #ffdce6);
+    text-align: center;
+    color: #7b2842;
+}
+
+.page {
+    padding: 40px 20px;
+}
+
+h1 {
+    margin-bottom: 35px;
+    color: #8b1e3f;
+}
+
+.main-envelope {
+    width: 320px;
+    height: 210px;
+    background: #c6284f;
+    margin: auto;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 15px 35px rgba(100,20,40,0.25);
+    transition: transform 0.3s;
+}
+
+.main-envelope:hover {
+    transform: scale(1.03);
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 115px solid #e05270;
+
+    transform-origin: top;
+    transition: transform 0.8s;
+}
+
+.main-envelope.open .flap {
+    transform: rotateX(180deg);
+}
+
+.heart {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-size: 55px;
+    z-index: 5;
+}
+
+.hint {
+    margin-top: 25px;
+    font-size: 18px;
+}
+
+/* SMALL ENVELOPES */
+
+.small-envelopes {
+    display: none;
+
+    margin: 40px auto 0;
+
+    max-width: 650px;
+
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 20px;
+}
+
+.small-envelopes.show {
+    display: grid;
+}
+
+.small {
+    height: 120px;
+
+    border-radius: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 55px;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+
+    transition: transform 0.3s;
+}
+
+.small:hover {
+    transform: translateY(-7px) scale(1.03);
+}
+
+.green {
+    background: #dff5df;
+}
+
+.pink {
+    background: #ffdce8;
+}
+
+.blue {
+    background: #dceeff;
+}
+
+.purple {
+    background: #eadcff;
+}
+
+/* MESSAGES */
+
+.message {
+    display: none;
+
+    max-width: 550px;
+
+    margin: 35px auto;
+
+    padding: 30px;
+
+    background: rgba(255,255,255,0.95);
+
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+
+    animation: appear 0.5s ease;
+}
+
+.message.show {
+    display: block;
+}
+
+.message h2 {
+    color: #8b1e3f;
+}
+
+.message p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.back {
+    display: inline-block;
+
+    margin-top: 35px;
+
+    padding: 12px 24px;
+
+    background: #8b1e3f;
+
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 25px;
+}
+
+@keyframes appear {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
     }
 
-    body {
-        margin: 0;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(135deg, #fff0f5, #ffe0e8);
-        font-family: Georgia, serif;
-        overflow: hidden;
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 600px) {
+
+    .main-envelope {
+        width: 280px;
+        height: 185px;
     }
 
-    .page {
-        text-align: center;
-        width: 100%;
-        padding: 20px;
+    .flap {
+        border-left-width: 140px;
+        border-right-width: 140px;
+        border-top-width: 100px;
     }
 
-    h1 {
-        color: #8b1e3f;
-        margin-bottom: 35px;
-    }
-
-    .envelope {
-        position: relative;
-        width: 320px;
-        height: 210px;
-        margin: auto;
-        background: #c6284f;
-        border-radius: 8px;
-        cursor: pointer;
-        box-shadow: 0 15px 35px rgba(100, 20, 40, 0.25);
-    }
-
-    .envelope::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 0;
-        height: 0;
-        border-left: 160px solid transparent;
-        border-right: 160px solid transparent;
-        border-top: 110px solid #e05270;
-        z-index: 3;
-        transform-origin: top;
-        transition: 0.8s;
-    }
-
-    .heart {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 55px;
-        z-index: 4;
-    }
-
-    .text {
-        margin-top: 30px;
-        color: #7b2842;
-        font-size: 18px;
-    }
-
-    .envelope.open::before {
-        transform: rotateX(180deg);
-    }
-
-    .inside {
-        display: none;
-        margin-top: 40px;
-        gap: 15px;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .envelope.open + .inside {
-        display: flex;
+    .small-envelopes {
+        grid-template-columns: 1fr 1fr;
     }
 
     .small {
-        width: 130px;
-        height: 85px;
-        border-radius: 10px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 35px;
-        cursor: pointer;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        transition: transform 0.3s;
+        height: 100px;
     }
-
-    .small:hover {
-        transform: translateY(-5px);
-    }
-
-    .green {
-        background: #dff5df;
-    }
-
-    .pink {
-        background: #ffdce8;
-    }
-
-    .blue {
-        background: #dceeff;
-    }
-
-    .purple {
-        background: #eadcff;
-    }
-
-    .message {
-        display: none;
-        max-width: 500px;
-        margin: 30px auto;
-        padding: 25px;
-        background: rgba(255,255,255,0.9);
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    }
-
-    .message h2 {
-        color: #8b1e3f;
-    }
-
-    .back {
-        display: inline-block;
-        margin-top: 25px;
-        text-decoration: none;
-        color: white;
-        background: #8b1e3f;
-        padding: 12px 22px;
-        border-radius: 25px;
-    }
+}
 </style>
 </head>
 
@@ -152,77 +226,182 @@
 
 <div class="page">
 
-    <h1>A little something for you, Marina ❤️</h1>
+<h1>A little something for you, Marina ❤️</h1>
 
-    <div class="envelope" id="envelope" onclick="openEnvelope()">
-        <div class="heart">❤️</div>
+<div 
+    class="main-envelope"
+    id="mainEnvelope"
+    onclick="openMainEnvelope()"
+>
+
+    <div class="flap"></div>
+
+    <div class="heart">
+        ❤️
     </div>
-
-    <div class="text">
-        Tap the envelope ❤️
-    </div>
-
-    <div class="inside">
-
-        <div class="small green" onclick="showMessage('green')">🍀</div>
-
-        <div class="small pink" onclick="showMessage('pink')">🌸</div>
-
-        <div class="small blue" onclick="showMessage('blue')">💙</div>
-
-        <div class="small purple" onclick="showMessage('purple')">💜</div>
-
-    </div>
-
-    <div id="green" class="message">
-        <h2>A little luck for you 🍀</h2>
-        <p>You can do anything in this life.</p>
-        <p>I believe in you, Marina. ❤️</p>
-    </div>
-
-    <div id="pink" class="message">
-        <h2>You are not alone 🌸</h2>
-        <p>
-            Even when it feels like you have to deal with everything
-            by yourself, remember that you don't have to carry
-            everything alone. I'm here. ❤️
-        </p>
-    </div>
-
-    <div id="blue" class="message">
-        <h2>You are strong 💙</h2>
-        <p>
-            You are strong, Marina.
-            Whatever comes your way,
-            I believe you can handle it.
-        </p>
-    </div>
-
-    <div id="purple" class="message">
-        <h2>Don't forget yourself 💜</h2>
-        <p>
-            Don't forget to rest, Marina.
-            Sleep. Take a break. Breathe.
-            You don't always have to keep going.
-        </p>
-    </div>
-
-    <a class="back" href="story.html">← Back to our story</a>
 
 </div>
 
+<div class="hint" id="hint">
+    Tap the red envelope ❤️
+</div>
+
+
+<!-- FOUR SMALL ENVELOPES -->
+
+<div class="small-envelopes" id="smallEnvelopes">
+
+    <div 
+        class="small green"
+        onclick="showMessage('greenMessage')"
+    >
+        🍀
+    </div>
+
+    <div 
+        class="small pink"
+        onclick="showMessage('pinkMessage')"
+    >
+        🌸
+    </div>
+
+    <div 
+        class="small blue"
+        onclick="showMessage('blueMessage')"
+    >
+        💙
+    </div>
+
+    <div 
+        class="small purple"
+        onclick="showMessage('purpleMessage')"
+    >
+        💜
+    </div>
+
+</div>
+
+
+<!-- MESSAGES -->
+
+<div class="message" id="greenMessage">
+
+    <h2>A little luck for you 🍀</h2>
+
+    <p>
+        You can do anything in this life.
+    </p>
+
+    <p>
+        I believe in you, Marina. ❤️
+    </p>
+
+</div>
+
+
+<div class="message" id="pinkMessage">
+
+    <h2>You are not alone 🌸</h2>
+
+    <p>
+        Even when it feels like you have to deal
+        with everything by yourself, remember that
+        you don't have to carry everything alone.
+    </p>
+
+    <p>
+        I'm here. ❤️
+    </p>
+
+</div>
+
+
+<div class="message" id="blueMessage">
+
+    <h2>You are strong 💙</h2>
+
+    <p>
+        You are strong, Marina.
+    </p>
+
+    <p>
+        Whatever comes your way,
+        I believe you can handle it.
+    </p>
+
+</div>
+
+
+<div class="message" id="purpleMessage">
+
+    <h2>Don't forget yourself 💜</h2>
+
+    <p>
+        Don't forget to rest, Marina.
+    </p>
+
+    <p>
+        Sleep. Take a break. Breathe.
+        You don't always have to keep going.
+    </p>
+
+</div>
+
+
+<a href="story.html" class="back">
+    ← Back to our story
+</a>
+
+</div>
+
+
 <script>
-function openEnvelope() {
-    document.getElementById("envelope").classList.toggle("open");
+
+function openMainEnvelope() {
+
+    const envelope = document.getElementById("mainEnvelope");
+
+    const smallEnvelopes =
+        document.getElementById("smallEnvelopes");
+
+    const hint =
+        document.getElementById("hint");
+
+    envelope.classList.toggle("open");
+
+    smallEnvelopes.classList.toggle("show");
+
+    if (smallEnvelopes.classList.contains("show")) {
+
+        hint.innerHTML =
+            "There are four little envelopes for you ❤️";
+
+    } else {
+
+        hint.innerHTML =
+            "Tap the red envelope ❤️";
+
+    }
 }
+
 
 function showMessage(id) {
-    document.querySelectorAll(".message").forEach(function(message) {
-        message.style.display = "none";
+
+    const messages =
+        document.querySelectorAll(".message");
+
+    messages.forEach(function(message) {
+
+        message.classList.remove("show");
+
     });
 
-    document.getElementById(id).style.display = "block";
+    document
+        .getElementById(id)
+        .classList.add("show");
+
 }
+
 </script>
 
 </body>
