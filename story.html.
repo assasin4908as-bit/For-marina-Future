@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Our Story ❤️</title>
+    <title>Our Story — Alex & Marina ❤️</title>
 
     <style>
         * {
@@ -20,12 +20,12 @@
 
         body {
             font-family: Georgia, "Times New Roman", serif;
-            background: #fff7f9;
-            color: #4b2733;
+            background: #fff8fa;
+            color: #40252e;
             line-height: 1.7;
         }
 
-        /* Верхний экран */
+        /* HERO */
 
         .hero {
             min-height: 100vh;
@@ -35,93 +35,88 @@
             text-align: center;
             padding: 30px;
             background:
-                radial-gradient(circle at top, #ffffff 0%, transparent 45%),
-                linear-gradient(160deg, #ffe8ef, #fff7f9);
+                radial-gradient(circle at 50% 20%, white 0%, transparent 45%),
+                linear-gradient(145deg, #ffe3eb, #fff8fa);
         }
 
         .hero-content {
-            max-width: 650px;
-            animation: appear 1.5s ease;
+            max-width: 700px;
+            animation: fadeUp 1.5s ease;
         }
 
-        .small-heart {
-            font-size: 55px;
-            margin-bottom: 20px;
-            animation: heartbeat 1.5s infinite;
+        .heart {
+            font-size: 70px;
+            animation: heartbeat 1.6s infinite;
         }
 
         .hero h1 {
-            font-size: clamp(48px, 12vw, 82px);
+            font-size: clamp(48px, 13vw, 85px);
             font-weight: normal;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin: 20px 0 10px;
         }
 
-        .hero p {
-            font-size: 20px;
-            opacity: 0.8;
+        .names {
+            font-size: 25px;
+            opacity: 0.75;
         }
 
-        .scroll {
-            margin-top: 60px;
-            font-size: 14px;
-            opacity: 0.6;
-        }
-
-        /* Основная часть */
-
-        .content {
-            max-width: 750px;
-            margin: auto;
-            padding: 70px 22px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 45px;
-        }
-
-        .section-title h2 {
-            font-size: 38px;
-            font-weight: normal;
-        }
-
-        .section-title p {
-            margin-top: 10px;
+        .hero-text {
+            margin-top: 25px;
+            font-size: 18px;
             opacity: 0.7;
         }
 
-        /* Карточки воспоминаний */
+        .scroll {
+            margin-top: 65px;
+            font-size: 14px;
+            opacity: 0.55;
+        }
+
+        /* CONTENT */
+
+        .content {
+            max-width: 760px;
+            margin: auto;
+            padding: 80px 22px;
+        }
+
+        .title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .title h2 {
+            font-size: 40px;
+            font-weight: normal;
+        }
+
+        .title p {
+            margin-top: 10px;
+            opacity: 0.65;
+        }
+
+        /* MEMORY */
 
         .memory {
             background: white;
-            border-radius: 28px;
+            border-radius: 30px;
             padding: 32px;
-            margin-bottom: 30px;
-            box-shadow: 0 12px 35px rgba(80, 35, 50, 0.10);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .memory::before {
-            content: "♥";
-            position: absolute;
-            right: 25px;
-            top: 15px;
-            font-size: 50px;
-            opacity: 0.06;
+            margin-bottom: 35px;
+            box-shadow: 0 12px 40px rgba(70, 30, 45, 0.09);
+            animation: fadeUp 1s ease;
         }
 
         .date {
-            font-size: 14px;
-            letter-spacing: 2px;
+            font-size: 13px;
             text-transform: uppercase;
-            opacity: 0.55;
-            margin-bottom: 10px;
+            letter-spacing: 2px;
+            opacity: 0.5;
+            margin-bottom: 8px;
         }
 
         .memory h3 {
-            font-size: 27px;
+            font-size: 28px;
             font-weight: normal;
             margin-bottom: 15px;
         }
@@ -130,67 +125,103 @@
             font-size: 17px;
         }
 
-        /* Фото */
+        /* PHOTO PLACEHOLDER */
 
-        .photo-placeholder {
-            height: 280px;
+        .photo {
+            width: 100%;
+            height: 300px;
             border-radius: 22px;
             background: linear-gradient(135deg, #ffdce6, #fff1f5);
             display: flex;
             justify-content: center;
             align-items: center;
             text-align: center;
-            margin-bottom: 20px;
-            color: #8b5262;
+            margin-bottom: 25px;
+            color: #8c5364;
         }
 
-        .photo-placeholder span {
+        .photo span {
             font-size: 18px;
         }
 
-        /* Финал */
+        /* TIMELINE */
 
-        .final {
-            text-align: center;
-            padding: 100px 25px;
-            background: linear-gradient(160deg, #fff0f4, #ffe1ea);
+        .timeline {
+            position: relative;
+            margin-top: 30px;
         }
 
-        .final-heart {
-            font-size: 70px;
-            animation: heartbeat 1.5s infinite;
+        .timeline-item {
+            position: relative;
+            padding: 0 0 45px 35px;
+            border-left: 2px solid #f2c3cf;
         }
 
-        .final h2 {
-            font-size: 40px;
+        .timeline-item:last-child {
+            border-left: none;
+        }
+
+        .dot {
+            position: absolute;
+            left: -8px;
+            top: 3px;
+            width: 14px;
+            height: 14px;
+            background: #ff8eaa;
+            border-radius: 50%;
+        }
+
+        .timeline-item h3 {
+            font-size: 23px;
             font-weight: normal;
-            margin: 20px 0;
+            margin-bottom: 8px;
         }
 
-        .final p {
-            max-width: 550px;
-            margin: auto;
+        .timeline-item p {
+            font-size: 16px;
+        }
+
+        /* LETTER */
+
+        .letter {
+            background: #fff0f4;
+            border-radius: 30px;
+            padding: 40px 30px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .letter h2 {
+            font-size: 35px;
+            font-weight: normal;
+            margin-bottom: 25px;
+        }
+
+        .letter p {
             font-size: 18px;
+            line-height: 1.9;
         }
 
-        .back-button {
+        /* BUTTON */
+
+        .back {
             display: inline-block;
-            margin-top: 35px;
+            margin-top: 30px;
             padding: 14px 28px;
             border-radius: 30px;
-            background: #ff6f91;
+            background: #ff718f;
             color: white;
             text-decoration: none;
             transition: 0.3s;
         }
 
-        .back-button:hover {
+        .back:hover {
             transform: scale(1.05);
         }
 
         footer {
             text-align: center;
-            padding: 25px;
+            padding: 30px;
             font-size: 13px;
             opacity: 0.55;
         }
@@ -205,7 +236,7 @@
             }
         }
 
-        @keyframes appear {
+        @keyframes fadeUp {
             from {
                 opacity: 0;
                 transform: translateY(25px);
@@ -219,24 +250,16 @@
 
         @media (max-width: 600px) {
 
-            .hero h1 {
-                font-size: 52px;
-            }
-
-            .hero p {
-                font-size: 18px;
-            }
-
             .memory {
                 padding: 25px;
             }
 
-            .memory h3 {
-                font-size: 24px;
+            .photo {
+                height: 220px;
             }
 
-            .photo-placeholder {
-                height: 220px;
+            .letter {
+                padding: 30px 22px;
             }
         }
     </style>
@@ -244,23 +267,27 @@
 
 <body>
 
-    <!-- Первый экран -->
+    <!-- HERO -->
 
     <section class="hero">
 
         <div class="hero-content">
 
-            <div class="small-heart">❤️</div>
+            <div class="heart">❤️</div>
 
             <h1>Our Story</h1>
 
-            <p>
-                A story about two people,<br>
-                unexpected meetings and beautiful memories.
+            <div class="names">
+                Alex & Marina
+            </div>
+
+            <p class="hero-text">
+                Some stories are written in books.<br>
+                Ours is written in memories.
             </p>
 
             <div class="scroll">
-                ↓ Scroll to discover our story
+                ↓ Scroll down
             </div>
 
         </div>
@@ -268,125 +295,183 @@
     </section>
 
 
-    <!-- История -->
+    <!-- STORY -->
 
     <main class="content">
 
-        <div class="section-title">
+        <div class="title">
 
-            <h2>Our memories</h2>
+            <h2>How it all began 🌸</h2>
 
             <p>
-                Every little moment matters.
+                The first chapter of our story.
             </p>
 
         </div>
 
 
-        <!-- Первое воспоминание -->
+        <!-- FIRST MEMORY -->
 
         <div class="memory">
 
             <div class="date">
-                The beginning
+                Chapter 01
             </div>
 
-            <h3>🌸 The day we met</h3>
+            <h3>When we met</h3>
 
             <p>
-                Sometimes you meet someone without knowing
-                how important that person may become.
-                This is where our story began.
+                Two people met without knowing
+                how many memories would eventually
+                connect them.
             </p>
 
         </div>
 
 
-        <!-- Фото -->
+        <!-- FIRST DATE -->
 
         <div class="memory">
 
-            <div class="photo-placeholder">
+            <div class="date">
+                Chapter 02
+            </div>
+
+            <h3>Our first date ❤️</h3>
+
+            <div class="photo">
 
                 <span>
                     📸<br><br>
-                    Our first photo
+                    Our first date photo
                 </span>
 
             </div>
 
-            <h3>One moment</h3>
-
             <p>
-                A small moment that became
-                a part of our story.
+                One day, one meeting and one more
+                memory that became part of our story.
             </p>
 
         </div>
 
 
-        <!-- Второе воспоминание -->
+        <!-- TIMELINE -->
 
-        <div class="memory">
+        <div class="title">
 
-            <div class="date">
-                A memory
-            </div>
-
-            <h3>💕 Our time together</h3>
+            <h2>Our little timeline 📖</h2>
 
             <p>
-                Every conversation, every walk,
-                every laugh and every little detail
-                became something worth remembering.
+                Moments worth remembering.
             </p>
 
         </div>
 
 
-        <!-- Будущее -->
+        <div class="timeline">
 
-        <div class="memory">
+            <div class="timeline-item">
 
-            <div class="date">
-                The future
+                <div class="dot"></div>
+
+                <h3>🌸 The beginning</h3>
+
+                <p>
+                    The day our paths crossed.
+                </p>
+
             </div>
 
-            <h3>✨ To be continued...</h3>
+
+            <div class="timeline-item">
+
+                <div class="dot"></div>
+
+                <h3>💕 First memories</h3>
+
+                <p>
+                    The first conversations,
+                    walks and moments together.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="dot"></div>
+
+                <h3>📸 More memories</h3>
+
+                <p>
+                    More days, more photos
+                    and more things to remember.
+                </p>
+
+            </div>
+
+
+            <div class="timeline-item">
+
+                <div class="dot"></div>
+
+                <h3>✨ The story continues</h3>
+
+                <p>
+                    And this is only the beginning.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- LETTER -->
+
+        <div class="letter">
+
+            <h2>For Marina 💌</h2>
 
             <p>
-                Our story is still being written.
-                There are many places to see,
-                many memories to make,
-                and many chapters waiting for us.
+                Marina,<br><br>
+
+                I don't know exactly where our story
+                will take us or what the future will bring.
+
+                <br><br>
+
+                But I'm grateful that our paths crossed,
+                and I'm grateful for every memory
+                we have already created.
+
+                <br><br>
+
+                Some stories are impossible to plan.
+
+                <br>
+
+                You simply meet someone,
+                and suddenly they become
+                an important part of your story.
+
+                <br><br>
+
+                ❤️
             </p>
+
+        </div>
+
+
+        <div style="text-align: center;">
+
+            <a href="index.html" class="back">
+                ← Back to the beginning
+            </a>
 
         </div>
 
     </main>
-
-
-    <!-- Финал -->
-
-    <section class="final">
-
-        <div class="final-heart">
-            ❤️
-        </div>
-
-        <h2>For Marina</h2>
-
-        <p>
-            I don't know exactly what the future will bring,
-            but I'm grateful that our paths crossed.
-            And I'm happy that this story exists.
-        </p>
-
-        <a href="index.html" class="back-button">
-            ← Back to the beginning
-        </a>
-
-    </section>
 
 
     <footer>
