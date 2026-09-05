@@ -3,197 +3,189 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>For Marina ❤️</title>
 
 <style>
-    * {
-        box-sizing: border-box;
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fff1f5, #ffd6e1);
+    font-family: Georgia, serif;
+    text-align: center;
+    color: #7b2340;
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    padding: 35px 20px 60px;
+}
+
+h1 {
+    color: #8b1e3f;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    margin-bottom: 35px;
+    font-size: 18px;
+}
+
+/* RED ENVELOPE */
+
+.red-envelope {
+    width: 300px;
+    height: 190px;
+    margin: 0 auto;
+    background: #c6284f;
+    border-radius: 10px;
+    position: relative;
+    box-shadow: 0 15px 35px rgba(100,20,40,.25);
+}
+
+.red-envelope::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 105px solid #e75b78;
+}
+
+.heart {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 55px;
+    z-index: 2;
+}
+
+/* CLICK AREA */
+
+.open-button {
+    display: inline-block;
+    margin-top: 25px;
+    padding: 13px 25px;
+    background: #8b1e3f;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 17px;
+}
+
+/* HIDDEN CHECKBOX */
+
+#open {
+    display: none;
+}
+
+/* FOUR ENVELOPES */
+
+.letters {
+    display: none;
+    margin-top: 40px;
+}
+
+#open:checked ~ .letters {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.letter {
+    min-height: 120px;
+    border-radius: 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 55px;
+
+    cursor: pointer;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+
+.green {
+    background: #ddf3dc;
+}
+
+.pink {
+    background: #ffdce7;
+}
+
+.blue {
+    background: #dcecff;
+}
+
+.purple {
+    background: #eadcff;
+}
+
+/* LETTER TEXT */
+
+.message {
+    display: none;
+    margin-top: 25px;
+    background: white;
+    padding: 28px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.12);
+}
+
+.message:target {
+    display: block;
+}
+
+.message h2 {
+    color: #8b1e3f;
+}
+
+.message p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.back {
+    display: inline-block;
+    margin-top: 35px;
+    padding: 12px 24px;
+    background: #8b1e3f;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+}
+
+@media (max-width: 500px) {
+
+    .red-envelope {
+        width: 280px;
+        height: 175px;
     }
 
-    body {
-        margin: 0;
-        min-height: 100vh;
-        background: linear-gradient(135deg, #fff5f7, #ffd9e2);
-        font-family: Georgia, serif;
-        color: #7d2340;
-        text-align: center;
+    .red-envelope::before {
+        border-left-width: 140px;
+        border-right-width: 140px;
     }
 
-    .container {
-        width: 100%;
-        max-width: 700px;
-        margin: auto;
-        padding: 40px 20px;
-    }
-
-    h1 {
-        font-size: 32px;
-        margin-bottom: 10px;
-    }
-
-    .subtitle {
-        font-size: 18px;
-        margin-bottom: 40px;
-    }
-
-    /* MAIN ENVELOPE */
-
-    .envelope {
-        width: 300px;
-        height: 190px;
-        margin: 0 auto 25px;
-        background: #c6284f;
-        border-radius: 10px;
-        position: relative;
-        cursor: pointer;
-        box-shadow: 0 15px 35px rgba(100, 20, 40, 0.25);
-    }
-
-    .envelope-flap {
-        position: absolute;
-        top: 0;
-        left: 0;
-
-        width: 0;
-        height: 0;
-
-        border-left: 150px solid transparent;
-        border-right: 150px solid transparent;
-        border-top: 105px solid #e75b78;
-
-        transition: transform 0.7s;
-        transform-origin: top;
-        z-index: 2;
-    }
-
-    .envelope.open .envelope-flap {
-        transform: rotateX(180deg);
-    }
-
-    .heart {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 55px;
-        z-index: 5;
-    }
-
-    #instruction {
-        font-size: 18px;
-        margin-bottom: 30px;
-    }
-
-    /* FOUR ENVELOPES */
-
-    #letters {
-        display: none;
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-        margin-top: 30px;
-    }
-
-    #letters.visible {
-        display: grid;
+    #open:checked ~ .letters {
+        gap: 12px;
     }
 
     .letter {
-        height: 130px;
-        border-radius: 15px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 55px;
-        cursor: pointer;
-        box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-        transition: 0.3s;
+        min-height: 100px;
+        font-size: 45px;
     }
-
-    .letter:hover {
-        transform: translateY(-6px);
-    }
-
-    .green {
-        background: #dff3dc;
-    }
-
-    .pink {
-        background: #ffdce7;
-    }
-
-    .blue {
-        background: #dcecff;
-    }
-
-    .purple {
-        background: #e9dcff;
-    }
-
-    /* MESSAGE */
-
-    .message {
-        display: none;
-        margin-top: 30px;
-        padding: 30px;
-        background: white;
-        border-radius: 20px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    }
-
-    .message.visible {
-        display: block;
-    }
-
-    .message h2 {
-        margin-top: 0;
-        color: #8b1e3f;
-    }
-
-    .message p {
-        font-size: 18px;
-        line-height: 1.6;
-    }
-
-    .back {
-        display: inline-block;
-        margin-top: 40px;
-        padding: 12px 24px;
-        background: #8b1e3f;
-        color: white;
-        text-decoration: none;
-        border-radius: 25px;
-    }
-
-    @media (max-width: 500px) {
-
-        .container {
-            padding-top: 25px;
-        }
-
-        h1 {
-            font-size: 26px;
-        }
-
-        .envelope {
-            width: 280px;
-            height: 175px;
-        }
-
-        .envelope-flap {
-            border-left-width: 140px;
-            border-right-width: 140px;
-            border-top-width: 95px;
-        }
-
-        #letters {
-            gap: 12px;
-        }
-
-        .letter {
-            height: 105px;
-            font-size: 45px;
-        }
-    }
+}
 </style>
 </head>
 
@@ -201,179 +193,124 @@
 
 <div class="container">
 
-    <h1>A little something for you, Marina ❤️</h1>
+<h1>A little something for you, Marina ❤️</h1>
 
-    <div class="subtitle">
-        I left a few little messages here for you.
-    </div>
-
-
-    <!-- BIG RED ENVELOPE -->
-
-    <div
-        class="envelope"
-        id="mainEnvelope"
-        onclick="openEnvelope()"
-    >
-
-        <div class="envelope-flap"></div>
-
-        <div class="heart">❤️</div>
-
-    </div>
+<div class="subtitle">
+I left four little messages here for you.
+</div>
 
 
-    <div id="instruction">
-        Tap the red envelope ❤️
-    </div>
+<!-- CHECKBOX -->
+
+<input type="checkbox" id="open">
 
 
-    <!-- FOUR LITTLE ENVELOPES -->
+<!-- RED ENVELOPE -->
 
-    <div id="letters">
-
-        <div
-            class="letter green"
-            onclick="openLetter('luck')"
-        >
-            🍀
-        </div>
-
-        <div
-            class="letter pink"
-            onclick="openLetter('alone')"
-        >
-            🌸
-        </div>
-
-        <div
-            class="letter blue"
-            onclick="openLetter('strong')"
-        >
-            💙
-        </div>
-
-        <div
-            class="letter purple"
-            onclick="openLetter('rest')"
-        >
-            💜
-        </div>
-
-    </div>
+<div class="red-envelope">
+    <div class="heart">❤️</div>
+</div>
 
 
-    <!-- MESSAGES -->
-
-    <div id="luck" class="message">
-
-        <h2>A little luck for you 🍀</h2>
-
-        <p>
-            You can do anything in this life.
-        </p>
-
-        <p>
-            I believe in you, Marina. ❤️
-        </p>
-
-    </div>
+<label for="open" class="open-button">
+    Open the red envelope ❤️
+</label>
 
 
-    <div id="alone" class="message">
+<!-- FOUR ENVELOPES -->
 
-        <h2>You are not alone 🌸</h2>
+<div class="letters">
 
-        <p>
-            Even when it feels like you have to deal
-            with everything by yourself, remember that
-            you don't have to carry everything alone.
-        </p>
+    <a href="#luck" class="letter green">
+        🍀
+    </a>
 
-        <p>
-            I'm here. ❤️
-        </p>
+    <a href="#alone" class="letter pink">
+        🌸
+    </a>
 
-    </div>
+    <a href="#strong" class="letter blue">
+        💙
+    </a>
 
-
-    <div id="strong" class="message">
-
-        <h2>You are strong 💙</h2>
-
-        <p>
-            You are strong, Marina.
-        </p>
-
-        <p>
-            Whatever comes your way,
-            I believe you can handle it.
-        </p>
-
-    </div>
-
-
-    <div id="rest" class="message">
-
-        <h2>Don't forget yourself 💜</h2>
-
-        <p>
-            Don't forget to rest, Marina.
-        </p>
-
-        <p>
-            Sleep. Take a break. Breathe.
-        </p>
-
-        <p>
-            You don't always have to keep going.
-        </p>
-
-    </div>
-
-
-    <a class="back" href="story.html">
-        ← Back to our story
+    <a href="#rest" class="letter purple">
+        💜
     </a>
 
 </div>
 
 
-<script>
+<!-- MESSAGES -->
 
-function openEnvelope() {
+<div id="luck" class="message">
 
-    var envelope = document.getElementById("mainEnvelope");
-    var letters = document.getElementById("letters");
-    var instruction = document.getElementById("instruction");
+    <h2>A little luck for you 🍀</h2>
 
-    envelope.classList.add("open");
+    <p>
+        You can do anything in this life.
+    </p>
 
-    letters.classList.add("visible");
+    <p>
+        I believe in you, Marina. ❤️
+    </p>
 
-    instruction.innerHTML =
-        "Choose one little envelope ❤️";
-}
+</div>
 
 
-function openLetter(letterID) {
+<div id="alone" class="message">
 
-    var messages =
-        document.getElementsByClassName("message");
+    <h2>You are not alone 🌸</h2>
 
-    for (var i = 0; i < messages.length; i++) {
+    <p>
+        Even when it feels like you have to deal
+        with everything by yourself, remember that
+        you don't have to carry everything alone.
+    </p>
 
-        messages[i].classList.remove("visible");
+    <p>
+        I'm here. ❤️
+    </p>
 
-    }
+</div>
 
-    document
-        .getElementById(letterID)
-        .classList.add("visible");
 
-}
+<div id="strong" class="message">
 
-</script>
+    <h2>You are strong 💙</h2>
+
+    <p>
+        You are strong, Marina.
+    </p>
+
+    <p>
+        Whatever comes your way,
+        I believe you can handle it.
+    </p>
+
+</div>
+
+
+<div id="rest" class="message">
+
+    <h2>Don't forget yourself 💜</h2>
+
+    <p>
+        Don't forget to rest, Marina.
+    </p>
+
+    <p>
+        Sleep. Take a break. Breathe.
+        You don't always have to keep going.
+    </p>
+
+</div>
+
+
+<a href="story.html" class="back">
+    ← Back to our story
+</a>
+
+</div>
 
 </body>
 </html>
