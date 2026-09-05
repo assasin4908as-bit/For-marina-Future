@@ -1,0 +1,358 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Marina 🖤</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Georgia, serif;
+
+    background:
+        radial-gradient(circle at top, #30252b, #120f12 65%, #080709);
+
+    color: #eee;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px;
+}
+
+.container {
+    width: min(750px, 94%);
+    text-align: center;
+}
+
+h1 {
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: #b8aeb2;
+    font-size: 17px;
+    margin-bottom: 45px;
+}
+
+/* Envelope */
+
+.envelope-area {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.envelope {
+    width: 320px;
+    height: 205px;
+
+    position: relative;
+
+    background: #171419;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.7),
+        inset 0 0 0 1px rgba(255,255,255,0.08);
+
+    cursor: pointer;
+
+    transition: 0.5s;
+}
+
+.envelope:hover {
+    transform: translateY(-8px);
+}
+
+/* Flap */
+
+.flap {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-top: 110px solid #29232b;
+
+    transform-origin: top;
+
+    transition: 0.7s;
+
+    z-index: 3;
+}
+
+/* Bottom fold */
+
+.envelope::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+
+    border-left: 160px solid transparent;
+    border-right: 160px solid transparent;
+    border-bottom: 110px solid #0d0b0f;
+
+    z-index: 2;
+}
+
+/* Letter */
+
+.letter {
+    position: absolute;
+
+    left: 15px;
+    right: 15px;
+
+    bottom: 10px;
+
+    height: 175px;
+
+    background: #f7f1f3;
+
+    color: #3d3035;
+
+    border-radius: 6px;
+
+    padding: 25px;
+
+    overflow-y: auto;
+
+    opacity: 0;
+
+    transform: translateY(30px);
+
+    transition: 0.8s;
+
+    z-index: 1;
+}
+
+.letter h2 {
+    color: #5a3945;
+    margin-top: 0;
+}
+
+.letter h3 {
+    color: #704655;
+    margin-bottom: 8px;
+}
+
+.letter p {
+    line-height: 1.65;
+    margin-top: 5px;
+    margin-bottom: 22px;
+}
+
+/* Open */
+
+#open {
+    display: none;
+}
+
+#open:checked + label .flap {
+    transform: rotateX(180deg);
+}
+
+#open:checked + label .letter {
+    opacity: 1;
+    transform: translateY(-145px);
+    z-index: 4;
+}
+
+/* Hint */
+
+.hint {
+    margin-top: 40px;
+    color: #aaa0a5;
+}
+
+/* Back */
+
+.back {
+    display: inline-block;
+
+    margin-top: 30px;
+
+    padding: 13px 25px;
+
+    border-radius: 30px;
+
+    background: #eee;
+
+    color: #171419;
+
+    text-decoration: none;
+
+    transition: 0.3s;
+}
+
+.back:hover {
+    transform: scale(1.05);
+}
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    h1 {
+        font-size: 34px;
+    }
+
+    .envelope {
+        width: 280px;
+        height: 180px;
+    }
+
+    .flap {
+        border-left-width: 140px;
+        border-right-width: 140px;
+        border-top-width: 95px;
+    }
+
+    .envelope::before {
+        border-left-width: 140px;
+        border-right-width: 140px;
+        border-bottom-width: 95px;
+    }
+
+    .letter {
+        height: 155px;
+        padding: 18px;
+    }
+
+    #open:checked + label .letter {
+        transform: translateY(-125px);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>For Marina 🖤</h1>
+
+    <div class="subtitle">
+        Some things are easier to write than to say.
+    </div>
+
+
+    <div class="envelope-area">
+
+        <input type="checkbox" id="open">
+
+        <label for="open">
+
+            <div class="envelope">
+
+                <div class="flap"></div>
+
+                <div class="letter">
+
+                    <h2>Things I want you to know</h2>
+
+
+                    <h3>🌙 When I'm alone</h3>
+
+                    <p>
+                        When I'm alone, I miss you so much.
+                        Sometimes I just wish you were next to me,
+                        so I could see you, talk to you and simply be with you.
+                    </p>
+
+
+                    <h3>❤️ Waiting for you</h3>
+
+                    <p>
+                        I really want to see you.
+                        I look forward to every meeting with you,
+                        and even the waiting feels special because I know
+                        that soon I will see you again.
+                    </p>
+
+
+                    <h3>🤍 What you changed in me</h3>
+
+                    <p>
+                        Since you came into my life,
+                        I started taking better care of myself.
+                        And I also started caring more about someone
+                        I truly love and deeply cherish.
+                    </p>
+
+
+                    <h3>🖤 You</h3>
+
+                    <p>
+                        You are simply you, Marina.
+                        And that's what I love about you.
+                        I don't need you to be someone else.
+                        I love you for who you are.
+                    </p>
+
+
+                    <h3>♾️ Where life takes us</h3>
+
+                    <p>
+                        I don't know where life will take us.
+                        I don't know what our future will look like.
+                        But right now,
+                        I want to walk beside you.
+                        And for me, that's enough.
+                    </p>
+
+
+                    <p style="text-align:center; font-size:24px;">
+                        ❤️
+                    </p>
+
+                    <p style="text-align:center;">
+                        — Alex
+                    </p>
+
+                </div>
+
+            </div>
+
+        </label>
+
+    </div>
+
+
+    <div class="hint">
+        Click the black envelope to open it 🖤
+    </div>
+
+
+    <a href="story.html" class="back">
+        ← Back to our story
+    </a>
+
+</div>
+
+</body>
+</html>
+```
