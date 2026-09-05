@@ -1,0 +1,168 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #fff0f5, #ffe4ec);
+            color: #4a2632;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            text-align: center;
+        }
+
+        .heart {
+            font-size: 65px;
+            animation: heartbeat 1.5s infinite;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 19px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.8);
+            border-radius: 25px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(100, 40, 60, 0.15);
+            margin-bottom: 25px;
+        }
+
+        .card h2 {
+            margin-bottom: 15px;
+            font-size: 27px;
+        }
+
+        .card p {
+            font-size: 17px;
+            line-height: 1.7;
+        }
+
+        button {
+            border: none;
+            padding: 15px 28px;
+            border-radius: 30px;
+            font-size: 17px;
+            cursor: pointer;
+            background: #ff6f91;
+            color: white;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        #secret {
+            display: none;
+            margin-top: 25px;
+            font-size: 20px;
+            line-height: 1.7;
+        }
+
+        footer {
+            margin-top: 25px;
+            font-size: 14px;
+            opacity: 0.7;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="heart">❤️</div>
+
+        <h1>Our Story</h1>
+
+        <p class="subtitle">
+            A little place on the internet<br>
+            made especially for Marina.
+        </p>
+
+        <div class="card">
+            <h2>How it started 🌸</h2>
+
+            <p>
+                Sometimes the most important people
+                enter our lives unexpectedly.
+                And somehow, one meeting can become
+                the beginning of something beautiful.
+            </p>
+        </div>
+
+        <div class="card">
+            <h2>Our memories 📖</h2>
+
+            <p>
+                Every meeting, every conversation,
+                every little moment becomes a part
+                of our story.
+            </p>
+        </div>
+
+        <button onclick="showSecret()">
+            Open something for you ❤️
+        </button>
+
+        <div id="secret">
+            <p>
+                Marina,<br><br>
+                I don't know what the future will bring,
+                but I'm happy that our paths crossed.
+                ❤️
+            </p>
+        </div>
+
+        <footer>
+            Made with love ❤️
+        </footer>
+
+    </div>
+
+    <script>
+        function showSecret() {
+            document.getElementById("secret").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
+```
