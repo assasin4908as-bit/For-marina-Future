@@ -3,886 +3,2298 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Before You ❤️</title>
+
+<title>Before You — Alex ❤️</title>
 
 <style>
+
 * {
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     margin: 0;
     min-height: 100vh;
     background:
-        radial-gradient(circle at center, #20202a 0%, #09090d 65%, #030305 100%);
-    color: #eee;
-    font-family: Georgia, serif;
+        radial-gradient(circle at center, #211827 0%, #0b0910 65%, #050507 100%);
+    color: #f5edf5;
+    font-family: Georgia, "Times New Roman", serif;
     overflow-x: hidden;
 }
 
+/* =========================
+   BACK BUTTON
+========================= */
+
+.story-back {
+    position: fixed;
+    top: 22px;
+    left: 22px;
+    z-index: 1000;
+
+    color: #f7dce9;
+    text-decoration: none;
+
+    padding: 11px 18px;
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 30px;
+
+    background: rgba(10,8,14,.72);
+    backdrop-filter: blur(10px);
+
+    font-size: 14px;
+    letter-spacing: .5px;
+
+    transition: .3s;
+}
+
+.story-back:hover {
+    background: rgba(255,255,255,.1);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   BOOK
+========================= */
+
 .book-wrapper {
+    width: 100%;
     min-height: 100vh;
+
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 30px 15px;
+    justify-content: center;
+
+    padding: 80px 20px;
 }
 
 .book {
-    width: min(900px, 95vw);
-    min-height: 620px;
+    width: min(900px, 94vw);
+    min-height: 650px;
+
     position: relative;
+
     perspective: 1800px;
 }
+
+/* =========================
+   GENERAL PAGES
+========================= */
 
 .page {
     position: absolute;
     inset: 0;
-    min-height: 620px;
-    padding: 55px;
+
     border-radius: 8px;
-    background:
-        linear-gradient(135deg, #f4eee1, #ddd3c0);
-    color: #211d19;
-    box-shadow: 0 20px 60px rgba(0,0,0,.65);
+
     overflow: hidden;
-}
 
-.cover {
-    z-index: 20;
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.65),
+        0 0 0 1px rgba(255,255,255,.08);
+
     background:
-        radial-gradient(circle at center, #38252d, #120e13 70%);
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transform-origin: left center;
-    transition: transform 1.4s ease;
-}
-
-.cover.open {
-    transform: rotateY(-175deg);
-    pointer-events: none;
-}
-
-.cover h1 {
-    font-size: clamp(45px, 8vw, 80px);
-    margin: 10px 0;
-}
-
-.cover p {
-    color: #d9c6cb;
-    font-size: 18px;
-    max-width: 500px;
-}
-
-.open-btn,
-.next-btn,
-.back-btn {
-    border: 1px solid rgba(255,255,255,.3);
-    background: rgba(255,255,255,.1);
-    color: white;
-    padding: 13px 25px;
-    border-radius: 30px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 25px;
-}
-
-.open-btn:hover,
-.next-btn:hover,
-.back-btn:hover {
-    background: rgba(255,255,255,.2);
+        linear-gradient(
+            135deg,
+            #221b28,
+            #100e15
+        );
 }
 
 .content {
     display: none;
+
+    position: absolute;
+    inset: 0;
+
+    padding: 70px 80px;
+
+    overflow-y: auto;
+
+    animation: pageAppear .7s ease;
 }
 
 .content.active {
     display: block;
 }
 
-.page h1 {
-    font-size: 42px;
-    margin-top: 0;
+@keyframes pageAppear {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
-.page h2 {
-    font-size: 27px;
+.content h1 {
     margin-top: 0;
+
+    font-size: clamp(32px, 6vw, 54px);
+
+    color: #f6dce8;
+
+    letter-spacing: 1px;
 }
 
-.page p {
+.content h2 {
+    color: #eebbd1;
+
+    font-size: 25px;
+
+    margin-bottom: 30px;
+}
+
+.content h3 {
+    color: #f1c8d9;
+
+    margin-top: 35px;
+}
+
+.content p {
+    max-width: 720px;
+
     font-size: 18px;
-    line-height: 1.75;
+
+    line-height: 1.9;
+
+    color: #eee4ec;
 }
 
-.chapter-number {
-    color: #76545c;
-    text-transform: uppercase;
-    letter-spacing: 3px;
-    font-size: 13px;
+.content strong {
+    color: #fff;
 }
 
-.divider {
-    width: 70px;
-    height: 2px;
-    background: #76545c;
-    margin: 20px 0 30px;
-}
+/* =========================
+   COVER
+========================= */
 
-.controls {
-    position: absolute;
-    bottom: 25px;
-    left: 0;
-    right: 0;
+.cover {
+    z-index: 50;
+
     display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-.scene {
-    min-height: 470px;
-    border-radius: 15px;
-    background:
-        radial-gradient(circle at 50% 45%, #30303b 0%, #111117 35%, #050508 75%);
-    position: relative;
-    overflow: hidden;
-    display: none;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
+
     text-align: center;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(177,91,130,.28),
+            transparent 45%
+        ),
+        linear-gradient(
+            135deg,
+            #2b1624,
+            #0c0a10
+        );
+
+    transition:
+        transform 1.3s cubic-bezier(.77,0,.18,1),
+        opacity 1.3s;
+}
+
+.cover.open {
+    transform:
+        rotateY(-155deg)
+        translateX(-30%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+.cover-inner {
+    padding: 40px;
+}
+
+.cover-symbol {
+    font-size: 80px;
+
+    margin-bottom: 25px;
+
+    animation: heartbeat 2.5s infinite;
+}
+
+@keyframes heartbeat {
+    0%,100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+}
+
+.cover h1 {
+    margin: 0;
+
+    font-size: clamp(42px, 9vw, 80px);
+
+    color: #f8dce9;
+}
+
+.cover h2 {
+    margin-top: 12px;
+
+    font-weight: normal;
+
+    color: #cfa9ba;
+
+    letter-spacing: 3px;
+}
+
+.cover p {
+    max-width: 520px;
+
+    margin: 30px auto;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: #d8c8d2;
+}
+
+.open-button {
+    border: 1px solid rgba(255,255,255,.2);
+
+    background:
+        linear-gradient(
+            135deg,
+            #8e4567,
+            #5b2944
+        );
+
     color: white;
+
+    padding: 15px 35px;
+
+    border-radius: 40px;
+
+    font-family: inherit;
+    font-size: 17px;
+
+    cursor: pointer;
+
+    box-shadow: 0 10px 35px rgba(0,0,0,.35);
+
+    transition: .3s;
+}
+
+.open-button:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,.5);
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.page-nav {
+    display: flex;
+
+    gap: 12px;
+
+    margin-top: 45px;
+
+    flex-wrap: wrap;
+}
+
+.nav-button {
+    padding: 11px 20px;
+
+    border-radius: 30px;
+
+    border: 1px solid rgba(255,255,255,.15);
+
+    background: rgba(255,255,255,.06);
+
+    color: #f4dce7;
+
+    cursor: pointer;
+
+    font-family: inherit;
+
+    transition: .3s;
+}
+
+.nav-button:hover {
+    background: rgba(255,255,255,.13);
+
+    transform: translateY(-2px);
+}
+
+/* =========================
+   CHAPTER III
+   FOREST
+========================= */
+
+#chapter3 {
+    padding: 0;
+
+    background: #050608;
+}
+
+.forest-book {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 80%,
+            rgba(94,105,70,.15),
+            transparent 35%
+        ),
+        linear-gradient(
+            to bottom,
+            #05070a 0%,
+            #090d0d 50%,
+            #11140f 100%
+        );
+}
+
+/* moon */
+
+.moon {
+    position: absolute;
+
+    width: 100px;
+    height: 100px;
+
+    border-radius: 50%;
+
+    right: 13%;
+    top: 12%;
+
+    background: #d7d1c6;
+
+    box-shadow:
+        0 0 35px rgba(235,230,210,.35),
+        0 0 100px rgba(210,220,210,.12);
+
+    opacity: .7;
+}
+
+/* stars */
+
+.stars {
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.7) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,.4) 1px, transparent 1px);
+
+    background-size:
+        90px 100px,
+        150px 130px;
+
+    background-position:
+        20px 30px,
+        70px 80px;
+
+    opacity: .3;
+}
+
+/* =========================
+   TREES
+========================= */
+
+.trees {
+    position: absolute;
+
+    inset: 0;
+
+    pointer-events: none;
+}
+
+.tree-layer {
+    position: absolute;
+
+    bottom: -10px;
+
+    width: 100%;
+    height: 80%;
+
+    background-repeat: repeat-x;
+
+    background-position: bottom;
+
+    clip-path: polygon(
+        0 100%,
+        0 65%,
+        4% 55%,
+        7% 72%,
+        10% 45%,
+        14% 68%,
+        17% 40%,
+        21% 69%,
+        24% 50%,
+        28% 72%,
+        32% 42%,
+        36% 70%,
+        40% 52%,
+        44% 73%,
+        48% 39%,
+        52% 67%,
+        56% 47%,
+        60% 72%,
+        64% 44%,
+        68% 69%,
+        72% 38%,
+        76% 67%,
+        80% 50%,
+        84% 70%,
+        88% 42%,
+        92% 69%,
+        96% 48%,
+        100% 65%,
+        100% 100%
+    );
+}
+
+.tree-back {
+    background: #080b0a;
+
+    opacity: .75;
+
+    transform: scale(1.1);
+}
+
+.tree-middle {
+    background: #050706;
+
+    opacity: .9;
+
+    transform: scale(1.18);
+}
+
+.tree-front {
+    background: #020303;
+
+    transform: scale(1.3);
+
+    bottom: -50px;
+}
+
+/* tree trunks */
+
+.trunk {
+    position: absolute;
+
+    bottom: -30px;
+
+    width: 45px;
+    height: 65%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #020303,
+            #10120f,
+            #020303
+        );
+
+    transform-origin: bottom;
+
+    opacity: .9;
+}
+
+.trunk:nth-child(1) {
+    left: 5%;
+    transform: rotate(-4deg);
+}
+
+.trunk:nth-child(2) {
+    left: 17%;
+    height: 75%;
+    transform: rotate(3deg);
+}
+
+.trunk:nth-child(3) {
+    left: 29%;
+    height: 60%;
+    transform: rotate(-5deg);
+}
+
+.trunk:nth-child(4) {
+    right: 25%;
+    height: 70%;
+    transform: rotate(4deg);
+}
+
+.trunk:nth-child(5) {
+    right: 12%;
+    height: 80%;
+    transform: rotate(-3deg);
+}
+
+.trunk:nth-child(6) {
+    right: 3%;
+    height: 62%;
+    transform: rotate(5deg);
+}
+
+/* =========================
+   FOG
+========================= */
+
+.fog {
+    position: absolute;
+
+    left: -20%;
+    width: 140%;
+    height: 170px;
+
+    border-radius: 50%;
+
+    filter: blur(28px);
+
+    pointer-events: none;
+}
+
+.fog-one {
+    bottom: 28%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(190,202,196,.17),
+            rgba(190,202,196,.02) 70%
+        );
+
+    animation: fogMoveOne 18s ease-in-out infinite alternate;
+}
+
+.fog-two {
+    bottom: 38%;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(180,190,190,.12),
+            rgba(180,190,190,0) 70%
+        );
+
+    animation: fogMoveTwo 25s ease-in-out infinite alternate;
+}
+
+.fog-three {
+    bottom: 18%;
+
+    height: 220px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(220,225,215,.13),
+            transparent 70%
+        );
+
+    animation: fogMoveThree 30s ease-in-out infinite alternate;
+}
+
+.fog-four {
+    bottom: 48%;
+
+    height: 120px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(205,215,210,.09),
+            transparent 70%
+        );
+
+    animation: fogMoveFour 22s ease-in-out infinite alternate;
+}
+
+@keyframes fogMoveOne {
+    from {
+        transform: translateX(-8%) scale(1);
+    }
+
+    to {
+        transform: translateX(18%) scale(1.15);
+    }
+}
+
+@keyframes fogMoveTwo {
+    from {
+        transform: translateX(15%) scale(1.15);
+    }
+
+    to {
+        transform: translateX(-15%) scale(.95);
+    }
+}
+
+@keyframes fogMoveThree {
+    from {
+        transform: translateX(-12%) scale(.9);
+    }
+
+    to {
+        transform: translateX(12%) scale(1.2);
+    }
+}
+
+@keyframes fogMoveFour {
+    from {
+        transform: translateX(12%);
+    }
+
+    to {
+        transform: translateX(-15%);
+    }
+}
+
+/* =========================
+   FOREST SCENES
+========================= */
+
+.scene {
+    position: absolute;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    padding: 40px;
+
+    animation: sceneIn 1.2s ease;
 }
 
 .scene.active {
     display: flex;
 }
 
+@keyframes sceneIn {
+    from {
+        opacity: 0;
+        transform: scale(.97);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.scene-inner {
+    position: relative;
+
+    z-index: 20;
+
+    max-width: 650px;
+}
+
+.scene-symbol {
+    font-size: 75px;
+
+    margin-bottom: 20px;
+
+    filter:
+        drop-shadow(
+            0 0 20px rgba(255,255,255,.18)
+        );
+}
+
 .scene h2 {
-    font-size: 32px;
+    font-size: clamp(30px, 6vw, 48px);
+
+    color: #eee0e8;
 }
 
 .scene p {
-    max-width: 600px;
-    padding: 0 20px;
-    color: #ddd;
+    font-size: 18px;
+
+    line-height: 1.8;
+
+    color: #ddd3da;
 }
 
-.click-object {
-    font-size: 75px;
-    cursor: pointer;
-    filter: drop-shadow(0 0 15px rgba(255,255,255,.25));
-    transition: transform .3s;
+/* =========================
+   LANTERN
+========================= */
+
+.lantern {
+    position: relative;
+
+    width: 55px;
+    height: 85px;
+
+    margin: 0 auto 30px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #30261d,
+            #8b6a40,
+            #30261d
+        );
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 0 30px #dcae63,
+        0 0 90px rgba(220,174,99,.45);
 }
 
-.click-object:hover {
-    transform: scale(1.12);
-}
+.lantern::before {
+    content: "";
 
-.fog {
     position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(circle at 20% 60%, rgba(210,210,220,.08), transparent 20%),
-        radial-gradient(circle at 75% 40%, rgba(210,210,220,.07), transparent 25%);
-    pointer-events: none;
+
+    width: 20px;
+    height: 20px;
+
+    left: 18px;
+    top: 30px;
+
+    border-radius: 50%;
+
+    background: #fff1b5;
+
+    box-shadow:
+        0 0 25px #fff0a0,
+        0 0 70px #dcae63;
 }
 
-.dark {
-    background:
-        radial-gradient(circle at center, #191922, #030305 75%);
+.lantern::after {
+    content: "";
+
+    position: absolute;
+
+    width: 35px;
+    height: 10px;
+
+    top: -10px;
+    left: 10px;
+
+    border: 4px solid #59442d;
+
+    border-bottom: none;
+
+    border-radius: 20px 20px 0 0;
 }
 
-.forest {
+/* =========================
+   BOY IN FOG
+========================= */
+
+.boy {
+    font-size: 95px;
+
+    opacity: .35;
+
+    filter:
+        blur(1px)
+        drop-shadow(0 0 25px rgba(180,190,180,.2));
+
+    animation:
+        boyAppear 5s ease forwards,
+        boyBreath 5s ease-in-out infinite alternate;
+}
+
+@keyframes boyAppear {
+    from {
+        opacity: 0;
+        transform: translateY(35px);
+        filter: blur(8px);
+    }
+
+    to {
+        opacity: .65;
+        transform: translateY(0);
+        filter: blur(1px);
+    }
+}
+
+@keyframes boyBreath {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-5px);
+    }
+}
+
+/* =========================
+   KNIGHT
+========================= */
+
+.knight {
+    font-size: 100px;
+
+    filter:
+        drop-shadow(
+            0 0 25px rgba(180,190,210,.18)
+        );
+
+    animation: knightAppear 2s ease;
+}
+
+@keyframes knightAppear {
+    from {
+        opacity: 0;
+        transform: translateX(-60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* =========================
+   GRAVE
+========================= */
+
+.grave {
+    font-size: 100px;
+
+    filter:
+        drop-shadow(
+            0 0 25px rgba(180,180,180,.15)
+        );
+}
+
+/* =========================
+   LIGHT
+========================= */
+
+.light-scene {
     background:
-        linear-gradient(rgba(4,5,8,.35), rgba(2,3,5,.9)),
-        radial-gradient(circle at center, #18201a, #050806 75%);
+        radial-gradient(
+            circle,
+            rgba(255,255,230,.35),
+            rgba(255,255,255,.05) 30%,
+            transparent 65%
+        );
+}
+
+.light-symbol {
+    font-size: 110px;
+
+    animation: lightPulse 3s ease-in-out infinite;
+}
+
+@keyframes lightPulse {
+    0%,100% {
+        transform: scale(.9);
+
+        filter:
+            drop-shadow(
+                0 0 20px rgba(255,255,255,.25)
+            );
+    }
+
+    50% {
+        transform: scale(1.15);
+
+        filter:
+            drop-shadow(
+                0 0 70px rgba(255,255,255,.65)
+            );
+    }
+}
+
+/* =========================
+   RIVER
+========================= */
+
+.river-scene {
+    background:
+        linear-gradient(
+            to bottom,
+            #050608 0%,
+            #071013 60%,
+            #07171b 100%
+        );
 }
 
 .river {
+    position: absolute;
+
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 32%;
+
     background:
-        linear-gradient(#111923, #05070b);
+        repeating-linear-gradient(
+            -8deg,
+            rgba(130,190,200,.15) 0,
+            rgba(130,190,200,.15) 2px,
+            transparent 2px,
+            transparent 18px
+        );
+
+    animation: riverMove 5s linear infinite;
 }
 
-.light {
-    background:
-        radial-gradient(circle at center, #e5d9a8 0%, #554e32 20%, #08090a 65%);
+@keyframes riverMove {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 160px 0;
+    }
 }
 
-.knight {
+/* =========================
+   SUNRISE
+========================= */
+
+.sunrise {
     background:
-        radial-gradient(circle at center, #332a2d, #080708 70%);
+        radial-gradient(
+            circle at 50% 80%,
+            rgba(245,186,125,.55),
+            rgba(190,110,120,.15) 35%,
+            transparent 70%
+        ),
+        linear-gradient(
+            to bottom,
+            #111321,
+            #4c3440,
+            #a85f58
+        );
 }
 
-.grave {
+/* =========================
+   CHAPTER IV
+========================= */
+
+#chapter4 {
     background:
-        radial-gradient(circle at center, #25242a, #050507 75%);
+        radial-gradient(
+            circle at center,
+            rgba(110,76,88,.15),
+            transparent 60%
+        ),
+        #0d0b10;
 }
 
 .train-scene {
-    background:
-        linear-gradient(to bottom, #10131c 0%, #050609 65%);
-    position: relative;
+    min-height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    animation: trainFade 1s ease;
 }
 
-.moon {
-    position: absolute;
-    top: 35px;
-    right: 50px;
-    font-size: 55px;
-}
-
-.train {
+.train-icon {
     font-size: 100px;
-    cursor: pointer;
-    transition: transform .4s;
+
+    margin-bottom: 20px;
+
+    animation: trainMove 3s ease-in-out infinite alternate;
 }
 
-.train:hover {
-    transform: translateX(20px);
+@keyframes trainMove {
+    from {
+        transform: translateX(-25px);
+    }
+
+    to {
+        transform: translateX(25px);
+    }
 }
 
 .country {
-    font-size: 70px;
-    margin: 15px;
+    font-size: 85px;
+
+    margin-bottom: 20px;
 }
 
-.station {
-    font-size: 15px;
-    letter-spacing: 4px;
-    color: #aaa;
+.achievement {
+    font-size: 75px;
 }
 
-.locked {
+/* =========================
+   LOCKED
+========================= */
+
+.locked-page {
     text-align: center;
-    padding-top: 100px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
 }
 
-.lock {
-    font-size: 70px;
+.lock-icon {
+    font-size: 100px;
+
+    margin-bottom: 20px;
+
+    animation: lockFloat 3s ease-in-out infinite;
 }
 
-.locked p {
-    color: #777;
-}
-
-@media (max-width: 650px) {
-    .page {
-        padding: 30px 25px 75px;
+@keyframes lockFloat {
+    0%,100% {
+        transform: translateY(0);
     }
 
-    .page h1 {
-        font-size: 31px;
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.locked-page h1 {
+    color: #dcb4c8;
+}
+
+.locked-page p {
+    max-width: 500px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+    .content {
+        padding: 65px 28px 40px;
     }
 
-    .page p {
+    .content p {
         font-size: 16px;
+
+        line-height: 1.75;
     }
 
-    .book,
-    .page {
-        min-height: 700px;
+    .book {
+        min-height: 720px;
+    }
+
+    .story-back {
+        top: 12px;
+        left: 12px;
+
+        font-size: 12px;
+
+        padding: 9px 14px;
+    }
+
+    .cover-symbol {
+        font-size: 65px;
     }
 
     .scene {
-        min-height: 540px;
+        padding: 25px;
+    }
+
+    .scene-symbol {
+        font-size: 60px;
+    }
+
+    .scene p {
+        font-size: 16px;
+    }
+
+    .moon {
+        width: 70px;
+        height: 70px;
+
+        right: 8%;
+    }
+
+    .fog {
+        height: 130px;
     }
 }
+
 </style>
 </head>
 
 <body>
 
+<a href="story.html" class="story-back">
+    ← Back to Our Story
+</a>
+
 <div class="book-wrapper">
+
 <div class="book">
 
-<!-- COVER -->
+<!-- =========================
+     COVER
+========================= -->
 
 <div class="page cover" id="cover">
-    <div style="font-size:60px;">❤️</div>
-    <h1>Before You</h1>
-    <p>The story of who I was before you came into my life.</p>
-    <button class="open-btn" onclick="openBook()">Open the book</button>
+
+    <div class="cover-inner">
+
+        <div class="cover-symbol">
+            📖
+        </div>
+
+        <h1>Before You</h1>
+
+        <h2>Alex</h2>
+
+        <p>
+            The story of who I was
+            before you came into my life.
+        </p>
+
+        <p>
+            My childhood.<br>
+            My fears.<br>
+            The things that hurt me.<br>
+            The life I built.<br>
+            And the dreams I still have.
+        </p>
+
+        <button
+            class="open-button"
+            onclick="openBook()">
+            Open the book ❤️
+        </button>
+
+    </div>
+
 </div>
 
 
-<!-- CHAPTER I -->
+<!-- =========================
+     CHAPTER I
+========================= -->
 
 <div class="page content active" id="page1">
-    <div class="chapter-number">Chapter I</div>
-    <h1>Who I Am</h1>
-    <div class="divider"></div>
 
-    <p>My name is Alex.</p>
+    <h1>Chapter I</h1>
+
+    <h2>Who I Am</h2>
 
     <p>
-    I am a kind, calm and caring person. I always try to care about
-    the people who are important to me and make them feel good.
+        My name is Alex.
     </p>
 
     <p>
-    I love walking around the city, watching anime, and making other
-    people happy.
+        I am a kind, calm and caring person.
+        I always try to care about the people
+        who are important to me and make them
+        feel good.
     </p>
 
     <p>
-    One of the things I want most in life is to help people.
-    I want to be someone who can make another person's life a little easier.
+        Sometimes I can be stubborn about some
+        things, but I know that this is also
+        a part of who I am.
     </p>
 
     <p>
-    I have dreams. I want to keep moving forward and become the person
-    I want to be.
+        I love walking around the city,
+        watching anime, and making other
+        people happy.
     </p>
 
-    <div class="controls">
-        <button class="next-btn" onclick="showPage('page2')">Turn the page →</button>
+    <p>
+        Sometimes, seeing someone smile because
+        of something I did means more to me
+        than anything else.
+    </p>
+
+    <p>
+        One of the things I want most in life
+        is to help people.
+    </p>
+
+    <p>
+        I want to be someone who can make
+        another person's life a little easier,
+        even if it is just through small things.
+    </p>
+
+    <p>
+        I also want to live beside the person
+        I truly love.
+    </p>
+
+    <p>
+        I don't need a perfect life.
+        I just want to have someone important
+        beside me, share ordinary days together,
+        help each other and keep moving forward.
+    </p>
+
+    <p>
+        Right now, I may be a little tired of life.
+        There are moments when everything feels
+        difficult.
+    </p>
+
+    <p>
+        But I know that I cannot stop here.
+    </p>
+
+    <p>
+        <strong>I have dreams.</strong>
+    </p>
+
+    <p>
+        I want to change my laziness.
+        I want to stop wasting the time I have
+        and dedicate myself to the things
+        I truly want.
+    </p>
+
+    <p>
+        I don't know exactly where my life
+        will take me.
+    </p>
+
+    <p>
+        But I know that I want to keep moving
+        forward.
+    </p>
+
+    <p>
+        And maybe this book is one small step
+        toward becoming the person I want to be.
+    </p>
+
+    <div class="page-nav">
+
+        <button
+            class="nav-button"
+            onclick="showPage('page2')">
+            Next chapter →
+        </button>
+
     </div>
+
 </div>
 
 
-<!-- CHAPTER II -->
+<!-- =========================
+     CHAPTER II
+========================= -->
 
 <div class="page content" id="page2">
-    <div class="chapter-number">Chapter II</div>
-    <h1>Where I Came From</h1>
-    <div class="divider"></div>
+
+    <h1>Chapter II</h1>
+
+    <h2>Where I Came From</h2>
 
     <p>
-    I was born in Zhytomyr, Ukraine, on June 21, 2006.
+        I was born in Zhytomyr, Ukraine,
+        in April 2006.
     </p>
 
     <p>
-    When I was a child, I was quiet. I mostly kept things inside
-    and watched what was happening around me.
+        When I was a child, I was quiet.
+        I was not the loudest person in the room.
+        I mostly kept things inside and watched
+        what was happening around me.
     </p>
 
     <p>
-    I remember trips to Lake Svitiaz with my father.
-    I remember going to the cinema and parks with my brothers.
+        Some of my childhood memories are
+        connected with my family.
     </p>
 
     <p>
-    Then I lost my father.
-    Losing him changed me.
+        I remember trips to Lake Svitiaz
+        with my father.
     </p>
 
     <p>
-    I still remember his words:
-    <br><br>
-    <i>Do good for the person you value, and always protect them.</i>
+        I remember going to the cinema and parks
+        with my brothers.
     </p>
 
     <p>
-    Life was not always kind to me.
-    But I did not break.
-    I kept going.
+        These may seem like simple moments,
+        but they became part of my memories
+        and part of who I am.
     </p>
 
-    <div class="controls">
-        <button class="back-btn" onclick="showPage('page1')">← Back</button>
-        <button class="next-btn" onclick="showPage('chapter3')">Chapter III →</button>
+    <p>
+        Then I lost my father.
+    </p>
+
+    <p>
+        <strong>Losing him changed me.</strong>
+    </p>
+
+    <p>
+        There are things people leave behind
+        even when they are no longer with us.
+    </p>
+
+    <p>
+        For me, one of those things were
+        my father's words:
+    </p>
+
+    <p>
+        <em>
+            "Do good for the person you value,
+            and always protect them."
+        </em>
+    </p>
+
+    <p>
+        I still remember those words.
+    </p>
+
+    <p>
+        My independent life started when I was
+        sixteen, when I got my first job.
+    </p>
+
+    <p>
+        From that moment, I started learning
+        what it means to take responsibility
+        for myself and my own life.
+    </p>
+
+    <p>
+        Life was not always kind to me.
+    </p>
+
+    <p>
+        I experienced betrayal from friends.
+        I experienced loneliness.
+        I lost people who were important to me.
+    </p>
+
+    <p>
+        There were periods when life became
+        very difficult for me emotionally.
+    </p>
+
+    <p>
+        But I did not break.
+    </p>
+
+    <p>
+        <strong>I kept going.</strong>
+    </p>
+
+    <p>
+        Even without what I would call
+        a normal education, I still managed
+        to build my own path and show people
+        that I could become someone they
+        could look up to.
+    </p>
+
+    <p>
+        Maybe my story is not perfect.
+    </p>
+
+    <p>
+        Maybe I made many mistakes.
+    </p>
+
+    <p>
+        But everything I went through
+        made me stronger.
+    </p>
+
+    <p>
+        And I am still here.
+    </p>
+
+    <p>
+        Still moving forward.
+    </p>
+
+    <p>
+        Still trying to become better
+        than the person I was yesterday.
+    </p>
+
+    <div class="page-nav">
+
+        <button
+            class="nav-button"
+            onclick="showPage('page1')">
+            ← Previous
+        </button>
+
+        <button
+            class="nav-button"
+            onclick="showPage('chapter3')">
+            Enter the forest →
+        </button>
+
     </div>
+
 </div>
 
 
-<!-- CHAPTER III -->
+<!-- =========================
+     CHAPTER III
+========================= -->
 
 <div class="page content" id="chapter3">
 
-    <div class="chapter-number">Chapter III</div>
-    <h1>The Things That Hurt</h1>
+<div class="forest-book">
 
-    <div class="scene active dark" id="scene1">
-        <div class="fog"></div>
+    <div class="stars"></div>
 
-        <div class="click-object" onclick="nextScene(2)">
-            🏮
+    <div class="moon"></div>
+
+    <div class="trees">
+
+        <div class="tree-layer tree-back"></div>
+        <div class="tree-layer tree-middle"></div>
+        <div class="tree-layer tree-front"></div>
+
+        <div class="trunk"></div>
+        <div class="trunk"></div>
+        <div class="trunk"></div>
+        <div class="trunk"></div>
+        <div class="trunk"></div>
+        <div class="trunk"></div>
+
+    </div>
+
+    <div class="fog fog-one"></div>
+    <div class="fog fog-two"></div>
+    <div class="fog fog-three"></div>
+    <div class="fog fog-four"></div>
+
+
+    <!-- SCENE 1 -->
+
+    <div class="scene active" id="scene1">
+
+        <div class="scene-inner">
+
+            <div class="lantern"></div>
+
+            <h2>
+                Chapter III
+            </h2>
+
+            <p>
+                Some things are easier to hide
+                in the dark.
+            </p>
+
+            <p>
+                If you want to know me,
+                you have to walk through
+                the places I don't usually show.
+            </p>
+
+            <button
+                class="nav-button"
+                onclick="nextScene(2)">
+                Walk into the forest →
+            </button>
+
         </div>
 
-        <h2>The Lantern</h2>
-
-        <p>
-        Some things are easier to see in the dark.
-        </p>
-
-        <p>
-        Click the flame.
-        </p>
     </div>
 
 
-    <div class="scene forest" id="scene2">
-        <div class="fog"></div>
+    <!-- SCENE 2 -->
 
-        <div class="click-object" onclick="nextScene(3)">
-            👦
+    <div class="scene" id="scene2">
+
+        <div class="scene-inner">
+
+            <div class="boy">
+                👦
+            </div>
+
+            <h2>
+                The Boy
+            </h2>
+
+            <p>
+                I am afraid of losing someone close
+                to me.
+            </p>
+
+            <p>
+                There are people who become so
+                important to us that the thought
+                of losing them becomes one of
+                our biggest fears.
+            </p>
+
+            <button
+                class="nav-button"
+                onclick="nextScene(3)">
+                Keep walking →
+            </button>
+
         </div>
 
-        <h2>The Boy</h2>
-
-        <p>
-        Somewhere inside the darkness, there is a little boy.
-        </p>
-
-        <p>
-        He is afraid.
-        He doesn't know where to go.
-        </p>
-
-        <p>
-        Click on him.
-        </p>
     </div>
 
 
-    <div class="scene knight" id="scene3">
+    <!-- SCENE 3 -->
 
-        <div class="click-object" onclick="nextScene(4)">
-            ⚔️
+    <div class="scene" id="scene3">
+
+        <div class="scene-inner">
+
+            <div class="knight">
+                ⚔️
+            </div>
+
+            <h2>
+                The Wounded Knight
+            </h2>
+
+            <p>
+                Betrayal always hurts the most
+                when it comes from someone
+                you trusted.
+            </p>
+
+            <p>
+                I learned that trust can be broken
+                in a moment.
+            </p>
+
+            <p>
+                Sometimes the deepest wounds are
+                not caused by strangers, but by
+                people we believed would never hurt us.
+            </p>
+
+            <button
+                class="nav-button"
+                onclick="nextScene(4)">
+                Continue →
+            </button>
+
         </div>
 
-        <h2>The Wounded Knight</h2>
-
-        <p>
-        Betrayal hurts the most when it comes from someone you trusted.
-        </p>
-
-        <p>
-        Sometimes the deepest wounds are caused by people
-        we believed would never hurt us.
-        </p>
-
-        <p>
-        Click the sword.
-        </p>
     </div>
 
 
-    <div class="scene grave" id="scene4">
+    <!-- SCENE 4 -->
 
-        <div class="click-object" onclick="nextScene(5)">
-            🪦
+    <div class="scene" id="scene4">
+
+        <div class="scene-inner">
+
+            <div class="grave">
+                🪦
+            </div>
+
+            <h2>
+                The Grave
+            </h2>
+
+            <p>
+                The people close to me are gone,
+                but I will always remember them.
+            </p>
+
+            <p>
+                Some people leave our lives,
+                but they never leave our memories.
+            </p>
+
+            <p>
+                I carry their memories with me.
+            </p>
+
+            <p>
+                I remember them.
+            </p>
+
+            <p>
+                <strong>
+                    And I always will.
+                </strong>
+            </p>
+
+            <button
+                class="nav-button"
+                onclick="nextScene(5)">
+                Continue →
+            </button>
+
         </div>
 
-        <h2>The Grave</h2>
-
-        <p>
-        Some people leave our lives,
-        but they never leave our memories.
-        </p>
-
-        <p>
-        I remember them.
-        And I always will.
-        </p>
-
-        <p>
-        Click the grave.
-        </p>
     </div>
 
 
-    <div class="scene light" id="scene5">
+    <!-- SCENE 5 -->
 
-        <div class="click-object" onclick="nextScene(6)">
-            ✨
+    <div class="scene light-scene" id="scene5">
+
+        <div class="scene-inner">
+
+            <div class="light-symbol">
+                ✨
+            </div>
+
+            <h2>
+                The Light
+            </h2>
+
+            <p>
+                Never give up.
+            </p>
+
+            <p>
+                There were moments when life
+                felt too heavy.
+            </p>
+
+            <p>
+                There were moments when I could
+                have stopped walking.
+            </p>
+
+            <p>
+                But I didn't.
+            </p>
+
+            <p>
+                I kept going.
+            </p>
+
+            <button
+                class="nav-button"
+                onclick="nextScene(6)">
+                Follow the light →
+            </button>
+
         </div>
 
-        <h2>Never Give Up</h2>
-
-        <p>
-        There were moments when life felt too heavy.
-        </p>
-
-        <p>
-        There were moments when I could have stopped walking.
-        </p>
-
-        <p>
-        But I didn't.
-        </p>
-
-        <p>
-        I kept going.
-        </p>
-
-        <p>
-        Click the light.
-        </p>
     </div>
 
 
-    <div class="scene river" id="scene6">
+    <!-- SCENE 6 -->
 
-        <div class="click-object" onclick="nextScene(7)">
-            👦🌊
+    <div class="scene river-scene" id="scene6">
+
+        <div class="river"></div>
+
+        <div class="scene-inner">
+
+            <div class="boy">
+                👦
+            </div>
+
+            <h2>
+                The Boy Again
+            </h2>
+
+            <p>
+                The boy I saw in the darkness
+                is waiting for me again.
+            </p>
+
+            <p>
+                But this time,
+                he isn't alone.
+            </p>
+
+            <p>
+                He walks forward
+                and shows me the way.
+            </p>
+
+            <p>
+                There is a river ahead.
+            </p>
+
+            <p>
+                I follow him.
+            </p>
+
+            <p>
+                Step by step.
+            </p>
+
+            <button
+                class="nav-button"
+                onclick="nextScene(7)">
+                Cross the river →
+            </button>
+
         </div>
 
-        <h2>The River</h2>
-
-        <p>
-        The boy is waiting for me again.
-        </p>
-
-        <p>
-        But this time, he isn't alone.
-        </p>
-
-        <p>
-        He walks forward and shows me the way.
-        </p>
-
-        <p>
-        There is a river ahead.
-        </p>
-
-        <p>
-        Follow him.
-        </p>
     </div>
 
 
-    <div class="scene light" id="scene7">
+    <!-- SCENE 7 -->
 
-        <div class="click-object" onclick="showPage('chapter4')">
-            🌅
+    <div class="scene sunrise" id="scene7">
+
+        <div class="scene-inner">
+
+            <div class="scene-symbol">
+                🌅
+            </div>
+
+            <h2>
+                The Other Side
+            </h2>
+
+            <p>
+                Life doesn't end here.
+            </p>
+
+            <p>
+                The forest is behind me now.
+            </p>
+
+            <p>
+                The darkness is behind me.
+            </p>
+
+            <p>
+                I don't know what waits ahead.
+            </p>
+
+            <p>
+                I don't know what the future
+                will bring.
+            </p>
+
+            <p>
+                But I know one thing:
+            </p>
+
+            <p>
+                <strong>
+                    I will keep walking.
+                </strong>
+            </p>
+
+            <p>
+                There is always another road ahead.
+            </p>
+
+            <p>
+                And as long as I can take another
+                step, my story isn't over.
+            </p>
+
+            <button
+                class="nav-button"
+                onclick="showPage('chapter4')">
+                Chapter IV →
+            </button>
+
         </div>
 
-        <h2>The Other Side</h2>
-
-        <p>
-        Life doesn't end here.
-        </p>
-
-        <p>
-        The forest is behind me now.
-        The darkness is behind me.
-        </p>
-
-        <p>
-        I don't know what waits ahead.
-        </p>
-
-        <p>
-        But I know one thing:
-        </p>
-
-        <p>
-        <strong>I will keep walking.</strong>
-        </p>
-
-        <p>
-        Click the light to continue.
-        </p>
     </div>
 
 </div>
 
+</div>
 
-<!-- CHAPTER IV -->
+
+<!-- =========================
+     CHAPTER IV
+========================= -->
 
 <div class="page content" id="chapter4">
 
-    <div class="chapter-number">Chapter IV</div>
-    <h1>The Life I Built</h1>
+    <div class="train-scene" id="train1">
 
-    <div class="scene active train-scene" id="train1">
+        <div>
 
-        <div class="moon">🌙</div>
+            <div class="train-icon">
+                🚆
+            </div>
 
-        <div class="train" onclick="trainNext(2)">
-            🚆
+            <h1>
+                Chapter IV
+            </h1>
+
+            <h2>
+                The Life I Built
+            </h2>
+
+            <p>
+                After everything I went through,
+                my life started to change.
+            </p>
+
+            <p>
+                I began building my own path.
+            </p>
+
+            <button
+                class="nav-button"
+                onclick="trainNext(2)">
+                Continue →
+            </button>
+
         </div>
 
-        <h2>The Journey</h2>
-
-        <p>
-        After everything I went through,
-        my life started to change.
-        </p>
-
-        <p>
-        I began building my own path.
-        </p>
-
-        <p>
-        A train became a symbol of my life.
-        You leave one station behind
-        and travel toward another.
-        </p>
-
-        <p>
-        Click the train.
-        </p>
     </div>
 
 
-    <div class="scene train-scene" id="train2">
+    <div class="train-scene" id="train2">
 
-        <div class="moon">🌙</div>
+        <div>
 
-        <div class="country">🇦🇹</div>
+            <div class="country">
+                🇦🇹
+            </div>
 
-        <div class="station">
-            AUSTRIA
+            <h2>
+                Austria
+            </h2>
+
+            <p>
+                One of the countries I saw
+                during my journey.
+            </p>
+
+            <button
+                class="nav-button"
+                onclick="trainNext(3)">
+                Next country →
+            </button>
+
         </div>
 
-        <p>
-        One station.
-        One country.
-        One more memory.
-        </p>
-
-        <div class="click-object" onclick="trainNext(3)">
-            🚆
-        </div>
     </div>
 
 
-    <div class="scene train-scene" id="train3">
+    <div class="train-scene" id="train3">
 
-        <div class="moon">🌙</div>
+        <div>
 
-        <div class="country">🇨🇿</div>
+            <div class="country">
+                🇨🇿
+            </div>
 
-        <div class="station">
-            CZECHIA
+            <h2>
+                Czechia
+            </h2>
+
+            <p>
+                Another place that became
+                part of my journey.
+            </p>
+
+            <button
+                class="nav-button"
+                onclick="trainNext(4)">
+                Next country →
+            </button>
+
         </div>
 
-        <p>
-        Different streets.
-        Different people.
-        Something new around every corner.
-        </p>
-
-        <div class="click-object" onclick="trainNext(4)">
-            🚆
-        </div>
     </div>
 
 
-    <div class="scene train-scene" id="train4">
+    <div class="train-scene" id="train4">
 
-        <div class="moon">🌙</div>
+        <div>
 
-        <div class="country">🇸🇰</div>
+            <div class="country">
+                🇸🇰
+            </div>
 
-        <div class="station">
-            SLOVAKIA
+            <h2>
+                Slovakia
+            </h2>
+
+            <p>
+                Another station.
+                Another memory.
+            </p>
+
+            <button
+                class="nav-button"
+                onclick="trainNext(5)">
+                Next country →
+            </button>
+
         </div>
 
-        <p>
-        Every journey showed me something new.
-        </p>
-
-        <div class="click-object" onclick="trainNext(5)">
-            🚆
-        </div>
     </div>
 
 
-    <div class="scene train-scene" id="train5">
+    <div class="train-scene" id="train5">
 
-        <div class="moon">🌙</div>
+        <div>
 
-        <div class="country">🇩🇪</div>
+            <div class="country">
+                🇩🇪
+            </div>
 
-        <div class="station">
-            GERMANY
+            <h2>
+                Germany
+            </h2>
+
+            <p>
+                Different streets.
+                Different people.
+                Different memories.
+            </p>
+
+            <button
+                class="nav-button"
+                onclick="trainNext(6)">
+                Next country →
+            </button>
+
         </div>
 
-        <p>
-        The train keeps moving.
-        And so do I.
-        </p>
-
-        <div class="click-object" onclick="trainNext(6)">
-            🚆
-        </div>
     </div>
 
 
-    <div class="scene train-scene" id="train6">
+    <div class="train-scene" id="train6">
 
-        <div class="moon">🌙</div>
+        <div>
 
-        <div class="country">🇮🇹</div>
+            <div class="country">
+                🇮🇹
+            </div>
 
-        <div class="station">
-            ITALY
+            <h2>
+                Italy
+            </h2>
+
+            <p>
+                Five countries.
+                Five different places.
+                Five different memories.
+            </p>
+
+            <button
+                class="nav-button"
+                onclick="trainNext(7)">
+                What did I achieve? →
+            </button>
+
         </div>
 
-        <p>
-        Five countries.
-        Five different places.
-        Five different memories.
-        </p>
-
-        <div class="click-object" onclick="trainNext(7)">
-            🚆
-        </div>
     </div>
 
 
-    <div class="scene train-scene" id="train7">
+    <div class="train-scene" id="train7">
 
-        <div class="country">🚆</div>
+        <div>
 
-        <h2>What I Achieved</h2>
+            <div class="achievement">
+                ✨
+            </div>
 
-        <p>
-        I started with very little.
-        </p>
+            <h2>
+                What I Achieved
+            </h2>
 
-        <p>
-        I made mistakes.
-        I learned.
-        I kept working.
-        </p>
+            <p>
+                Maybe some of my achievements
+                don't look huge from the outside.
+            </p>
 
-        <p>
-        I became someone who could take responsibility
-        for himself.
-        </p>
+            <p>
+                But I know how much work it took
+                to get there.
+            </p>
 
-        <p>
-        I don't want to stop here.
-        </p>
+            <p>
+                I started with very little.
+            </p>
 
-        <p>
-        I want to learn more.
-        Discover new places.
-        And build a life I can be proud of.
-        </p>
+            <p>
+                I made mistakes.
+            </p>
 
-        <div class="click-object" onclick="trainNext(8)">
-            🌅
+            <p>
+                I learned.
+            </p>
+
+            <p>
+                I kept working.
+            </p>
+
+            <p>
+                And I became someone who could
+                take responsibility for himself.
+            </p>
+
+            <button
+                class="nav-button"
+                onclick="trainNext(8)">
+                The next station →
+            </button>
+
         </div>
+
     </div>
 
 
-    <div class="scene light" id="train8">
+    <div class="train-scene" id="train8">
 
-        <h2>The Next Station</h2>
+        <div>
 
-        <p>
-        My journey is still moving.
-        </p>
+            <div class="train-icon">
+                🚆
+            </div>
 
-        <p>
-        I don't know what the next station will be.
-        </p>
+            <h2>
+                The Next Station
+            </h2>
 
-        <p>
-        But I'm ready to find out.
-        </p>
+            <p>
+                I don't want to stop here.
+            </p>
 
-        <p>
-        <strong>The journey continues.</strong>
-        </p>
+            <p>
+                I want to learn more.
+            </p>
 
-        <div class="click-object" onclick="showPage('locked')">
-            ❤️
+            <p>
+                I want to become better
+                at what I do.
+            </p>
+
+            <p>
+                I want to discover new places.
+            </p>
+
+            <p>
+                And I want to build a life
+                that I can be proud of.
+            </p>
+
+            <p>
+                Because my journey is still moving.
+            </p>
+
+            <p>
+                I don't know what the next station
+                will be.
+            </p>
+
+            <p>
+                <strong>
+                    But I'm ready to find out.
+                </strong>
+            </p>
+
+            <button
+                class="nav-button"
+                onclick="showPage('locked')">
+                Continue →
+            </button>
+
         </div>
 
-        <p>
-        Click to continue.
-        </p>
     </div>
 
 </div>
 
 
-<!-- CHAPTER V / VI LOCKED -->
+<!-- =========================
+     LOCKED CHAPTERS
+========================= -->
 
-<div class="page content" id="locked">
+<div class="page content locked-page" id="locked">
 
-    <div class="locked">
-
-        <div class="lock">🔒</div>
-
-        <div class="chapter-number">Chapter V</div>
-
-        <h1>Coming Soon</h1>
-
-        <div class="divider" style="margin-left:auto;margin-right:auto;"></div>
-
-        <p>
-        Some chapters are not ready to be opened yet.
-        </p>
-
-        <p>
-        Maybe one day they will be.
-        </p>
-
-        <br>
-
-        <div class="lock">🔒</div>
-
-        <div class="chapter-number">Chapter VI</div>
-
-        <h1>The Future</h1>
-
-        <p>
-        This chapter is waiting for its time.
-        </p>
-
-        <p>
-        Soon...
-        </p>
-
+    <div class="lock-icon">
+        🔒
     </div>
 
-    <div class="controls">
-        <button class="back-btn" onclick="showPage('chapter4')">
+    <h1>
+        The Story Continues...
+    </h1>
+
+    <h2>
+        Chapter V
+    </h2>
+
+    <p>
+        Coming soon.
+    </p>
+
+    <h2>
+        Chapter VI
+    </h2>
+
+    <p>
+        Soon...
+    </p>
+
+    <p>
+        Some pages are not meant to be
+        opened yet.
+    </p>
+
+    <p>
+        ❤️
+    </p>
+
+    <div class="page-nav">
+
+        <button
+            class="nav-button"
+            onclick="showPage('chapter4')">
             ← Back
         </button>
+
+        <a
+            href="story.html"
+            class="nav-button"
+            style="text-decoration:none;">
+            Finish the book
+        </a>
+
     </div>
 
 </div>
 
 </div>
+
 </div>
 
 
 <script>
 
+/* =========================
+   OPEN BOOK
+========================= */
+
 function openBook() {
-    document.getElementById("cover").classList.add("open");
+
+    document
+        .getElementById("cover")
+        .classList.add("open");
+
 }
+
+
+/* =========================
+   SHOW PAGE
+========================= */
 
 function showPage(id) {
 
-    document.querySelectorAll(".content").forEach(page => {
-        page.classList.remove("active");
-    });
+    document
+        .querySelectorAll(".content")
+        .forEach(page => {
 
-    document.getElementById(id).classList.add("active");
+            page.classList.remove("active");
+
+        });
+
+    const page =
+        document.getElementById(id);
+
+    if (page) {
+
+        page.classList.add("active");
+
+    }
+
 }
+
+
+/* =========================
+   CHAPTER III SCENES
+========================= */
 
 function nextScene(number) {
 
-    document.querySelectorAll("#chapter3 .scene").forEach(scene => {
-        scene.classList.remove("active");
-    });
+    document
+        .querySelectorAll("#chapter3 .scene")
+        .forEach(scene => {
 
-    document.getElementById("scene" + number).classList.add("active");
+            scene.classList.remove("active");
+
+        });
+
+    const scene =
+        document.getElementById(
+            "scene" + number
+        );
+
+    if (scene) {
+
+        scene.classList.add("active");
+
+    }
+
 }
+
+
+/* =========================
+   CHAPTER IV SCENES
+========================= */
 
 function trainNext(number) {
 
-    document.querySelectorAll("#chapter4 .scene").forEach(scene => {
-        scene.classList.remove("active");
-    });
+    document
+        .querySelectorAll("#chapter4 .train-scene")
+        .forEach(scene => {
 
-    document.getElementById("train" + number).classList.add("active");
+            scene.style.display = "none";
+
+        });
+
+    const scene =
+        document.getElementById(
+            "train" + number
+        );
+
+    if (scene) {
+
+        scene.style.display = "flex";
+
+    }
+
 }
+
+
+/* =========================
+   INITIAL STATE
+========================= */
+
+document
+    .querySelectorAll("#chapter4 .train-scene")
+    .forEach((scene, index) => {
+
+        scene.style.display =
+            index === 0 ? "flex" : "none";
+
+    });
 
 </script>
 
