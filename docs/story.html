@@ -1,13 +1,12 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Our Story ❤️</title>
 
 <style>
-
 * {
     box-sizing: border-box;
 }
@@ -18,710 +17,576 @@ html {
 
 body {
     margin: 0;
-
     font-family: Georgia, serif;
-
-    color: #64243a;
-
-    background:
-        radial-gradient(circle at top, #ffffff, transparent 45%),
-        linear-gradient(135deg, #fff1f5, #ffdce6);
-
-    min-height: 100vh;
+    background: linear-gradient(135deg, #fff5f7, #ffe4eb, #fff);
+    color: #4a2630;
+    overflow-x: hidden;
 }
 
-/* SIDE ROSE */
-
-.side-rose {
+/* Floating hearts */
+.heart {
     position: fixed;
-
-    right: 22px;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    width: 65px;
-    height: 65px;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    background: rgba(255,255,255,0.92);
-
-    border-radius: 50%;
-
-    text-decoration: none;
-
-    font-size: 34px;
-
-    box-shadow:
-        0 8px 25px rgba(120,30,60,0.20);
-
-    z-index: 1000;
-
-    transition: 0.3s;
+    bottom: -30px;
+    font-size: 20px;
+    opacity: 0.35;
+    animation: float 8s linear infinite;
+    pointer-events: none;
+    z-index: 0;
 }
 
-.side-rose:hover {
-    transform: translateY(-50%) scale(1.12);
+.heart:nth-child(1) { left: 10%; animation-delay: 1s; }
+.heart:nth-child(2) { left: 30%; animation-delay: 3s; }
+.heart:nth-child(3) { left: 55%; animation-delay: 5s; }
+.heart:nth-child(4) { left: 80%; animation-delay: 2s; }
+
+@keyframes float {
+    from {
+        transform: translateY(0) rotate(0deg);
+    }
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+    }
 }
 
-/* MAIN */
-
+/* Main container */
 .container {
-    width: 100%;
-
-    max-width: 850px;
-
+    position: relative;
+    z-index: 2;
+    width: min(900px, 90%);
     margin: auto;
-
-    padding: 55px 25px 80px;
+    padding: 70px 0;
 }
 
-header {
+/* Title */
+h1 {
     text-align: center;
+    font-size: 48px;
+    margin-bottom: 10px;
+}
 
+.subtitle {
+    text-align: center;
+    font-size: 20px;
+    color: #9b5264;
     margin-bottom: 70px;
 }
 
-header h1 {
-    font-size: 46px;
-
-    color: #8b1e3f;
-
-    margin-bottom: 12px;
-}
-
-header p {
-    font-size: 20px;
-
-    opacity: 0.8;
-}
-
-/* CHAPTER */
-
+/* Chapters */
 .chapter {
-    background: rgba(255,255,255,0.78);
-
-    border-radius: 28px;
-
+    background: rgba(255,255,255,0.82);
+    border-radius: 25px;
     padding: 35px;
-
-    margin-bottom: 35px;
-
-    box-shadow:
-        0 12px 35px rgba(100,30,50,0.10);
-
-    border: 1px solid rgba(255,255,255,0.8);
-}
-
-.chapter-number {
-    color: #b52f57;
-
-    font-size: 15px;
-
-    text-transform: uppercase;
-
-    letter-spacing: 2px;
+    margin: 35px 0;
+    box-shadow: 0 10px 30px rgba(120,50,70,0.12);
+    border: 1px solid rgba(180,80,100,0.12);
 }
 
 .chapter h2 {
-    color: #8b1e3f;
+    color: #a33d57;
+    margin-top: 0;
+    font-size: 28px;
+}
 
-    font-size: 30px;
-
-    margin: 10px 0 20px;
+.date {
+    font-size: 14px;
+    color: #b56a7d;
+    margin-bottom: 15px;
 }
 
 .chapter p {
     font-size: 18px;
-
     line-height: 1.8;
 }
 
-/* DATE */
-
-.date {
-    display: inline-block;
-
-    padding: 7px 15px;
-
-    margin-bottom: 15px;
-
-    background: #ffe1e9;
-
-    border-radius: 20px;
-
-    color: #8b1e3f;
-
-    font-size: 14px;
-}
-
-/* HEART */
-
-.big-heart {
-    text-align: center;
-
-    font-size: 45px;
-
-    margin: 45px 0;
-}
-
-/* BUTTON */
-
+/* Buttons */
 .button {
     display: inline-block;
-
     margin-top: 20px;
-
-    padding: 14px 26px;
-
+    padding: 14px 25px;
     border-radius: 30px;
-
-    background: #8b1e3f;
-
-    color: white;
-
     text-decoration: none;
-
-    font-size: 17px;
-
-    box-shadow:
-        0 8px 20px rgba(100,20,40,0.18);
-
+    background: #a33d57;
+    color: white;
     transition: 0.3s;
 }
 
 .button:hover {
-    transform: translateY(-3px);
-
-    background: #a82a50;
+    transform: scale(1.05);
+    background: #852d45;
 }
 
-/* ROSE SECTION */
+/* Roses floating on the side */
+.rose-side {
+    position: fixed;
+    right: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
 
-.rose-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.rose {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    font-size: 30px;
+
+    background: rgba(255,255,255,0.9);
+    box-shadow: 0 5px 18px rgba(100,30,50,0.2);
+
+    transition: 0.3s;
+}
+
+.rose:hover {
+    transform: scale(1.18) rotate(-8deg);
+}
+
+/* Envelope section */
+.envelope-section {
     text-align: center;
-
-    padding: 45px 30px;
-
-    background: rgba(255,255,255,0.82);
-
-    border-radius: 28px;
-
-    margin-bottom: 35px;
-
-    box-shadow:
-        0 12px 35px rgba(100,30,50,0.10);
+    padding: 45px 20px;
 }
 
-.rose-section h2 {
-    color: #8b1e3f;
+.envelope {
+    font-size: 70px;
+    margin-bottom: 10px;
 }
 
-/* COUNTDOWN */
-
+/* Countdown */
 .countdown {
     text-align: center;
-
-    padding: 45px 25px;
-
-    background: rgba(255,255,255,0.85);
-
-    border-radius: 28px;
-
-    margin-top: 50px;
-
-    box-shadow:
-        0 12px 35px rgba(100,30,50,0.10);
+    margin: 70px 0;
 }
 
 .countdown h2 {
-    color: #8b1e3f;
+    color: #a33d57;
+}
 
+.timer {
     font-size: 30px;
-}
-
-#timer {
-    font-size: 26px;
-
-    margin-top: 20px;
-
-    color: #a52a4d;
-
     font-weight: bold;
+    margin-top: 20px;
 }
 
-/* LOCKED */
-
+/* Locked New Year */
 .locked {
     text-align: center;
+    padding: 50px 25px;
+    border: 2px dashed #d68a9d;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.7);
+}
 
-    margin-top: 35px;
-
-    padding: 45px 30px;
-
-    border-radius: 28px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #27202a,
-            #161218
-        );
-
-    color: white;
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,0.20);
+.lock {
+    font-size: 60px;
 }
 
 .locked h2 {
-    color: #ffd9e3;
-
-    font-size: 30px;
+    color: #a33d57;
 }
 
-.lock-icon {
-    font-size: 55px;
-
-    margin-bottom: 15px;
-}
-
-/* FOOTER */
-
-footer {
-    text-align: center;
-
-    margin-top: 70px;
-
+.secret {
+    filter: blur(8px);
+    user-select: none;
+    margin-top: 20px;
     font-size: 18px;
-
-    opacity: 0.75;
 }
 
-/* MOBILE */
-
+/* Mobile */
 @media (max-width: 600px) {
 
+    h1 {
+        font-size: 36px;
+    }
+
     .container {
-        padding: 35px 15px 60px;
-    }
-
-    header h1 {
-        font-size: 35px;
-    }
-
-    header p {
-        font-size: 17px;
+        width: 86%;
+        padding-top: 50px;
     }
 
     .chapter {
-        padding: 25px 20px;
-    }
-
-    .chapter h2 {
-        font-size: 25px;
+        padding: 25px;
     }
 
     .chapter p {
-        font-size: 17px;
+        font-size: 16px;
     }
 
-    .side-rose {
-        right: 10px;
-
-        width: 52px;
-        height: 52px;
-
-        font-size: 27px;
+    .rose-side {
+        right: 7px;
+        gap: 7px;
     }
 
+    .rose {
+        width: 45px;
+        height: 45px;
+        font-size: 23px;
+    }
 }
-
 </style>
 </head>
 
 <body>
 
+<!-- Floating hearts -->
+<div class="heart">❤️</div>
+<div class="heart">💗</div>
+<div class="heart">💕</div>
+<div class="heart">❤️</div>
 
-<!-- ROSE BUTTON ON THE SIDE -->
+<!-- ROSES ON THE SIDE -->
+<div class="rose-side">
 
-<a
-    href="roses.html"
-    class="side-rose"
-    title="Roses for Marina"
->
-    🌹
-</a>
+    <a href="roses.html" class="rose" title="Roses for Marina">
+        🌹
+    </a>
+
+    <a href="roses.html#rose1" class="rose">
+        🌹
+    </a>
+
+    <a href="roses.html#rose2" class="rose">
+        🌹
+    </a>
+
+    <a href="roses.html#rose3" class="rose">
+        🌹
+    </a>
+
+</div>
 
 
 <div class="container">
 
-
-<header>
-
     <h1>Our Story ❤️</h1>
 
-    <p>
-        A little story about how we became us.
-    </p>
-
-</header>
-
-
-<!-- PROLOGUE -->
-
-<section class="chapter">
-
-    <div class="chapter-number">
-        Prologue
-    </div>
-
-    <h2>Where it all started</h2>
-
-    <p>
-        We met through Badoo.
-    </p>
-
-    <p>
-        At first, I couldn't know what this meeting
-        would become.
-    </p>
-
-    <p>
-        But somehow, one meeting became another,
-        and slowly you became someone very special
-        to me.
-    </p>
-
-</section>
-
-
-<div class="big-heart">
-    ❤️
-</div>
-
-
-<!-- FIRST DATE -->
-
-<section class="chapter">
-
-    <span class="date">
-        27 June
-    </span>
-
-    <div class="chapter-number">
-        Chapter 1
-    </div>
-
-    <h2>Our first date</h2>
-
-    <p>
-        Our first date was a day of shopping together.
-    </p>
-
-    <p>
-        It might sound like something simple,
-        but for me it became the beginning of
-        something I didn't want to lose.
-    </p>
-
-    <p>
-        I remember being happy simply because
-        I was spending time with you.
-    </p>
-
-</section>
-
-
-<!-- BETWEEN DATES -->
-
-<section class="chapter">
-
-    <div class="chapter-number">
-        Between the chapters
-    </div>
-
-    <h2>The waiting</h2>
-
-    <p>
-        Between our meetings there were moments
-        when I really missed you.
-    </p>
-
-    <p>
-        Waiting for the next meeting made every
-        little moment feel even more important.
-    </p>
-
-    <p>
-        Sometimes the distance between two meetings
-        felt much longer than it actually was.
-    </p>
-
-</section>
-
-
-<!-- SECOND DATE -->
-
-<section class="chapter">
-
-    <span class="date">
-        18 July
-    </span>
-
-    <div class="chapter-number">
-        Chapter 2
-    </div>
-
-    <h2>LEGO, smiles and something more</h2>
-
-    <p>
-        Our second date gave us another collection
-        of little memories.
-    </p>
-
-    <p>
-        We built LEGO together, spent time together,
-        and created something that was ours.
-    </p>
-
-    <p>
-        We also created a shared bank account —
-        another little step that made our story feel
-        more real.
-    </p>
-
-</section>
-
-
-<!-- GIFTS -->
-
-<section class="chapter">
-
-    <div class="chapter-number">
-        Little things
-    </div>
-
-    <h2>The things I made and gave you</h2>
-
-    <p>
-        Some things don't have to be expensive
-        to mean a lot.
-    </p>
-
-    <p>
-        The painting, the handmade resin pieces,
-        the flowers, the little gifts and all those
-        details were my way of saying:
-    </p>
-
-    <p>
-        <strong>
-            "I thought about you."
-        </strong>
-    </p>
-
-</section>
-
-
-<!-- THIRD DATE -->
-
-<section class="chapter">
-
-    <span class="date">
-        31 August
-    </span>
-
-    <div class="chapter-number">
-        Chapter 3
-    </div>
-
-    <h2>The day we became us ❤️</h2>
-
-    <p>
-        We went to the cinema and spent another
-        beautiful day together.
-    </p>
-
-    <p>
-        And then came the words I had been keeping
-        inside for some time.
-    </p>
-
-    <p>
-        I told you that I love you.
-    </p>
-
-    <p>
-        And that day, we started our relationship.
-    </p>
-
-</section>
-
-
-<div class="big-heart">
-    💗
-</div>
-
-
-<!-- ENGLISH -->
-
-<section class="chapter">
-
-    <div class="chapter-number">
-        A promise
-    </div>
-
-    <h2>Something I'm learning for you</h2>
-
-    <p>
-        I started learning English because I want
-        to communicate with you better.
-    </p>
-
-    <p>
-        I know it won't happen overnight.
-        But I promised you that I would keep learning.
-    </p>
-
-    <p>
-        And I intend to keep that promise.
-    </p>
-
-</section>
-
-
-<!-- TODAY -->
-
-<section class="chapter">
-
-    <span class="date">
-        5 September
-    </span>
-
-    <div class="chapter-number">
-        Chapter 4
-    </div>
-
-    <h2>Where we are now</h2>
-
-    <p>
-        Our story is still young.
-    </p>
-
-    <p>
-        There are still so many days we haven't lived,
-        places we haven't visited, conversations
-        we haven't had and memories we haven't made.
-    </p>
-
-    <p>
-        And honestly, I'm excited to see what comes next.
-    </p>
-
-</section>
-
-
-<!-- ROSES -->
-
-<section class="rose-section">
-
-    <h2>There is something else for you 🌹</h2>
-
-    <p>
-        I left a few roses somewhere in our story.
-    </p>
-
-    <p>
-        Each one has a little message for you.
-    </p>
-
-    <a href="roses.html" class="button">
-        Find the roses 🌹
-    </a>
-
-</section>
-
-
-<!-- RED ENVELOPE -->
-
-<section class="chapter" style="text-align:center;">
-
-    <div class="chapter-number">
-        A little surprise
-    </div>
-
-    <h2>Something I wanted to leave for you ❤️</h2>
-
-    <p>
-        There are a few little messages waiting
-        inside an envelope.
-    </p>
-
-    <a href="envelope.html" class="button">
-        Open the red envelope ❤️
-    </a>
-
-</section>
-
-
-<!-- COUNTDOWN -->
-
-<section class="countdown">
-
-    <h2>Until New Year ✨</h2>
-
-    <p>
-        Some things are worth waiting for.
-    </p>
-
-    <div id="timer">
-        Loading...
-    </div>
-
-</section>
-
-
-<!-- LOCKED NEW YEAR -->
-
-<section class="locked">
-
-    <div class="lock-icon">
-        🔒
-    </div>
-
-    <h2>New Year chapter</h2>
-
-    <p>
-        This chapter is locked.
-    </p>
-
-    <p>
-        It will open on January 1, 2027.
-    </p>
-
-    <p>
-        Some wishes are meant to wait.
-    </p>
-
-</section>
-
-
-<footer>
-
-    <p>
-        To be continued... ❤️
-    </p>
-
-    <p>
+    <div class="subtitle">
         Alex & Marina
-    </p>
+    </div>
 
-</footer>
+
+    <!-- PROLOGUE -->
+    <div class="chapter">
+
+        <h2>Before our story began</h2>
+
+        <p>
+            Sometimes two people meet without knowing
+            how important that meeting will become.
+        </p>
+
+        <p>
+            We met through Badoo.
+            Just two people talking, without knowing
+            where it would lead.
+        </p>
+
+        <p>
+            And somehow, that small beginning
+            became our story.
+        </p>
+
+    </div>
+
+
+    <!-- FIRST DATE -->
+    <div class="chapter">
+
+        <div class="date">27 June</div>
+
+        <h2>Our first date ❤️</h2>
+
+        <p>
+            Our first date was simple.
+            We went shopping together.
+        </p>
+
+        <p>
+            But for me it was something much more important.
+            It was the first time I could really spend time
+            with you.
+        </p>
+
+        <p>
+            I remember the feeling of wondering
+            where this story could go.
+        </p>
+
+    </div>
+
+
+    <!-- WAITING -->
+    <div class="chapter">
+
+        <h2>The waiting between meetings</h2>
+
+        <p>
+            One thing I remember very strongly
+            is how much I started missing you
+            between our meetings.
+        </p>
+
+        <p>
+            Waiting for the next meeting made every day
+            feel a little longer.
+        </p>
+
+        <p>
+            And when we finally met again,
+            it felt worth the wait.
+        </p>
+
+    </div>
+
+
+    <!-- SECOND DATE -->
+    <div class="chapter">
+
+        <div class="date">18 July</div>
+
+        <h2>LEGO & something special 🧱❤️</h2>
+
+        <p>
+            Our second date was different.
+        </p>
+
+        <p>
+            We spent time together building LEGO,
+            laughing and simply enjoying being together.
+        </p>
+
+        <p>
+            And that day we also created
+            our shared bank account.
+        </p>
+
+        <p>
+            It was a small thing on paper,
+            but for me it felt like another little
+            step in our story.
+        </p>
+
+    </div>
+
+
+    <!-- LITTLE THINGS -->
+    <div class="chapter">
+
+        <h2>The little things 🎁</h2>
+
+        <p>
+            Our story isn't only about dates.
+        </p>
+
+        <p>
+            It's also about gifts, handmade things,
+            small surprises and all those little details
+            that slowly became memories.
+        </p>
+
+        <p>
+            Sometimes the smallest things
+            end up meaning the most.
+        </p>
+
+    </div>
+
+
+    <!-- THIRD DATE -->
+    <div class="chapter">
+
+        <div class="date">31 August</div>
+
+        <h2>The moment everything changed ❤️</h2>
+
+        <p>
+            Then came another special day.
+        </p>
+
+        <p>
+            We went to the cinema and watched a film together.
+        </p>
+
+        <p>
+            But the movie wasn't the most important
+            part of that day.
+        </p>
+
+        <p>
+            I told you that I love you.
+        </p>
+
+        <p>
+            And that was the moment
+            when we started our relationship.
+        </p>
+
+        <p>
+            Our story became something more.
+        </p>
+
+    </div>
+
+
+    <!-- ENGLISH -->
+    <div class="chapter">
+
+        <h2>A promise to you 🇬🇧❤️</h2>
+
+        <p>
+            I started learning English because of you.
+        </p>
+
+        <p>
+            I know I still have a lot to learn,
+            but I promised you that I would keep learning.
+        </p>
+
+        <p>
+            I want to be able to talk with you freely,
+            understand you better,
+            laugh together and share even more.
+        </p>
+
+        <p>
+            So this is one promise I want to keep.
+        </p>
+
+    </div>
+
+
+    <!-- TODAY -->
+    <div class="chapter">
+
+        <div class="date">5 September</div>
+
+        <h2>Where we are now ❤️</h2>
+
+        <p>
+            Today our story is still young.
+        </p>
+
+        <p>
+            There are many things we haven't experienced yet.
+            Many places we haven't visited.
+            Many conversations we haven't had.
+        </p>
+
+        <p>
+            And honestly,
+            that's one of the most beautiful things about it.
+        </p>
+
+        <p>
+            We still have so much story left to write.
+        </p>
+
+    </div>
+
+
+    <!-- ROSES -->
+    <div class="chapter" style="text-align:center;">
+
+        <h2>A little surprise 🌹</h2>
+
+        <p>
+            I left some roses for you.
+        </p>
+
+        <p>
+            Each one has a little message.
+        </p>
+
+        <a href="roses.html" class="button">
+            Open the roses 🌹
+        </a>
+
+    </div>
+
+
+    <!-- RED ENVELOPE -->
+    <div class="chapter envelope-section">
+
+        <div class="envelope">
+            💌
+        </div>
+
+        <h2>A little secret for you ❤️</h2>
+
+        <p>
+            There is something waiting for you
+            inside the red envelope.
+        </p>
+
+        <a href="envelope.html" class="button">
+            Open the red envelope ❤️
+        </a>
+
+    </div>
+
+
+    <!-- COUNTDOWN -->
+    <div class="countdown">
+
+        <h2>Until New Year ✨</h2>
+
+        <p>
+            Some things are worth waiting for.
+        </p>
+
+        <div class="timer" id="timer">
+            Loading...
+        </div>
+
+    </div>
+
+
+    <!-- LOCKED -->
+    <div class="locked">
+
+        <div class="lock">
+            🔒
+        </div>
+
+        <h2>A message for New Year</h2>
+
+        <p>
+            This chapter is locked until
+            January 1, 2027.
+        </p>
+
+        <div class="secret">
+            I hope that one day we can build a little life
+            together — maybe share a home, have a cat,
+            and be able to tell the people around us
+            about our story.
+
+            <br><br>
+
+            Not because we have to.
+            Not because everything has to happen immediately.
+
+            <br><br>
+
+            But because it's something
+            I would love to experience with you.
+        </div>
+
+    </div>
+
+
+    <div style="text-align:center; margin-top:70px; font-size:20px;">
+        To be continued... ❤️
+    </div>
 
 </div>
 
@@ -730,56 +595,48 @@ footer {
 
 function updateCountdown() {
 
-    const target =
-        new Date("January 1, 2027 00:00:00").getTime();
+    const newYear = new Date("January 1, 2027 00:00:00").getTime();
+    const now = new Date().getTime();
 
-    const now =
-        new Date().getTime();
-
-    const difference =
-        target - now;
+    const difference = newYear - now;
 
     if (difference <= 0) {
 
         document.getElementById("timer").innerHTML =
-            "Happy New Year ❤️";
+            "Happy New Year, Marina! ❤️";
 
         return;
     }
 
-    const days =
-        Math.floor(
-            difference / (1000 * 60 * 60 * 24)
-        );
+    const days = Math.floor(
+        difference / (1000 * 60 * 60 * 24)
+    );
 
-    const hours =
-        Math.floor(
-            (difference / (1000 * 60 * 60)) % 24
-        );
+    const hours = Math.floor(
+        (difference / (1000 * 60 * 60)) % 24
+    );
 
-    const minutes =
-        Math.floor(
-            (difference / (1000 * 60)) % 60
-        );
+    const minutes = Math.floor(
+        (difference / (1000 * 60)) % 60
+    );
 
-    const seconds =
-        Math.floor(
-            (difference / 1000) % 60
-        );
+    const seconds = Math.floor(
+        (difference / 1000) % 60
+    );
 
     document.getElementById("timer").innerHTML =
-        days + " days · " +
-        hours + " hours · " +
-        minutes + " minutes · " +
+        days + " days " +
+        hours + " hours " +
+        minutes + " minutes " +
         seconds + " seconds";
 
 }
 
 updateCountdown();
-
 setInterval(updateCountdown, 1000);
 
 </script>
 
 </body>
 </html>
+```
