@@ -7,6 +7,7 @@
 <title>Before You — Alex ❤️</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -18,34 +19,60 @@ html {
 body {
     margin: 0;
     min-height: 100vh;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    color: #eee5eb;
+
     background:
-        radial-gradient(circle at center, #211827, #08070b 70%);
-    color: #f4eaf0;
-    font-family: Georgia, "Times New Roman", serif;
+        radial-gradient(
+            circle at top,
+            #351d2c 0%,
+            #120d14 45%,
+            #050507 100%
+        );
 }
 
-.story-back {
+/* =========================
+   BACK
+========================= */
+
+.back {
     position: fixed;
+
     top: 18px;
     left: 18px;
+
     z-index: 1000;
 
-    color: #f5dce8;
+    color: #f1d6e2;
     text-decoration: none;
 
-    padding: 10px 17px;
+    padding: 10px 18px;
+
     border-radius: 30px;
 
-    background: rgba(10,8,13,.75);
+    background: rgba(8,6,11,.8);
+
     border: 1px solid rgba(255,255,255,.15);
 
     backdrop-filter: blur(10px);
 }
 
+/* =========================
+   BOOK AREA
+========================= */
+
 .book-wrapper {
+    width: 100%;
+
     min-height: 100vh;
 
     display: flex;
+
     justify-content: center;
     align-items: center;
 
@@ -55,122 +82,74 @@ body {
 .book {
     position: relative;
 
-    width: min(900px, 94vw);
-    min-height: 680px;
+    width: min(900px, 95vw);
+
+    min-height: 700px;
 }
+
+/* =========================
+   PAGE SYSTEM
+========================= */
 
 .page {
     position: absolute;
+
     inset: 0;
 
-    border-radius: 10px;
+    border-radius: 12px;
 
     overflow: hidden;
 
     background:
-        linear-gradient(135deg,#211925,#0d0b11);
+        linear-gradient(
+            135deg,
+            #211924,
+            #0b090e
+        );
 
     box-shadow:
         0 30px 80px rgba(0,0,0,.7),
         0 0 0 1px rgba(255,255,255,.08);
 }
 
-.content {
+/*
+IMPORTANT:
+Only one page is visible at a time.
+*/
+
+.page.content {
     display: none;
-
-    position: absolute;
-    inset: 0;
-
-    padding: 70px 80px;
-
-    overflow-y: auto;
 }
 
-.content.active {
+.page.content.active {
     display: block;
-    animation: appear .7s ease;
+
+    z-index: 20;
+
+    animation:
+        pageIn .65s ease;
 }
 
-@keyframes appear {
+@keyframes pageIn {
+
     from {
         opacity: 0;
-        transform: translateX(20px);
+        transform: translateX(25px);
     }
 
     to {
         opacity: 1;
         transform: translateX(0);
     }
+
 }
 
-.content h1 {
-    color: #f5d9e7;
-
-    font-size: clamp(34px,7vw,58px);
-
-    margin-top: 0;
-}
-
-.content h2 {
-    color: #e7b9ce;
-
-    font-size: 27px;
-}
-
-.content h3 {
-    color: #e4bbcf;
-}
-
-.content p {
-    max-width: 730px;
-
-    font-size: 18px;
-    line-height: 1.9;
-
-    color: #e6dce3;
-}
-
-.nav {
-    display: flex;
-
-    gap: 12px;
-
-    flex-wrap: wrap;
-
-    margin-top: 40px;
-}
-
-.button {
-    border: 1px solid rgba(255,255,255,.16);
-
-    background: rgba(255,255,255,.07);
-
-    color: #f6dce8;
-
-    padding: 12px 21px;
-
-    border-radius: 30px;
-
-    font-family: inherit;
-    font-size: 15px;
-
-    cursor: pointer;
-
-    text-decoration: none;
-
-    transition: .3s;
-}
-
-.button:hover {
-    background: rgba(255,255,255,.14);
-
-    transform: translateY(-2px);
-}
-
-/* COVER */
+/* =========================
+   COVER
+========================= */
 
 .cover {
-    z-index: 50;
+    z-index: 100;
 
     display: flex;
 
@@ -179,91 +158,235 @@ body {
 
     text-align: center;
 
+    transition:
+        transform 1.2s ease,
+        opacity 1.2s ease;
+
     background:
         radial-gradient(
-            circle,
-            rgba(173,80,124,.28),
-            transparent 45%
+            circle at center,
+            rgba(170,75,120,.25),
+            transparent 50%
         ),
-        linear-gradient(135deg,#321a2a,#09080d);
-
-    transition:
-        transform 1.3s ease,
-        opacity 1.3s ease;
+        linear-gradient(
+            135deg,
+            #351b2a,
+            #09070c
+        );
 }
 
 .cover.open {
-    transform: rotateY(-150deg) translateX(-30%);
+    transform:
+        rotateY(-150deg)
+        translateX(-35%);
+
     opacity: 0;
+
     pointer-events: none;
+
+    z-index: -1;
 }
 
 .cover-inner {
-    padding: 35px;
+    padding: 40px;
+
+    max-width: 650px;
 }
 
-.cover-icon {
+.cover-symbol {
     font-size: 80px;
 
-    animation: heart 2.5s infinite;
+    animation:
+        heartbeat 2.5s infinite;
 }
 
-@keyframes heart {
+@keyframes heartbeat {
+
+    0%,100% {
+        transform: scale(1);
+    }
+
     50% {
         transform: scale(1.08);
     }
+
 }
 
 .cover h1 {
-    font-size: clamp(45px,9vw,80px);
 
-    margin: 15px 0;
+    margin: 15px 0 5px;
 
-    color: #f7dce8;
+    font-size:
+        clamp(45px, 9vw, 80px);
+
+    color: #f6dce8;
+
 }
 
 .cover h2 {
+
+    margin: 0;
+
+    color: #cfa9bb;
+
     letter-spacing: 4px;
 
     font-weight: normal;
+
 }
 
 .cover p {
-    max-width: 520px;
 
-    margin: 25px auto;
+    color: #d5c6cf;
 
     line-height: 1.8;
+
+    font-size: 18px;
+
 }
 
-.open {
-    border: none;
+.open-button {
+
+    margin-top: 20px;
 
     padding: 15px 35px;
 
+    border: none;
+
     border-radius: 40px;
 
-    background: linear-gradient(135deg,#914866,#59283f);
-
     color: white;
+
+    background:
+        linear-gradient(
+            135deg,
+            #93496b,
+            #59283f
+        );
 
     font-family: inherit;
 
     font-size: 17px;
 
     cursor: pointer;
+
 }
 
-/* CHAPTER III */
+/* =========================
+   NORMAL CONTENT
+========================= */
+
+.content {
+
+    padding: 65px 80px;
+
+    overflow-y: auto;
+
+}
+
+.content h1 {
+
+    margin-top: 0;
+
+    color: #f2d4e0;
+
+    font-size:
+        clamp(35px, 7vw, 58px);
+
+}
+
+.content h2 {
+
+    color: #e6b8cc;
+
+    font-size: 28px;
+
+}
+
+.content h3 {
+
+    color: #e4bdd0;
+
+}
+
+.content p {
+
+    max-width: 720px;
+
+    font-size: 18px;
+
+    line-height: 1.9;
+
+    color: #dfd4da;
+
+}
+
+.nav {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+    margin-top: 40px;
+
+}
+
+.button {
+
+    display: inline-block;
+
+    padding: 12px 22px;
+
+    border-radius: 30px;
+
+    border:
+        1px solid rgba(255,255,255,.15);
+
+    background:
+        rgba(255,255,255,.07);
+
+    color: #f4dce6;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+}
+
+.button:hover {
+
+    background:
+        rgba(255,255,255,.14);
+
+    transform:
+        translateY(-2px);
+
+}
+
+/* =========================
+   CHAPTER III
+========================= */
 
 .forest {
-    padding: 0 !important;
+
+    padding: 0;
 
     background: #030506;
+
 }
 
 .forest-scene {
+
     position: absolute;
+
     inset: 0;
 
     display: none;
@@ -274,15 +397,20 @@ body {
     text-align: center;
 
     overflow: hidden;
+
 }
 
 .forest-scene.active {
+
     display: flex;
 
-    animation: scene .9s ease;
+    animation:
+        sceneIn .9s ease;
+
 }
 
-@keyframes scene {
+@keyframes sceneIn {
+
     from {
         opacity: 0;
     }
@@ -290,52 +418,57 @@ body {
     to {
         opacity: 1;
     }
+
 }
 
 .forest-bg {
+
     position: absolute;
+
     inset: 0;
 
     background:
         radial-gradient(
-            circle at 50% 75%,
-            rgba(100,115,82,.14),
-            transparent 35%
+            ellipse at center bottom,
+            rgba(95,115,80,.16),
+            transparent 40%
         ),
         linear-gradient(
-            #05080a,
-            #0b0e0d 60%,
-            #10130e
+            to bottom,
+            #040608,
+            #090d0d,
+            #11130f
         );
+
 }
 
 .moon {
+
     position: absolute;
 
-    width: 95px;
-    height: 95px;
-
-    right: 12%;
     top: 11%;
+    right: 12%;
+
+    width: 90px;
+    height: 90px;
 
     border-radius: 50%;
 
-    background: #d9d4c7;
+    background: #d8d3c7;
 
     opacity: .65;
 
     box-shadow:
-        0 0 35px rgba(230,225,210,.3);
+        0 0 35px rgba(230,225,210,.35);
+
 }
 
-/* TREES */
-
-.trees {
-    position: absolute;
-    inset: 0;
-}
+/* =========================
+   TREES
+========================= */
 
 .tree {
+
     position: absolute;
 
     bottom: -20px;
@@ -343,23 +476,27 @@ body {
     width: 0;
     height: 0;
 
-    border-left: 55px solid transparent;
-    border-right: 55px solid transparent;
-    border-bottom: 210px solid #030404;
+    border-left: 65px solid transparent;
+    border-right: 65px solid transparent;
+
+    border-bottom: 250px solid #030404;
+
 }
 
-.tree:after {
+.tree::after {
+
     content: "";
 
     position: absolute;
 
-    left: -45px;
-    bottom: -280px;
+    left: -12px;
+    bottom: -330px;
 
-    width: 90px;
-    height: 150px;
+    width: 24px;
+    height: 160px;
 
     background: #020303;
+
 }
 
 .tree:nth-child(1) {
@@ -369,22 +506,22 @@ body {
 
 .tree:nth-child(2) {
     left: 15%;
-    transform: scale(1.15);
+    transform: scale(1.2);
 }
 
 .tree:nth-child(3) {
-    left: 31%;
+    left: 30%;
     transform: scale(.7);
 }
 
 .tree:nth-child(4) {
-    right: 25%;
-    transform: scale(1.2);
+    right: 30%;
+    transform: scale(1.15);
 }
 
 .tree:nth-child(5) {
-    right: 10%;
-    transform: scale(.9);
+    right: 14%;
+    transform: scale(.85);
 }
 
 .tree:nth-child(6) {
@@ -392,80 +529,120 @@ body {
     transform: scale(1.3);
 }
 
-/* FOG */
+/* =========================
+   FOG
+========================= */
 
 .fog {
+
     position: absolute;
 
     left: -25%;
 
     width: 150%;
-    height: 170px;
+
+    height: 180px;
 
     border-radius: 50%;
 
     filter: blur(28px);
 
     pointer-events: none;
+
 }
 
-.fog1 {
+.fog-one {
+
     bottom: 28%;
 
     background:
         radial-gradient(
             ellipse,
-            rgba(205,215,207,.17),
+            rgba(210,220,215,.18),
             transparent 70%
         );
 
-    animation: fog1 18s infinite alternate ease-in-out;
+    animation:
+        fogA 18s ease-in-out infinite alternate;
+
 }
 
-.fog2 {
-    bottom: 40%;
+.fog-two {
+
+    bottom: 42%;
 
     background:
         radial-gradient(
             ellipse,
-            rgba(200,210,210,.11),
+            rgba(195,210,210,.12),
             transparent 70%
         );
 
-    animation: fog2 24s infinite alternate ease-in-out;
+    animation:
+        fogB 25s ease-in-out infinite alternate;
+
 }
 
-.fog3 {
-    bottom: 17%;
+.fog-three {
 
-    height: 220px;
+    bottom: 15%;
+
+    height: 230px;
 
     background:
         radial-gradient(
             ellipse,
-            rgba(215,220,210,.12),
+            rgba(215,220,210,.13),
             transparent 70%
         );
 
-    animation: fog3 30s infinite alternate ease-in-out;
+    animation:
+        fogC 30s ease-in-out infinite alternate;
+
 }
 
-@keyframes fog1 {
-    from { transform: translateX(-10%); }
-    to { transform: translateX(18%); }
+@keyframes fogA {
+
+    from {
+        transform: translateX(-12%);
+    }
+
+    to {
+        transform: translateX(18%);
+    }
+
 }
 
-@keyframes fog2 {
-    from { transform: translateX(15%); }
-    to { transform: translateX(-15%); }
+@keyframes fogB {
+
+    from {
+        transform: translateX(16%);
+    }
+
+    to {
+        transform: translateX(-18%);
+    }
+
 }
 
-@keyframes fog3 {
-    from { transform: translateX(-15%); }
-    to { transform: translateX(15%); }
+@keyframes fogC {
+
+    from {
+        transform: translateX(-15%) scale(.9);
+    }
+
+    to {
+        transform: translateX(15%) scale(1.15);
+    }
+
 }
+
+/* =========================
+   FOREST CONTENT
+========================= */
 
 .forest-content {
+
     position: relative;
 
     z-index: 20;
@@ -473,56 +650,65 @@ body {
     max-width: 650px;
 
     padding: 35px;
+
 }
 
 .forest-content h2 {
-    font-size: clamp(30px,6vw,48px);
 
-    color: #eee2e9;
+    color: #eee0e8;
+
+    font-size:
+        clamp(30px, 6vw, 48px);
+
 }
 
 .forest-content p {
+
     line-height: 1.8;
+
 }
 
-.symbol {
-    font-size: 90px;
-
-    margin-bottom: 15px;
-}
-
-/* LANTERN */
+/* =========================
+   LANTERN
+========================= */
 
 .lantern {
+
+    position: relative;
+
     width: 55px;
     height: 85px;
 
-    margin: 0 auto 30px;
+    margin:
+        0 auto 30px;
+
+    border-radius: 8px;
 
     background:
         linear-gradient(
             90deg,
             #30251c,
-            #9a7748,
+            #a07b49,
             #30251c
         );
 
-    border-radius: 8px;
-
     box-shadow:
-        0 0 30px #e2b66c,
-        0 0 90px rgba(226,182,108,.4);
+        0 0 30px #e2b56b,
+        0 0 90px rgba(226,181,107,.4);
+
 }
 
-.lantern:after {
+.lantern::after {
+
     content: "";
 
     position: absolute;
 
+    left: 18px;
+    top: 31px;
+
     width: 20px;
     height: 20px;
-
-    margin: 31px 0 0 -10px;
 
     border-radius: 50%;
 
@@ -530,94 +716,144 @@ body {
 
     box-shadow:
         0 0 30px #fff0aa;
+
 }
 
-/* BOY */
+/* =========================
+   BOY
+========================= */
 
 .boy {
-    font-size: 95px;
+
+    font-size: 90px;
 
     opacity: .5;
 
     filter: blur(1px);
 
-    animation: boy 5s ease forwards;
+    animation:
+        boyAppear 4s ease forwards;
+
 }
 
-@keyframes boy {
+@keyframes boyAppear {
+
     from {
+
         opacity: 0;
-        transform: translateY(35px);
+
+        transform:
+            translateY(35px);
+
         filter: blur(10px);
+
     }
 
     to {
+
         opacity: .65;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
+
         filter: blur(1px);
+
     }
+
 }
 
-/* LIGHT */
+/* =========================
+   LIGHT
+========================= */
 
 .light {
+
     background:
         radial-gradient(
             circle,
             rgba(255,255,235,.4),
             transparent 65%
         );
+
 }
 
 .light-icon {
+
     font-size: 110px;
 
-    animation: pulse 3s infinite;
+    animation:
+        lightPulse 3s ease-in-out infinite;
+
 }
 
-@keyframes pulse {
+@keyframes lightPulse {
+
     50% {
-        transform: scale(1.15);
-        filter: drop-shadow(0 0 60px rgba(255,255,255,.7));
+
+        transform:
+            scale(1.15);
+
+        filter:
+            drop-shadow(
+                0 0 60px rgba(255,255,255,.65)
+            );
+
     }
+
 }
 
-/* RIVER */
+/* =========================
+   RIVER
+========================= */
 
 .river {
+
     background:
         linear-gradient(
-            #06080a,
-            #08181d
+            to bottom,
+            #05070a,
+            #07171c
         );
+
 }
 
 .water {
+
     position: absolute;
 
     left: 0;
     bottom: 0;
 
     width: 100%;
-    height: 32%;
+    height: 30%;
 
     background:
         repeating-linear-gradient(
             -8deg,
-            rgba(150,200,210,.15) 0 2px,
+            rgba(140,195,205,.16) 0 2px,
             transparent 2px 18px
         );
 
-    animation: water 5s linear infinite;
+    animation:
+        waterMove 5s linear infinite;
+
 }
 
-@keyframes water {
+@keyframes waterMove {
+
     to {
-        background-position: 180px 0;
+        background-position:
+            180px 0;
     }
+
 }
+
+/* =========================
+   SUNRISE
+========================= */
 
 .sunrise {
+
     background:
         radial-gradient(
             circle at 50% 80%,
@@ -625,124 +861,150 @@ body {
             transparent 55%
         ),
         linear-gradient(
+            to bottom,
             #111321,
             #613f49,
             #a96759
         );
+
 }
 
-/* CHAPTER IV */
+/* =========================
+   CHAPTER IV
+========================= */
 
 .train {
+
     text-align: center;
 
-    display: flex !important;
-
-    justify-content: center;
-    align-items: center;
 }
 
 .train-scene {
+
     display: none;
 
     min-height: 100%;
-}
-
-.train-scene.active {
-    display: flex;
 
     justify-content: center;
     align-items: center;
 
-    animation: appear .8s ease;
+}
+
+.train-scene.active {
+
+    display: flex;
+
+    animation:
+        pageIn .7s ease;
+
 }
 
 .train-icon {
+
     font-size: 100px;
 
-    animation: train 3s infinite alternate ease-in-out;
+    animation:
+        trainMove 3s ease-in-out infinite alternate;
+
 }
 
-@keyframes train {
-    from { transform: translateX(-25px); }
-    to { transform: translateX(25px); }
+@keyframes trainMove {
+
+    from {
+        transform: translateX(-25px);
+    }
+
+    to {
+        transform: translateX(25px);
+    }
+
 }
 
 .country {
+
     font-size: 90px;
+
 }
 
-/* SECRET BOOK CARD */
+/* =========================
+   SECRET CARD
+========================= */
 
 .secret-card {
-    margin-top: 50px;
+
+    margin-top: 45px;
 
     padding: 35px 25px;
 
-    text-align: center;
+    border-radius: 18px;
 
-    border-radius: 15px;
+    text-align: center;
 
     background:
         radial-gradient(
-            circle at center,
-            rgba(39,83,105,.18),
+            circle,
+            rgba(0,110,160,.15),
             transparent 70%
         ),
         rgba(0,0,0,.25);
 
-    border: 1px solid rgba(120,180,210,.18);
+    border:
+        1px solid rgba(100,180,210,.18);
 
-    box-shadow:
-        inset 0 0 40px rgba(0,0,0,.3),
-        0 15px 40px rgba(0,0,0,.3);
 }
 
 .secret-card-icon {
-    font-size: 65px;
 
-    margin-bottom: 10px;
+    font-size: 60px;
+
 }
 
 .secret-card h2 {
-    margin: 10px 0;
 
-    color: #a9d5e8;
+    color: #b8dce8;
+
 }
 
 .secret-card p {
-    margin: 10px auto;
 
-    color: #b9c5ca;
+    margin-left: auto;
+    margin-right: auto;
+
+    color: #9db3bb;
+
 }
 
 .secret-link {
+
     display: inline-block;
 
-    margin-top: 18px;
+    margin-top: 15px;
 
     padding: 13px 25px;
 
     border-radius: 30px;
 
-    color: #c8e8f4;
+    color: #c9eaf4;
 
     text-decoration: none;
 
-    border: 1px solid rgba(130,190,215,.25);
+    background:
+        rgba(40,130,165,.12);
 
-    background: rgba(70,130,155,.1);
+    border:
+        1px solid rgba(100,190,220,.25);
 
-    transition: .3s;
 }
 
-.secret-link:hover {
-    background: rgba(90,160,190,.2);
-
-    transform: translateY(-2px);
-}
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:700px) {
+
+    .book {
+        min-height: 760px;
+    }
 
     .content {
         padding: 65px 27px 40px;
@@ -753,46 +1015,54 @@ body {
         line-height: 1.75;
     }
 
-    .book {
-        min-height: 760px;
-    }
-
-    .story-back {
+    .back {
         top: 10px;
         left: 10px;
         font-size: 12px;
     }
+
 }
 
 </style>
+
 </head>
 
 <body>
 
-<a href="story.html" class="story-back">
+
+<a href="story.html" class="back">
 ← Back to Our Story
 </a>
+
 
 <div class="book-wrapper">
 
 <div class="book">
 
-<!-- COVER -->
+
+<!-- ==================================================
+     COVER
+================================================== -->
 
 <div class="page cover" id="cover">
 
 <div class="cover-inner">
 
-<div class="cover-icon">
+<div class="cover-symbol">
 📖
 </div>
 
-<h1>Before You</h1>
+<h1>
+Before You
+</h1>
 
-<h2>Alex</h2>
+<h2>
+Alex
+</h2>
 
 <p>
-The story of who I was before you came into my life.
+The story of who I was
+before you came into my life.
 </p>
 
 <p>
@@ -803,8 +1073,12 @@ The life I built.<br>
 And the dreams I still have.
 </p>
 
-<button class="open" onclick="openBook()">
+<button
+    class="open-button"
+    onclick="openBook()">
+
 Open the book ❤️
+
 </button>
 
 </div>
@@ -812,13 +1086,21 @@ Open the book ❤️
 </div>
 
 
-<!-- CHAPTER I -->
+<!-- ==================================================
+     CHAPTER I
+================================================== -->
 
-<div class="page content active" id="chapter1">
+<div
+    class="page content active"
+    id="chapter1">
 
-<h1>Chapter I</h1>
+<h1>
+Chapter I
+</h1>
 
-<h2>Who I Am</h2>
+<h2>
+Who I Am
+</h2>
 
 <p>
 My name is Alex.
@@ -882,7 +1164,11 @@ difficult.
 But I know that I cannot stop here.
 </p>
 
-<p><strong>I have dreams.</strong></p>
+<p>
+<strong>
+I have dreams.
+</strong>
+</p>
 
 <p>
 I want to change my laziness.
@@ -908,8 +1194,12 @@ toward becoming the person I want to be.
 
 <div class="nav">
 
-<button class="button" onclick="show('chapter2')">
+<button
+    class="button"
+    onclick="showPage('chapter2')">
+
 Next chapter →
+
 </button>
 
 </div>
@@ -917,13 +1207,21 @@ Next chapter →
 </div>
 
 
-<!-- CHAPTER II -->
+<!-- ==================================================
+     CHAPTER II
+================================================== -->
 
-<div class="page content" id="chapter2">
+<div
+    class="page content"
+    id="chapter2">
 
-<h1>Chapter II</h1>
+<h1>
+Chapter II
+</h1>
 
-<h2>Where I Came From</h2>
+<h2>
+Where I Came From
+</h2>
 
 <p>
 I was born in Zhytomyr, Ukraine,
@@ -962,7 +1260,11 @@ and part of who I am.
 Then I lost my father.
 </p>
 
-<p><strong>Losing him changed me.</strong></p>
+<p>
+<strong>
+Losing him changed me.
+</strong>
+</p>
 
 <p>
 There are things people leave behind
@@ -1015,7 +1317,11 @@ very difficult for me emotionally.
 But I did not break.
 </p>
 
-<p><strong>I kept going.</strong></p>
+<p>
+<strong>
+I kept going.
+</strong>
+</p>
 
 <p>
 Even without what I would call
@@ -1051,12 +1357,20 @@ than the person I was yesterday.
 
 <div class="nav">
 
-<button class="button" onclick="show('chapter1')">
+<button
+    class="button"
+    onclick="showPage('chapter1')">
+
 ← Previous
+
 </button>
 
-<button class="button" onclick="show('chapter3')">
+<button
+    class="button"
+    onclick="showPage('chapter3')">
+
 Enter the forest →
+
 </button>
 
 </div>
@@ -1064,15 +1378,19 @@ Enter the forest →
 </div>
 
 
-<!-- CHAPTER III -->
+<!-- ==================================================
+     CHAPTER III
+================================================== -->
 
-<div class="page content forest" id="chapter3">
+<div
+    class="page content forest"
+    id="chapter3">
+
 
 <div class="forest-bg"></div>
 
 <div class="moon"></div>
 
-<div class="trees">
 
 <div class="tree"></div>
 <div class="tree"></div>
@@ -1081,16 +1399,17 @@ Enter the forest →
 <div class="tree"></div>
 <div class="tree"></div>
 
-</div>
 
-<div class="fog fog1"></div>
-<div class="fog fog2"></div>
-<div class="fog fog3"></div>
+<div class="fog fog-one"></div>
+<div class="fog fog-two"></div>
+<div class="fog fog-three"></div>
 
 
 <!-- SCENE 1 -->
 
-<div class="forest-scene active" id="scene1">
+<div
+    class="forest-scene active"
+    id="scene1">
 
 <div class="forest-content">
 
@@ -1109,8 +1428,12 @@ If you want to know me, you have to walk
 through the places I don't usually show.
 </p>
 
-<button class="button" onclick="scene(2)">
+<button
+    class="button"
+    onclick="showScene(2)">
+
 Walk into the forest →
+
 </button>
 
 </div>
@@ -1120,7 +1443,9 @@ Walk into the forest →
 
 <!-- SCENE 2 -->
 
-<div class="forest-scene" id="scene2">
+<div
+    class="forest-scene"
+    id="scene2">
 
 <div class="forest-content">
 
@@ -1142,8 +1467,12 @@ to us that the thought of losing them
 becomes one of our biggest fears.
 </p>
 
-<button class="button" onclick="scene(3)">
+<button
+    class="button"
+    onclick="showScene(3)">
+
 Keep walking →
+
 </button>
 
 </div>
@@ -1153,7 +1482,9 @@ Keep walking →
 
 <!-- SCENE 3 -->
 
-<div class="forest-scene" id="scene3">
+<div
+    class="forest-scene"
+    id="scene3">
 
 <div class="forest-content">
 
@@ -1181,8 +1512,12 @@ caused by strangers, but by people
 we believed would never hurt us.
 </p>
 
-<button class="button" onclick="scene(4)">
+<button
+    class="button"
+    onclick="showScene(4)">
+
 Continue →
+
 </button>
 
 </div>
@@ -1192,7 +1527,9 @@ Continue →
 
 <!-- SCENE 4 -->
 
-<div class="forest-scene" id="scene4">
+<div
+    class="forest-scene"
+    id="scene4">
 
 <div class="forest-content">
 
@@ -1222,10 +1559,18 @@ I carry their memories with me.
 I remember them.
 </p>
 
-<p><strong>And I always will.</strong></p>
+<p>
+<strong>
+And I always will.
+</strong>
+</p>
 
-<button class="button" onclick="scene(5)">
+<button
+    class="button"
+    onclick="showScene(5)">
+
 Continue →
+
 </button>
 
 </div>
@@ -1235,7 +1580,9 @@ Continue →
 
 <!-- SCENE 5 -->
 
-<div class="forest-scene light" id="scene5">
+<div
+    class="forest-scene light"
+    id="scene5">
 
 <div class="forest-content">
 
@@ -1268,8 +1615,12 @@ But I didn't.
 I kept going.
 </p>
 
-<button class="button" onclick="scene(6)">
+<button
+    class="button"
+    onclick="showScene(6)">
+
 Follow the light →
+
 </button>
 
 </div>
@@ -1279,7 +1630,9 @@ Follow the light →
 
 <!-- SCENE 6 -->
 
-<div class="forest-scene river" id="scene6">
+<div
+    class="forest-scene river"
+    id="scene6">
 
 <div class="water"></div>
 
@@ -1318,8 +1671,12 @@ I follow him.
 Step by step.
 </p>
 
-<button class="button" onclick="scene(7)">
+<button
+    class="button"
+    onclick="showScene(7)">
+
 Cross the river →
+
 </button>
 
 </div>
@@ -1329,7 +1686,9 @@ Cross the river →
 
 <!-- SCENE 7 -->
 
-<div class="forest-scene sunrise" id="scene7">
+<div
+    class="forest-scene sunrise"
+    id="scene7">
 
 <div class="forest-content">
 
@@ -1365,7 +1724,11 @@ I don't know what the future will bring.
 But I know one thing:
 </p>
 
-<p><strong>I will keep walking.</strong></p>
+<p>
+<strong>
+I will keep walking.
+</strong>
+</p>
 
 <p>
 There is always another road ahead.
@@ -1376,22 +1739,34 @@ And as long as I can take another step,
 my story isn't over.
 </p>
 
-<button class="button" onclick="show('chapter4')">
+<button
+    class="button"
+    onclick="showPage('chapter4')">
+
 Chapter IV →
+
 </button>
 
 </div>
 
 </div>
 
+
 </div>
 
 
-<!-- CHAPTER IV -->
+<!-- ==================================================
+     CHAPTER IV
+================================================== -->
 
-<div class="page content train" id="chapter4">
+<div
+    class="page content train"
+    id="chapter4">
 
-<div class="train-scene active" id="train1">
+
+<div
+    class="train-scene active"
+    id="train1">
 
 <div>
 
@@ -1399,9 +1774,13 @@ Chapter IV →
 🚆
 </div>
 
-<h1>Chapter IV</h1>
+<h1>
+Chapter IV
+</h1>
 
-<h2>The Life I Built</h2>
+<h2>
+The Life I Built
+</h2>
 
 <p>
 After everything I went through,
@@ -1412,8 +1791,17 @@ my life started to change.
 I began building my own path.
 </p>
 
-<button class="button" onclick="train(2)">
+<p>
+It wasn't always easy, but every step
+taught me something new.
+</p>
+
+<button
+    class="button"
+    onclick="showTrain(2)">
+
 Continue →
+
 </button>
 
 </div>
@@ -1421,7 +1809,9 @@ Continue →
 </div>
 
 
-<div class="train-scene" id="train2">
+<div
+    class="train-scene"
+    id="train2">
 
 <div>
 
@@ -1429,15 +1819,21 @@ Continue →
 🇦🇹
 </div>
 
-<h2>Austria</h2>
+<h2>
+Austria
+</h2>
 
 <p>
-One of the countries I saw during
-my journey.
+One of the countries I saw
+during my journey.
 </p>
 
-<button class="button" onclick="train(3)">
+<button
+    class="button"
+    onclick="showTrain(3)">
+
 Next country →
+
 </button>
 
 </div>
@@ -1445,7 +1841,9 @@ Next country →
 </div>
 
 
-<div class="train-scene" id="train3">
+<div
+    class="train-scene"
+    id="train3">
 
 <div>
 
@@ -1453,15 +1851,21 @@ Next country →
 🇨🇿
 </div>
 
-<h2>Czechia</h2>
+<h2>
+Czechia
+</h2>
 
 <p>
 Another place that became part
 of my journey.
 </p>
 
-<button class="button" onclick="train(4)">
+<button
+    class="button"
+    onclick="showTrain(4)">
+
 Next country →
+
 </button>
 
 </div>
@@ -1469,7 +1873,9 @@ Next country →
 </div>
 
 
-<div class="train-scene" id="train4">
+<div
+    class="train-scene"
+    id="train4">
 
 <div>
 
@@ -1477,15 +1883,21 @@ Next country →
 🇸🇰
 </div>
 
-<h2>Slovakia</h2>
+<h2>
+Slovakia
+</h2>
 
 <p>
 Another station.
 Another memory.
 </p>
 
-<button class="button" onclick="train(5)">
+<button
+    class="button"
+    onclick="showTrain(5)">
+
 Next country →
+
 </button>
 
 </div>
@@ -1493,7 +1905,9 @@ Next country →
 </div>
 
 
-<div class="train-scene" id="train5">
+<div
+    class="train-scene"
+    id="train5">
 
 <div>
 
@@ -1501,7 +1915,9 @@ Next country →
 🇩🇪
 </div>
 
-<h2>Germany</h2>
+<h2>
+Germany
+</h2>
 
 <p>
 Different streets.
@@ -1509,8 +1925,12 @@ Different people.
 Different memories.
 </p>
 
-<button class="button" onclick="train(6)">
+<button
+    class="button"
+    onclick="showTrain(6)">
+
 Next country →
+
 </button>
 
 </div>
@@ -1518,7 +1938,9 @@ Next country →
 </div>
 
 
-<div class="train-scene" id="train6">
+<div
+    class="train-scene"
+    id="train6">
 
 <div>
 
@@ -1526,7 +1948,9 @@ Next country →
 🇮🇹
 </div>
 
-<h2>Italy</h2>
+<h2>
+Italy
+</h2>
 
 <p>
 Five countries.
@@ -1534,8 +1958,12 @@ Five different places.
 Five different memories.
 </p>
 
-<button class="button" onclick="train(7)">
+<button
+    class="button"
+    onclick="showTrain(7)">
+
 What did I achieve? →
+
 </button>
 
 </div>
@@ -1543,7 +1971,9 @@ What did I achieve? →
 </div>
 
 
-<div class="train-scene" id="train7">
+<div
+    class="train-scene"
+    id="train7">
 
 <div>
 
@@ -1551,7 +1981,9 @@ What did I achieve? →
 ✨
 </div>
 
-<h2>What I Achieved</h2>
+<h2>
+What I Achieved
+</h2>
 
 <p>
 Maybe some of my achievements don't look
@@ -1584,8 +2016,12 @@ And I became someone who could take
 responsibility for himself.
 </p>
 
-<button class="button" onclick="train(8)">
+<button
+    class="button"
+    onclick="showTrain(8)">
+
 The next station →
+
 </button>
 
 </div>
@@ -1593,7 +2029,9 @@ The next station →
 </div>
 
 
-<div class="train-scene" id="train8">
+<div
+    class="train-scene"
+    id="train8">
 
 <div>
 
@@ -1601,7 +2039,9 @@ The next station →
 🚆
 </div>
 
-<h2>The Next Station</h2>
+<h2>
+The Next Station
+</h2>
 
 <p>
 I don't want to stop here.
@@ -1620,8 +2060,8 @@ I want to discover new places.
 </p>
 
 <p>
-And I want to build a life that I can
-be proud of.
+And I want to build a life
+that I can be proud of.
 </p>
 
 <p>
@@ -1629,10 +2069,15 @@ Because my journey is still moving.
 </p>
 
 <p>
-I don't know what the next station will be.
+I don't know what the next station
+will be.
 </p>
 
-<p><strong>But I'm ready to find out.</strong></p>
+<p>
+<strong>
+But I'm ready to find out.
+</strong>
+</p>
 
 
 <div class="secret-card">
@@ -1646,7 +2091,8 @@ There is another book...
 </h2>
 
 <p>
-But this one is not ready to be opened yet.
+But this one is not ready
+to be opened yet.
 </p>
 
 <p>
@@ -1656,7 +2102,9 @@ Some stories are worth waiting for.
 <a
     href="secret-book.html"
     class="secret-link">
-    Discover the secret book →
+
+Discover the secret book →
+
 </a>
 
 </div>
@@ -1664,12 +2112,20 @@ Some stories are worth waiting for.
 
 <div class="nav">
 
-<button class="button" onclick="show('chapter3')">
+<button
+    class="button"
+    onclick="showTrain(7)">
+
 ← Back
+
 </button>
 
-<a href="story.html" class="button">
-Finish the book
+<a
+    href="story.html"
+    class="button">
+
+Back to Our Story
+
 </a>
 
 </div>
@@ -1678,11 +2134,18 @@ Finish the book
 
 </div>
 
-</div>
 
 </div>
+
+
+</div>
+
 
 <script>
+
+/* =========================
+   COVER
+========================= */
 
 function openBook() {
 
@@ -1692,45 +2155,91 @@ function openBook() {
 
 }
 
-function show(id) {
+
+/* =========================
+   MAIN CHAPTERS
+========================= */
+
+function showPage(id) {
 
     document
-        .querySelectorAll(".content")
-        .forEach(page => {
+        .querySelectorAll(".page.content")
+        .forEach(function(page) {
+
             page.classList.remove("active");
+
         });
 
-    document
-        .getElementById(id)
-        .classList.add("active");
+
+    const selected =
+        document.getElementById(id);
+
+
+    if (selected) {
+
+        selected.classList.add("active");
+
+    }
 
 }
 
-function scene(number) {
+
+/* =========================
+   CHAPTER III
+========================= */
+
+function showScene(number) {
 
     document
         .querySelectorAll(".forest-scene")
-        .forEach(scene => {
+        .forEach(function(scene) {
+
             scene.classList.remove("active");
+
         });
 
-    document
-        .getElementById("scene" + number)
-        .classList.add("active");
+
+    const selected =
+        document.getElementById(
+            "scene" + number
+        );
+
+
+    if (selected) {
+
+        selected.classList.add("active");
+
+    }
 
 }
 
-function train(number) {
+
+/* =========================
+   CHAPTER IV
+========================= */
+
+function showTrain(number) {
 
     document
         .querySelectorAll(".train-scene")
-        .forEach(scene => {
+        .forEach(function(scene) {
+
             scene.classList.remove("active");
+
         });
 
-    document
-        .getElementById("train" + number)
-        .classList.add("active");
+
+    const selected =
+        document.getElementById(
+            "train" + number
+        );
+
+
+    if (selected) {
+
+        selected.classList.add("active");
+
+    }
 
 }
 
