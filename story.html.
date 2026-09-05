@@ -1,151 +1,23 @@
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<button onclick="showSecret()">
+    Open something for you ❤️
+</button>
+<a href="story.html" class="story-button">
+    Open something for you ❤️
+</a> 
+button {
+.story-button {
+    display: inline-block;
+    text-decoration: none;
+    border: none;
+    padding: 15px 28px;
+    border-radius: 30px;
+    font-size: 17px;
+    cursor: pointer;
+    background: #ff6f91;
+    color: white;
+    transition: 0.3s;
+}
 
-    <title>Our Story ❤️</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #fff0f5, #ffe1eb);
-            color: #4a2632;
-            min-height: 100vh;
-            padding: 30px 20px;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: auto;
-        }
-
-        .back {
-            display: inline-block;
-            margin-bottom: 30px;
-            text-decoration: none;
-            color: #ff5c83;
-            font-size: 16px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .heart {
-            font-size: 60px;
-            animation: heartbeat 1.5s infinite;
-        }
-
-        h1 {
-            font-size: 42px;
-            margin-top: 15px;
-        }
-
-        .intro {
-            margin-top: 15px;
-            font-size: 18px;
-            line-height: 1.6;
-        }
-
-        .memory {
-            background: rgba(255, 255, 255, 0.85);
-            padding: 28px;
-            border-radius: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 8px 25px rgba(100, 40, 60, 0.12);
-        }
-
-        .memory h2 {
-            margin-bottom: 15px;
-            font-size: 25px;
-        }
-
-        .memory p {
-            font-size: 17px;
-            line-height: 1.7;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 15px;
-            opacity: 0.7;
-        }
-
-        @keyframes heartbeat {
-            0%, 100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.15);
-            }
-        }
-    </style>
-</head>
-
-<body>
-
-<div class="container">
-
-    <a class="back" href="index.html">← Back</a>
-
-    <header>
-        <div class="heart">❤️</div>
-
-        <h1>Our Story</h1>
-
-        <p class="intro">
-            This is a little place for the memories
-            that became part of our story.
-        </p>
-    </header>
-
-    <div class="memory">
-        <h2>🌸 The beginning</h2>
-
-        <p>
-            It all started with two people
-            who didn't know how important
-            their meeting would become.
-        </p>
-    </div>
-
-    <div class="memory">
-        <h2>💕 Our first memories</h2>
-
-        <p>
-            Every meeting, every conversation
-            and every little moment became
-            something worth remembering.
-        </p>
-    </div>
-
-    <div class="memory">
-        <h2>📖 To be continued...</h2>
-
-        <p>
-            This story isn't finished yet.
-            There are still many memories
-            waiting to be written.
-        </p>
-    </div>
-
-    <footer>
-        Made especially for Marina ❤️
-    </footer>
-
-</div>
-
-</body>
-</html>
-```
+.story-button:hover {
+    transform: scale(1.05);
+}
