@@ -7,6 +7,7 @@
 <title>Our Story ❤️</title>
 
 <style>
+
 * {
     box-sizing: border-box;
 }
@@ -17,507 +18,726 @@ html {
 
 body {
     margin: 0;
-    background:
-        radial-gradient(circle at top, #3b1d35, #160e18 55%, #09070b);
+    font-family: Georgia, serif;
     color: #fff;
-    font-family: Georgia, "Times New Roman", serif;
-    line-height: 1.7;
+
+    background:
+        radial-gradient(circle at top, #30202d 0%, #120d14 45%, #050507 100%);
+
+    overflow-x: hidden;
 }
 
-.container {
-    width: 92%;
-    max-width: 900px;
-    margin: auto;
-    padding: 70px 0;
-}
-
-.hero {
-    min-height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
+/* FLOATING HEARTS */
 
 .heart {
-    font-size: 60px;
-    animation: heartbeat 2s infinite;
-}
-
-@keyframes heartbeat {
-    0%, 100% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.12);
-    }
-}
-
-.hero h1 {
-    font-size: clamp(42px, 8vw, 80px);
-    font-weight: normal;
-    margin: 15px 0;
-}
-
-.hero p {
+    position: fixed;
+    bottom: -30px;
     font-size: 20px;
-    opacity: 0.8;
+    opacity: .35;
+    animation: floatHeart 10s linear infinite;
+    pointer-events: none;
 }
 
-.section {
-    margin: 100px 0;
+.heart:nth-child(1) {
+    left: 10%;
+    animation-delay: 1s;
 }
 
-.date {
-    color: #d99acb;
-    font-size: 14px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
+.heart:nth-child(2) {
+    left: 30%;
+    animation-delay: 4s;
 }
 
-h2 {
-    font-size: 36px;
-    font-weight: normal;
-    margin: 10px 0 25px;
+.heart:nth-child(3) {
+    left: 55%;
+    animation-delay: 2s;
 }
 
-h3 {
-    font-size: 24px;
-    font-weight: normal;
+.heart:nth-child(4) {
+    left: 80%;
+    animation-delay: 6s;
 }
 
-p {
-    font-size: 17px;
-    color: #eee;
+@keyframes floatHeart {
+
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: .4;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
 }
 
-.card {
-    padding: 35px;
-    margin: 30px 0;
-    border-radius: 25px;
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
-}
-
-.quote {
-    margin: 30px 0;
-    padding: 25px;
-    border-left: 3px solid #d99acb;
-    font-style: italic;
-}
-
-.book-card {
-    margin: 100px 0;
-    padding: 55px 30px;
-    text-align: center;
-    border-radius: 30px;
-
-    background:
-        linear-gradient(145deg, rgba(70,30,65,.9), rgba(20,10,25,.95));
-
-    border: 1px solid rgba(255,255,255,.15);
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.5);
-}
-
-.book-icon {
-    font-size: 70px;
-    margin-bottom: 15px;
-}
-
-.book-card h2 {
-    font-size: 42px;
-}
-
-.book-card p {
-    max-width: 600px;
-    margin: 0 auto 30px;
-}
-
-.button {
-    display: inline-block;
-    padding: 14px 28px;
-    border-radius: 30px;
-
-    background: rgba(255,255,255,.12);
-    border: 1px solid rgba(255,255,255,.25);
-
-    color: white;
-    text-decoration: none;
-
-    transition: .3s;
-}
-
-.button:hover {
-    background: rgba(255,255,255,.22);
-    transform: translateY(-3px);
-}
+/* SIDE MENU */
 
 .side-menu {
+
     position: fixed;
+
     right: 18px;
     top: 50%;
+
     transform: translateY(-50%);
 
     display: flex;
     flex-direction: column;
+
     gap: 12px;
 
-    z-index: 100;
+    z-index: 1000;
 }
 
 .side-button {
-    width: 52px;
-    height: 52px;
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
-    border-radius: 50%;
-
-    background: rgba(255,255,255,.12);
-    backdrop-filter: blur(10px);
-
-    color: white;
     text-decoration: none;
 
-    font-size: 23px;
+    color: white;
+
+    background: rgba(255,255,255,.1);
 
     border: 1px solid rgba(255,255,255,.2);
+
+    backdrop-filter: blur(10px);
+
+    font-size: 22px;
 
     transition: .3s;
 }
 
 .side-button:hover {
+
     transform: scale(1.12);
-    background: rgba(255,255,255,.22);
+
+    background: rgba(255,255,255,.2);
 }
 
-.back {
+/* HERO */
+
+.hero {
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     text-align: center;
-    margin-top: 100px;
+
+    padding: 40px 20px;
 }
 
-@media (max-width: 700px) {
+.hero-content {
 
-    .container {
-        width: 88%;
-    }
+    max-width: 800px;
+}
 
-    .card {
-        padding: 25px;
-    }
+.hero .small {
 
-    .section {
-        margin: 70px 0;
-    }
+    letter-spacing: 5px;
 
-    p {
-        font-size: 16px;
-    }
+    text-transform: uppercase;
+
+    color: #c7aeb8;
+
+    font-size: 13px;
+}
+
+.hero h1 {
+
+    font-size: clamp(50px, 10vw, 90px);
+
+    margin: 20px 0 10px;
+}
+
+.hero p {
+
+    font-size: 20px;
+
+    color: #d8c8ce;
+
+    line-height: 1.7;
+}
+
+/* SECTIONS */
+
+.story-section {
+
+    max-width: 850px;
+
+    margin: 0 auto;
+
+    padding: 100px 30px;
+}
+
+.date {
+
+    color: #c59aa9;
+
+    letter-spacing: 4px;
+
+    font-size: 13px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 15px;
+}
+
+.story-section h2 {
+
+    font-size: 38px;
+
+    margin-top: 0;
+}
+
+.story-section p {
+
+    font-size: 18px;
+
+    line-height: 1.9;
+
+    color: #ded4d8;
+}
+
+/* DIVIDER */
+
+.divider {
+
+    width: 80px;
+
+    height: 1px;
+
+    background: #92717c;
+
+    margin: 35px 0;
+}
+
+/* BOOK */
+
+.book-card {
+
+    max-width: 850px;
+
+    margin: 80px auto;
+
+    padding: 65px 35px;
+
+    text-align: center;
+
+    border-radius: 25px;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(120,75,95,.3),
+            rgba(255,255,255,.04)
+        );
+
+    border: 1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+
+        0 25px 70px rgba(0,0,0,.4);
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+.book-card::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 15px;
+
+    border: 1px solid rgba(255,255,255,.08);
+
+    border-radius: 18px;
+
+    pointer-events: none;
+}
+
+.book-icon {
+
+    font-size: 70px;
+
+    margin-bottom: 20px;
+
+    filter: drop-shadow(0 0 15px rgba(255,255,255,.15));
+}
+
+.book-card .date {
+
+    margin-bottom: 10px;
+}
+
+.book-card h2 {
+
+    font-size: 45px;
+
+    margin: 10px 0 20px;
+}
+
+.book-card p {
+
+    max-width: 620px;
+
+    margin: 12px auto;
+
+    color: #cfc3c8;
+
+    line-height: 1.8;
+}
+
+.button {
+
+    display: inline-block;
+
+    margin-top: 30px;
+
+    padding: 15px 30px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.12);
+
+    border: 1px solid rgba(255,255,255,.25);
+
+    color: white;
+
+    text-decoration: none;
+
+    transition: .3s;
+
+    font-size: 16px;
+}
+
+.button:hover {
+
+    transform: translateY(-3px);
+
+    background: rgba(255,255,255,.2);
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.3);
+}
+
+/* END */
+
+.end {
+
+    text-align: center;
+
+    padding: 120px 20px 180px;
+}
+
+.end h2 {
+
+    font-size: 40px;
+}
+
+.end p {
+
+    color: #b9aab0;
+
+    font-size: 18px;
+}
+
+/* MOBILE */
+
+@media(max-width:650px) {
 
     .side-menu {
+
         right: 10px;
     }
 
     .side-button {
-        width: 46px;
-        height: 46px;
-        font-size: 20px;
+
+        width: 42px;
+        height: 42px;
+
+        font-size: 19px;
+    }
+
+    .story-section {
+
+        padding: 80px 25px;
+    }
+
+    .story-section h2 {
+
+        font-size: 30px;
+    }
+
+    .story-section p {
+
+        font-size: 16px;
+    }
+
+    .book-card {
+
+        margin: 60px 20px;
+
+        padding: 55px 25px;
+    }
+
+    .book-card h2 {
+
+        font-size: 36px;
     }
 }
+
 </style>
 </head>
 
 <body>
 
+
+<!-- FLOATING HEARTS -->
+
+<div class="heart">❤️</div>
+<div class="heart">♡</div>
+<div class="heart">❤️</div>
+<div class="heart">♡</div>
+
+
 <!-- SIDE MENU -->
 
 <div class="side-menu">
 
-    <a href="book.html" class="side-button" title="Before You">
-        📖
+    <a href="book.html"
+       class="side-button"
+       title="Before You">
+       📖
     </a>
 
-    <a href="roses.html" class="side-button" title="Roses">
-        🌹
+    <a href="roses.html"
+       class="side-button"
+       title="Roses">
+       🌹
     </a>
 
-    <a href="envelope.html" class="side-button" title="Letters">
-        ❤️
+    <a href="envelope.html"
+       class="side-button"
+       title="Letters">
+       ❤️
     </a>
 
-    <a href="black-envelope.html" class="side-button" title="Black Envelope">
-        🖤
+    <a href="black-envelope.html"
+       class="side-button"
+       title="Black Envelope">
+       🖤
     </a>
 
 </div>
 
 
-<div class="container">
-
 <!-- HERO -->
 
 <section class="hero">
 
-    <div class="heart">❤️</div>
+    <div class="hero-content">
 
-    <h1>Our Story</h1>
+        <div class="small">
+            Alex & Marina
+        </div>
 
-    <p>
-        Alex & Marina
-    </p>
+        <h1>Our Story</h1>
 
-    <p>
-        Two people.<br>
-        One story.
-    </p>
+        <p>
+            Some stories begin with a simple message.
+            Ours became something more.
+        </p>
+
+        <p>
+            This is the story of us.
+        </p>
+
+    </div>
 
 </section>
 
 
 <!-- PROLOGUE -->
 
-<section class="section">
+<section class="story-section">
 
-    <div class="date">Prologue</div>
-
-    <h2>Before the first date</h2>
-
-    <div class="card">
-
-        <p>
-            We met on Badoo.
-        </p>
-
-        <p>
-            At first, we were just two people talking.
-        </p>
-
-        <p>
-            Neither of us knew where it would lead.
-        </p>
-
-        <p>
-            But somehow, our conversations became important.
-        </p>
-
+    <div class="date">
+        Before everything
     </div>
+
+    <h2>Where It Started</h2>
+
+    <div class="divider"></div>
+
+    <p>
+        We met through Badoo.
+    </p>
+
+    <p>
+        At first, it was just a conversation between two people
+        who didn't know where it would lead.
+    </p>
+
+    <p>
+        But sometimes the most important stories
+        begin without us knowing it.
+    </p>
 
 </section>
 
 
 <!-- FIRST DATE -->
 
-<section class="section">
+<section class="story-section">
 
-    <div class="date">27 June</div>
-
-    <h2>Our First Date</h2>
-
-    <div class="card">
-
-        <p>
-            Our first date was simple.
-        </p>
-
-        <p>
-            We went shopping together.
-        </p>
-
-        <p>
-            Nothing needed to be perfect.
-        </p>
-
-        <p>
-            We were simply together.
-        </p>
-
-        <p>
-            And that was enough to make the day special.
-        </p>
-
+    <div class="date">
+        27 June
     </div>
+
+    <h2>The First Date</h2>
+
+    <div class="divider"></div>
+
+    <p>
+        Our first date.
+    </p>
+
+    <p>
+        We went shopping together.
+    </p>
+
+    <p>
+        Nothing needed to be perfect.
+        We simply spent time together.
+    </p>
+
+    <p>
+        And somehow, that ordinary day became
+        the beginning of something I would remember.
+    </p>
 
 </section>
 
 
 <!-- WAITING -->
 
-<section class="section">
+<section class="story-section">
 
-    <div class="date">Between the dates</div>
+    <div class="date">
+        Between the dates
+    </div>
 
     <h2>The Waiting</h2>
 
-    <div class="card">
+    <div class="divider"></div>
 
-        <p>
-            Sometimes the hardest part is waiting.
-        </p>
+    <p>
+        Sometimes the hardest part wasn't saying goodbye.
+    </p>
 
-        <p>
-            Waiting for the next meeting.
-            Missing someone.
-            Thinking about them when they are far away.
-        </p>
+    <p>
+        It was waiting for the next meeting.
+    </p>
 
-        <p>
-            But there was something beautiful about knowing
-            that another meeting was waiting for us.
-        </p>
+    <p>
+        Missing you.
+    </p>
 
-    </div>
+    <p>
+        Thinking about when we would see each other again.
+    </p>
+
+    <p>
+        And somehow, even the waiting became a special part
+        of our story.
+    </p>
 
 </section>
 
 
 <!-- SECOND DATE -->
 
-<section class="section">
+<section class="story-section">
 
-    <div class="date">18 July</div>
-
-    <h2>LEGO & Something More</h2>
-
-    <div class="card">
-
-        <p>
-            Our second date was different.
-        </p>
-
-        <p>
-            We built LEGO together.
-        </p>
-
-        <p>
-            We also opened a shared bank account.
-        </p>
-
-        <p>
-            It may sound like a small thing,
-            but for me it became another memory
-            that I wanted to keep.
-        </p>
-
+    <div class="date">
+        18 July
     </div>
+
+    <h2>The Second Date</h2>
+
+    <div class="divider"></div>
+
+    <p>
+        We spent another day together.
+    </p>
+
+    <p>
+        LEGO.
+    </p>
+
+    <p>
+        Time together.
+    </p>
+
+    <p>
+        And something else that became important:
+        we opened a shared bank account.
+    </p>
+
+    <p>
+        It was another small step.
+    </p>
 
 </section>
 
 
 <!-- GIFTS -->
 
-<section class="section">
+<section class="story-section">
 
-    <div class="date">Little things</div>
+    <div class="date">
+        The little things
+    </div>
 
     <h2>Gifts</h2>
 
-    <div class="card">
+    <div class="divider"></div>
 
-        <p>
-            Some gifts are not really about the things themselves.
-        </p>
+    <p>
+        Some gifts are expensive.
+    </p>
 
-        <p>
-            They are about the thought behind them.
-        </p>
+    <p>
+        Some gifts are small.
+    </p>
 
-        <p>
-            Every little thing I gave you had a meaning.
-        </p>
+    <p>
+        But the things I gave you were never only about the objects.
+    </p>
 
-        <p>
-            I wanted you to have something
-            that could remind you of me.
-        </p>
+    <p>
+        They were about the thought behind them.
+    </p>
 
-    </div>
+    <p>
+        A painting.
+        Handmade resin pieces.
+        Roses.
+        Letters.
+        Little surprises.
+    </p>
+
+    <p>
+        Things I wanted you to have because
+        you became important to me.
+    </p>
 
 </section>
 
 
 <!-- THIRD DATE -->
 
-<section class="section">
+<section class="story-section">
 
-    <div class="date">31 August</div>
+    <div class="date">
+        31 August
+    </div>
 
     <h2>The Day Everything Changed</h2>
 
-    <div class="card">
+    <div class="divider"></div>
 
-        <p>
-            We went to the cinema.
-        </p>
+    <p>
+        Cinema.
+    </p>
 
-        <p>
-            We spent time together.
-        </p>
+    <p>
+        Another day together.
+    </p>
 
-        <p>
-            And then I finally said what I had been feeling.
-        </p>
+    <p>
+        And then I finally said what I had been feeling.
+    </p>
 
-        <div class="quote">
-            I love you.
-        </div>
+    <p>
+        I told you that I love you.
+    </p>
 
-        <p>
-            That day became more than another date.
-        </p>
+    <p>
+        And that day, we started our relationship.
+    </p>
 
-        <p>
-            We started our relationship.
-        </p>
+    <p>
+        I don't know what the future will look like.
+    </p>
 
-    </div>
+    <p>
+        But I know that I will always remember
+        the moment when our story became something more.
+    </p>
 
 </section>
 
 
 <!-- ENGLISH -->
 
-<section class="section">
+<section class="story-section">
 
-    <div class="date">A promise</div>
-
-    <h2>Learning English for you 🇬🇧❤️</h2>
-
-    <div class="card">
-
-        <p>
-            There is something else I started doing because of you.
-        </p>
-
-        <p>
-            I started learning English.
-        </p>
-
-        <p>
-            I know that language can sometimes make things difficult.
-        </p>
-
-        <p>
-            So I want to become better.
-        </p>
-
-        <p>
-            I want to understand you better.
-            Talk to you more easily.
-            And be able to share more with you.
-        </p>
-
-        <p>
-            I promised myself that I will keep learning.
-        </p>
-
+    <div class="date">
+        A promise
     </div>
+
+    <h2>Learning Your Language</h2>
+
+    <div class="divider"></div>
+
+    <p>
+        There is something else I started because of you.
+    </p>
+
+    <p>
+        English.
+    </p>
+
+    <p>
+        I know that sometimes the language barrier makes things difficult.
+    </p>
+
+    <p>
+        So I decided to learn.
+    </p>
+
+    <p>
+        Not because you asked me to.
+    </p>
+
+    <p>
+        But because I want to be able to talk with you more easily,
+        understand you better, and share more of my life with you.
+    </p>
+
+    <p>
+        And I promised myself that I will keep learning.
+    </p>
 
 </section>
 
@@ -526,11 +746,17 @@ p {
 
 <section class="book-card">
 
-    <div class="book-icon">📖</div>
+    <div class="book-icon">
+        📖
+    </div>
 
-    <div class="date">Something you don't know yet</div>
+    <div class="date">
+        Something you don't know yet
+    </div>
 
-    <h2>Before You</h2>
+    <h2>
+        Before You
+    </h2>
 
     <p>
         The story of who I was before you came into my life.
@@ -553,77 +779,58 @@ p {
 
 <!-- CURRENT CHAPTER -->
 
-<section class="section">
+<section class="story-section">
 
-    <div class="date">5 September 2026</div>
-
-    <h2>Our Story Continues</h2>
-
-    <div class="card">
-
-        <p>
-            This is where we are now.
-        </p>
-
-        <p>
-            Our story is still young.
-        </p>
-
-        <p>
-            There are still many things we don't know.
-        </p>
-
-        <p>
-            Many places we haven't seen.
-        </p>
-
-        <p>
-            Many memories we haven't made.
-        </p>
-
-        <p>
-            So this is not the end.
-        </p>
-
-        <p>
-            It is only another page.
-        </p>
-
+    <div class="date">
+        5 September 2026
     </div>
+
+    <h2>Right Now</h2>
+
+    <div class="divider"></div>
+
+    <p>
+        This is where our story is today.
+    </p>
+
+    <p>
+        We have already created many memories together.
+    </p>
+
+    <p>
+        And there are still so many things we haven't experienced yet.
+    </p>
+
+    <p>
+        More walks.
+        More conversations.
+        More ordinary days.
+        More memories.
+    </p>
+
+    <p>
+        I don't know exactly where our story will take us.
+    </p>
+
+    <p>
+        But I'm happy that you're part of it.
+    </p>
 
 </section>
 
 
 <!-- END -->
 
-<section class="section">
+<section class="end">
 
-    <div class="card">
+    <h2>To be continued... ❤️</h2>
 
-        <h2>To be continued...</h2>
-
-        <p>
-            Some stories are meant to keep going.
-        </p>
-
-        <p>
-            ❤️
-        </p>
-
-    </div>
+    <p>
+        This is only the beginning.
+    </p>
 
 </section>
 
-
-<div class="back">
-
-    <a href="index.html" class="button">
-        ← Back to the beginning
-    </a>
-
-</div>
-
-</div>
 
 </body>
 </html>
