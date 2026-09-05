@@ -1,841 +1,785 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Our Story ❤️</title>
+<title>Our Story ❤️</title>
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
 
-        body {
-            font-family: Georgia, "Times New Roman", serif;
-            background:
-                radial-gradient(circle at top, #fff5f8 0%, #ffe8ef 45%, #fff 100%);
-            color: #4b2733;
-            line-height: 1.7;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+* {
+    box-sizing: border-box;
+}
 
-        .hearts {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 0;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        .heart {
-            position: absolute;
-            bottom: -30px;
-            font-size: 18px;
-            opacity: 0.35;
-            animation: floatUp linear infinite;
-        }
+body {
+    margin: 0;
 
-        .heart:nth-child(1) {
-            left: 10%;
-            animation-duration: 9s;
-        }
+    font-family: Georgia, serif;
 
-        .heart:nth-child(2) {
-            left: 30%;
-            animation-duration: 12s;
-            animation-delay: 2s;
-        }
+    color: #64243a;
 
-        .heart:nth-child(3) {
-            left: 55%;
-            animation-duration: 10s;
-            animation-delay: 4s;
-        }
+    background:
+        radial-gradient(circle at top, #ffffff, transparent 45%),
+        linear-gradient(135deg, #fff1f5, #ffdce6);
 
-        .heart:nth-child(4) {
-            left: 80%;
-            animation-duration: 13s;
-            animation-delay: 1s;
-        }
+    min-height: 100vh;
+}
 
-        @keyframes floatUp {
-            0% {
-                transform: translateY(0) scale(0.8);
-                opacity: 0;
-            }
+/* SIDE ROSE */
 
-            20% {
-                opacity: 0.35;
-            }
+.side-rose {
+    position: fixed;
 
-            100% {
-                transform: translateY(-110vh) scale(1.4);
-                opacity: 0;
-            }
-        }
+    right: 22px;
+    top: 50%;
 
-        .container {
-            position: relative;
-            z-index: 1;
-            width: min(900px, 92%);
-            margin: auto;
-            padding: 70px 0;
-        }
+    transform: translateY(-50%);
 
-        .hero {
-            text-align: center;
-            padding: 30px 10px 80px;
-        }
+    width: 65px;
+    height: 65px;
 
-        .hero .small {
-            font-size: 14px;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: #a45b72;
-            margin-bottom: 15px;
-        }
+    display: flex;
 
-        h1 {
-            font-size: clamp(45px, 10vw, 80px);
-            color: #7d2947;
-            margin-bottom: 15px;
-        }
+    align-items: center;
+    justify-content: center;
 
-        .names {
-            font-size: 25px;
-            color: #a14d68;
-            margin-bottom: 20px;
-        }
+    background: rgba(255,255,255,0.92);
 
-        .hero-text {
-            max-width: 650px;
-            margin: auto;
-            font-size: 18px;
-            color: #704351;
-        }
+    border-radius: 50%;
 
-        .chapter {
-            background: rgba(255, 255, 255, 0.82);
-            border-radius: 28px;
-            padding: 38px;
-            margin-bottom: 35px;
-            box-shadow: 0 12px 35px rgba(130, 50, 80, 0.10);
-            border: 1px solid rgba(180, 100, 130, 0.15);
-            backdrop-filter: blur(8px);
-            transition: transform 0.3s ease;
-        }
+    text-decoration: none;
 
-        .chapter:hover {
-            transform: translateY(-4px);
-        }
+    font-size: 34px;
 
-        .chapter-number {
-            font-size: 13px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #b35d78;
-            margin-bottom: 8px;
-        }
+    box-shadow:
+        0 8px 25px rgba(120,30,60,0.20);
 
-        h2 {
-            font-size: 32px;
-            color: #7d2947;
-            margin-bottom: 18px;
-        }
+    z-index: 1000;
 
-        h3 {
-            color: #8c3856;
-            margin: 20px 0 8px;
-        }
+    transition: 0.3s;
+}
 
-        .date {
-            display: inline-block;
-            background: #ffe0e9;
-            color: #8c3856;
-            padding: 7px 15px;
-            border-radius: 30px;
-            font-size: 14px;
-            margin-bottom: 18px;
-        }
+.side-rose:hover {
+    transform: translateY(-50%) scale(1.12);
+}
 
-        .center {
-            text-align: center;
-        }
+/* MAIN */
 
-        .big-heart {
-            font-size: 60px;
-            margin: 15px 0;
-            animation: heartbeat 2s infinite;
-        }
+.container {
+    width: 100%;
 
-        @keyframes heartbeat {
-            0%, 100% {
-                transform: scale(1);
-            }
+    max-width: 850px;
 
-            50% {
-                transform: scale(1.12);
-            }
-        }
+    margin: auto;
 
-        .quote {
-            border-left: 3px solid #d9829d;
-            padding-left: 20px;
-            margin: 25px 0;
-            font-style: italic;
-            color: #754656;
-        }
+    padding: 55px 25px 80px;
+}
 
-        .waiting {
-            text-align: center;
-            padding: 20px;
-        }
+header {
+    text-align: center;
 
-        .waiting-icon {
-            font-size: 45px;
-            margin-bottom: 15px;
-        }
+    margin-bottom: 70px;
+}
 
-        .countdown {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin: 25px 0;
-        }
+header h1 {
+    font-size: 46px;
 
-        .time-box {
-            background: #fff;
-            border-radius: 18px;
-            padding: 15px 18px;
-            min-width: 85px;
-            box-shadow: 0 7px 20px rgba(120, 40, 70, 0.10);
-        }
+    color: #8b1e3f;
 
-        .time-number {
-            display: block;
-            font-size: 28px;
-            font-weight: bold;
-            color: #7d2947;
-        }
+    margin-bottom: 12px;
+}
 
-        .time-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #a45b72;
-        }
+header p {
+    font-size: 20px;
 
-        .gift-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-            margin-top: 25px;
-        }
+    opacity: 0.8;
+}
 
-        .gift {
-            background: #fff5f8;
-            padding: 20px;
-            border-radius: 18px;
-            text-align: center;
-        }
+/* CHAPTER */
 
-        .gift-icon {
-            font-size: 35px;
-            display: block;
-            margin-bottom: 8px;
-        }
+.chapter {
+    background: rgba(255,255,255,0.78);
 
-        .english-box {
-            background: linear-gradient(135deg, #fff1f5, #fff);
-            border-radius: 20px;
-            padding: 25px;
-            margin-top: 25px;
-        }
+    border-radius: 28px;
 
-        .locked {
-            text-align: center;
-            background: linear-gradient(135deg, #f9edf2, #fff);
-            border: 1px dashed #c67b94;
-        }
+    padding: 35px;
 
-        .lock {
-            font-size: 55px;
-            margin-bottom: 15px;
-        }
+    margin-bottom: 35px;
 
-        .secret-message {
-            display: none;
-            margin-top: 25px;
-            padding: 25px;
-            background: #fff1f5;
-            border-radius: 20px;
-        }
+    box-shadow:
+        0 12px 35px rgba(100,30,50,0.10);
 
-        .button {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 14px 28px;
-            background: #8d3857;
-            color: white;
-            text-decoration: none;
-            border-radius: 30px;
-            transition: 0.3s;
-            box-shadow: 0 8px 18px rgba(110, 40, 65, 0.18);
-        }
+    border: 1px solid rgba(255,255,255,0.8);
+}
 
-        .button:hover {
-            background: #6f2944;
-            transform: translateY(-3px);
-        }
+.chapter-number {
+    color: #b52f57;
 
-        .envelope-button {
-            background: linear-gradient(135deg, #b72f50, #8d2442);
-            font-size: 17px;
-            padding: 16px 30px;
-        }
+    font-size: 15px;
 
-        footer {
-            text-align: center;
-            padding: 40px 10px 10px;
-            color: #9a6273;
-            font-size: 14px;
-        }
+    text-transform: uppercase;
 
-        @media (max-width: 600px) {
-            .chapter {
-                padding: 25px;
-            }
+    letter-spacing: 2px;
+}
 
-            h2 {
-                font-size: 27px;
-            }
+.chapter h2 {
+    color: #8b1e3f;
 
-            .hero {
-                padding-bottom: 55px;
-            }
+    font-size: 30px;
 
-            .time-box {
-                min-width: 72px;
-                padding: 12px;
-            }
+    margin: 10px 0 20px;
+}
 
-            .time-number {
-                font-size: 23px;
-            }
-        }
-    </style>
+.chapter p {
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+/* DATE */
+
+.date {
+    display: inline-block;
+
+    padding: 7px 15px;
+
+    margin-bottom: 15px;
+
+    background: #ffe1e9;
+
+    border-radius: 20px;
+
+    color: #8b1e3f;
+
+    font-size: 14px;
+}
+
+/* HEART */
+
+.big-heart {
+    text-align: center;
+
+    font-size: 45px;
+
+    margin: 45px 0;
+}
+
+/* BUTTON */
+
+.button {
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 14px 26px;
+
+    border-radius: 30px;
+
+    background: #8b1e3f;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 17px;
+
+    box-shadow:
+        0 8px 20px rgba(100,20,40,0.18);
+
+    transition: 0.3s;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+
+    background: #a82a50;
+}
+
+/* ROSE SECTION */
+
+.rose-section {
+    text-align: center;
+
+    padding: 45px 30px;
+
+    background: rgba(255,255,255,0.82);
+
+    border-radius: 28px;
+
+    margin-bottom: 35px;
+
+    box-shadow:
+        0 12px 35px rgba(100,30,50,0.10);
+}
+
+.rose-section h2 {
+    color: #8b1e3f;
+}
+
+/* COUNTDOWN */
+
+.countdown {
+    text-align: center;
+
+    padding: 45px 25px;
+
+    background: rgba(255,255,255,0.85);
+
+    border-radius: 28px;
+
+    margin-top: 50px;
+
+    box-shadow:
+        0 12px 35px rgba(100,30,50,0.10);
+}
+
+.countdown h2 {
+    color: #8b1e3f;
+
+    font-size: 30px;
+}
+
+#timer {
+    font-size: 26px;
+
+    margin-top: 20px;
+
+    color: #a52a4d;
+
+    font-weight: bold;
+}
+
+/* LOCKED */
+
+.locked {
+    text-align: center;
+
+    margin-top: 35px;
+
+    padding: 45px 30px;
+
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #27202a,
+            #161218
+        );
+
+    color: white;
+
+    box-shadow:
+        0 15px 40px rgba(0,0,0,0.20);
+}
+
+.locked h2 {
+    color: #ffd9e3;
+
+    font-size: 30px;
+}
+
+.lock-icon {
+    font-size: 55px;
+
+    margin-bottom: 15px;
+}
+
+/* FOOTER */
+
+footer {
+    text-align: center;
+
+    margin-top: 70px;
+
+    font-size: 18px;
+
+    opacity: 0.75;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding: 35px 15px 60px;
+    }
+
+    header h1 {
+        font-size: 35px;
+    }
+
+    header p {
+        font-size: 17px;
+    }
+
+    .chapter {
+        padding: 25px 20px;
+    }
+
+    .chapter h2 {
+        font-size: 25px;
+    }
+
+    .chapter p {
+        font-size: 17px;
+    }
+
+    .side-rose {
+        right: 10px;
+
+        width: 52px;
+        height: 52px;
+
+        font-size: 27px;
+    }
+
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="hearts">
-    <div class="heart">❤️</div>
-    <div class="heart">♡</div>
-    <div class="heart">❤️</div>
-    <div class="heart">♡</div>
-</div>
+
+<!-- ROSE BUTTON ON THE SIDE -->
+
+<a
+    href="roses.html"
+    class="side-rose"
+    title="Roses for Marina"
+>
+    🌹
+</a>
+
 
 <div class="container">
 
-    <section class="hero">
-        <div class="small">A story written by two people</div>
 
-        <h1>Our Story</h1>
+<header>
 
-        <div class="names">
-            Alex & Marina ❤️
-        </div>
+    <h1>Our Story ❤️</h1>
 
-        <p class="hero-text">
-            Some stories are written in books.
-            Ours is being written one moment at a time.
-        </p>
-    </section>
+    <p>
+        A little story about how we became us.
+    </p>
 
+</header>
 
-    <!-- PROLOGUE -->
 
-    <section class="chapter center">
+<!-- PROLOGUE -->
 
-        <div class="chapter-number">Prologue</div>
+<section class="chapter">
 
-        <h2>How it all began 🌸</h2>
+    <div class="chapter-number">
+        Prologue
+    </div>
 
-        <div class="big-heart">❤️</div>
+    <h2>Where it all started</h2>
 
-        <p>
-            We met through Badoo.
-        </p>
+    <p>
+        We met through Badoo.
+    </p>
 
-        <p style="margin-top: 15px;">
-            At first, we were just two people who didn't know
-            where this story would lead.
-        </p>
+    <p>
+        At first, I couldn't know what this meeting
+        would become.
+    </p>
 
-        <p style="margin-top: 15px;">
-            And somehow, one meeting became another...
-            and another moment became a story.
-        </p>
+    <p>
+        But somehow, one meeting became another,
+        and slowly you became someone very special
+        to me.
+    </p>
 
-    </section>
+</section>
 
 
-    <!-- FIRST DATE -->
+<div class="big-heart">
+    ❤️
+</div>
 
-    <section class="chapter">
 
-        <div class="chapter-number">Chapter 01</div>
+<!-- FIRST DATE -->
 
-        <h2>The first date ❤️</h2>
+<section class="chapter">
 
-        <div class="date">27 June</div>
+    <span class="date">
+        27 June
+    </span>
 
-        <p>
-            Our first date.
-        </p>
+    <div class="chapter-number">
+        Chapter 1
+    </div>
 
-        <p style="margin-top: 15px;">
-            We went shopping together.
-            It was the beginning of something that neither of us
-            could completely understand yet.
-        </p>
+    <h2>Our first date</h2>
 
-        <div class="quote">
-            "Sometimes the most important moments
-            don't look important when they happen."
-        </div>
+    <p>
+        Our first date was a day of shopping together.
+    </p>
 
-        <p>
-            But this one became the first page of our story.
-        </p>
+    <p>
+        It might sound like something simple,
+        but for me it became the beginning of
+        something I didn't want to lose.
+    </p>
 
-    </section>
+    <p>
+        I remember being happy simply because
+        I was spending time with you.
+    </p>
 
+</section>
 
-    <!-- BETWEEN DATES -->
 
-    <section class="chapter">
+<!-- BETWEEN DATES -->
 
-        <div class="chapter-number">Between the chapters</div>
+<section class="chapter">
 
-        <h2>Waiting for the next meeting ⏳</h2>
+    <div class="chapter-number">
+        Between the chapters
+    </div>
 
-        <div class="waiting">
+    <h2>The waiting</h2>
 
-            <div class="waiting-icon">🌙</div>
+    <p>
+        Between our meetings there were moments
+        when I really missed you.
+    </p>
 
-            <p>
-                Between our dates there was something else —
-                waiting.
-            </p>
+    <p>
+        Waiting for the next meeting made every
+        little moment feel even more important.
+    </p>
 
-            <p style="margin-top: 15px;">
-                Waiting for the next time we could see each other.
-                Missing each other.
-                Thinking about the next meeting.
-            </p>
+    <p>
+        Sometimes the distance between two meetings
+        felt much longer than it actually was.
+    </p>
 
-            <p style="margin-top: 15px;">
-                And when we finally met again,
-                it always felt worth the wait.
-            </p>
+</section>
 
-        </div>
 
-    </section>
+<!-- SECOND DATE -->
 
+<section class="chapter">
 
-    <!-- SECOND DATE -->
+    <span class="date">
+        18 July
+    </span>
 
-    <section class="chapter">
+    <div class="chapter-number">
+        Chapter 2
+    </div>
 
-        <div class="chapter-number">Chapter 02</div>
+    <h2>LEGO, smiles and something more</h2>
 
-        <h2>LEGO, laughter & something shared 🧱</h2>
+    <p>
+        Our second date gave us another collection
+        of little memories.
+    </p>
 
-        <div class="date">18 July</div>
+    <p>
+        We built LEGO together, spent time together,
+        and created something that was ours.
+    </p>
 
-        <p>
-            Our second date.
-        </p>
+    <p>
+        We also created a shared bank account —
+        another little step that made our story feel
+        more real.
+    </p>
 
-        <p style="margin-top: 15px;">
-            We spent time together building LEGO,
-            creating something piece by piece.
-        </p>
+</section>
 
-        <p style="margin-top: 15px;">
-            And on that day we also created something
-            a little different — a shared bank account.
-        </p>
 
-        <div class="quote">
-            Two people. One little thing shared between them.
-        </div>
+<!-- GIFTS -->
 
-    </section>
+<section class="chapter">
 
+    <div class="chapter-number">
+        Little things
+    </div>
 
-    <!-- GIFTS -->
+    <h2>The things I made and gave you</h2>
 
-    <section class="chapter">
+    <p>
+        Some things don't have to be expensive
+        to mean a lot.
+    </p>
 
-        <div class="chapter-number">Little things</div>
+    <p>
+        The painting, the handmade resin pieces,
+        the flowers, the little gifts and all those
+        details were my way of saying:
+    </p>
 
-        <h2>Things made with love 🎁</h2>
+    <p>
+        <strong>
+            "I thought about you."
+        </strong>
+    </p>
 
-        <p>
-            Some things in our story aren't about the object itself.
-            They're about the thought, the time and the feeling behind it.
-        </p>
+</section>
 
-        <div class="gift-list">
 
-            <div class="gift">
-                <span class="gift-icon">💻</span>
-                <strong>A gift</strong>
-                <p>
-                    Something chosen because I wanted to make you happy.
-                </p>
-            </div>
+<!-- THIRD DATE -->
 
-            <div class="gift">
-                <span class="gift-icon">🎨</span>
-                <strong>Something handmade</strong>
-                <p>
-                    Something created by my own hands.
-                </p>
-            </div>
+<section class="chapter">
 
-            <div class="gift">
-                <span class="gift-icon">🌹</span>
-                <strong>Little details</strong>
-                <p>
-                    Small things that carry a much bigger meaning.
-                </p>
-            </div>
+    <span class="date">
+        31 August
+    </span>
 
-        </div>
+    <div class="chapter-number">
+        Chapter 3
+    </div>
 
-        <div class="quote">
-            The best gifts aren't always the biggest ones.
-            Sometimes they're simply proof that someone was thinking about you.
-        </div>
+    <h2>The day we became us ❤️</h2>
 
-    </section>
+    <p>
+        We went to the cinema and spent another
+        beautiful day together.
+    </p>
 
+    <p>
+        And then came the words I had been keeping
+        inside for some time.
+    </p>
 
-    <!-- THIRD DATE -->
+    <p>
+        I told you that I love you.
+    </p>
 
-    <section class="chapter">
+    <p>
+        And that day, we started our relationship.
+    </p>
 
-        <div class="chapter-number">Chapter 03</div>
+</section>
 
-        <h2>The day everything changed 🎬</h2>
 
-        <div class="date">31 August</div>
+<div class="big-heart">
+    💗
+</div>
 
-        <p>
-            We went to the cinema.
-        </p>
 
-        <p style="margin-top: 15px;">
-            We watched a film together,
-            but the most important part of that evening
-            wasn't on the screen.
-        </p>
+<!-- ENGLISH -->
 
-        <p style="margin-top: 15px;">
-            I told you that I love you.
-        </p>
+<section class="chapter">
 
-        <div class="big-heart">❤️</div>
+    <div class="chapter-number">
+        A promise
+    </div>
 
-        <p>
-            And that day, we started our relationship.
-        </p>
+    <h2>Something I'm learning for you</h2>
 
-        <div class="quote">
-            One evening.
-            One confession.
-            And a completely new chapter.
-        </div>
+    <p>
+        I started learning English because I want
+        to communicate with you better.
+    </p>
 
-    </section>
+    <p>
+        I know it won't happen overnight.
+        But I promised you that I would keep learning.
+    </p>
 
+    <p>
+        And I intend to keep that promise.
+    </p>
 
-    <!-- ENGLISH -->
+</section>
 
-    <section class="chapter">
 
-        <div class="chapter-number">A promise</div>
+<!-- TODAY -->
 
-        <h2>Learning your language 🇬🇧</h2>
+<section class="chapter">
 
-        <p>
-            There is something else I started because of you.
-        </p>
+    <span class="date">
+        5 September
+    </span>
 
-        <div class="english-box">
+    <div class="chapter-number">
+        Chapter 4
+    </div>
 
-            <h3>I'm learning English.</h3>
+    <h2>Where we are now</h2>
 
-            <p>
-                I made you a promise that I would learn it.
-            </p>
+    <p>
+        Our story is still young.
+    </p>
 
-            <p style="margin-top: 15px;">
-                Not because I have to.
-                But because I want to understand you better,
-                talk with you more freely,
-                and share more of our life together.
-            </p>
+    <p>
+        There are still so many days we haven't lived,
+        places we haven't visited, conversations
+        we haven't had and memories we haven't made.
+    </p>
 
-            <div class="quote">
-                Every new word is one small step closer to understanding each other.
-            </div>
+    <p>
+        And honestly, I'm excited to see what comes next.
+    </p>
 
-        </div>
+</section>
 
-    </section>
 
+<!-- ROSES -->
 
-    <!-- SEPTEMBER 5 -->
+<section class="rose-section">
 
-    <section class="chapter center">
+    <h2>There is something else for you 🌹</h2>
 
-        <div class="chapter-number">Chapter 04</div>
+    <p>
+        I left a few roses somewhere in our story.
+    </p>
 
-        <h2>Where we are now 🌱</h2>
+    <p>
+        Each one has a little message for you.
+    </p>
 
-        <div class="date">5 September</div>
+    <a href="roses.html" class="button">
+        Find the roses 🌹
+    </a>
 
-        <p>
-            This isn't the end of our story.
-        </p>
+</section>
 
-        <p style="margin-top: 15px;">
-            It's actually just the beginning.
-        </p>
 
-        <div class="big-heart">❤️</div>
+<!-- RED ENVELOPE -->
 
-        <p>
-            There are still so many days ahead of us.
-            So many conversations.
-            So many meetings.
-            So many memories we haven't created yet.
-        </p>
+<section class="chapter" style="text-align:center;">
 
-    </section>
+    <div class="chapter-number">
+        A little surprise
+    </div>
 
+    <h2>Something I wanted to leave for you ❤️</h2>
 
-    <!-- RED ENVELOPE -->
+    <p>
+        There are a few little messages waiting
+        inside an envelope.
+    </p>
 
-    <section class="chapter center">
+    <a href="envelope.html" class="button">
+        Open the red envelope ❤️
+    </a>
 
-        <div class="chapter-number">A little surprise</div>
+</section>
 
-        <div class="big-heart">💌</div>
 
-        <h2>A little something for you</h2>
+<!-- COUNTDOWN -->
 
-        <p>
-            I left four little messages for you.
-        </p>
+<section class="countdown">
 
-        <p style="margin-top: 10px;">
-            Open them whenever you need a little reminder. ❤️
-        </p>
+    <h2>Until New Year ✨</h2>
 
-        <a href="envelope.html" class="button envelope-button">
-            Open the red envelope ❤️
-        </a>
+    <p>
+        Some things are worth waiting for.
+    </p>
 
-    </section>
+    <div id="timer">
+        Loading...
+    </div>
 
+</section>
 
-    <!-- COUNTDOWN -->
 
-    <section class="chapter center">
+<!-- LOCKED NEW YEAR -->
 
-        <div class="chapter-number">The next chapter</div>
+<section class="locked">
 
-        <h2>Waiting for New Year ✨</h2>
+    <div class="lock-icon">
+        🔒
+    </div>
 
-        <p>
-            Some chapters need a little more time before they can be opened.
-        </p>
+    <h2>New Year chapter</h2>
 
-        <div class="countdown">
+    <p>
+        This chapter is locked.
+    </p>
 
-            <div class="time-box">
-                <span class="time-number" id="days">0</span>
-                <span class="time-label">Days</span>
-            </div>
+    <p>
+        It will open on January 1, 2027.
+    </p>
 
-            <div class="time-box">
-                <span class="time-number" id="hours">0</span>
-                <span class="time-label">Hours</span>
-            </div>
+    <p>
+        Some wishes are meant to wait.
+    </p>
 
-            <div class="time-box">
-                <span class="time-number" id="minutes">0</span>
-                <span class="time-label">Minutes</span>
-            </div>
+</section>
 
-            <div class="time-box">
-                <span class="time-number" id="seconds">0</span>
-                <span class="time-label">Seconds</span>
-            </div>
 
-        </div>
+<footer>
 
-        <p>
-            Until January 1, 2027 ❤️
-        </p>
+    <p>
+        To be continued... ❤️
+    </p>
 
-    </section>
-
-
-    <!-- LOCKED CHAPTER -->
-
-    <section class="chapter locked" id="lockedChapter">
-
-        <div class="chapter-number">Secret Chapter</div>
-
-        <div class="lock" id="lockIcon">🔒</div>
-
-        <h2 id="lockTitle">
-            Not ready to be opened yet
-        </h2>
-
-        <p id="lockText">
-            There is a little chapter here that belongs to the future.
-        </p>
-
-        <p style="margin-top: 15px;">
-            Come back on New Year.
-        </p>
-
-        <div class="secret-message" id="secretMessage">
-
-            <h2>A new dream ❤️</h2>
-
-            <p>
-                This chapter is finally ready.
-            </p>
-
-            <p style="margin-top: 15px;">
-                I hope that one day we can build a little life together —
-                maybe share a home, have a cat,
-                and be able to tell the people around us about our story.
-            </p>
-
-            <p style="margin-top: 15px;">
-                Not because we have to.
-                Not because everything has to happen immediately.
-                But because it's something I would love to experience with you.
-            </p>
-
-            <div class="big-heart">❤️</div>
-
-        </div>
-
-    </section>
-
-
-    <!-- END -->
-
-    <section class="chapter center">
-
-        <div class="big-heart">❤️</div>
-
-        <h2>To be continued...</h2>
-
-        <p>
-            Our story is still being written.
-        </p>
-
-        <p style="margin-top: 15px;">
-            And I hope there will be many more chapters.
-        </p>
-
-    </section>
-
-
-    <footer>
-        Made with love for Marina ❤️
-        <br>
+    <p>
         Alex & Marina
-    </footer>
+    </p>
+
+</footer>
 
 </div>
 
 
 <script>
 
-    const newYear = new Date("2027-01-01T00:00:00");
+function updateCountdown() {
 
-    function updateCountdown() {
+    const target =
+        new Date("January 1, 2027 00:00:00").getTime();
 
-        const now = new Date();
-        const difference = newYear - now;
+    const now =
+        new Date().getTime();
 
-        if (difference <= 0) {
+    const difference =
+        target - now;
 
-            document.getElementById("days").textContent = "0";
-            document.getElementById("hours").textContent = "0";
-            document.getElementById("minutes").textContent = "0";
-            document.getElementById("seconds").textContent = "0";
+    if (difference <= 0) {
 
-            document.getElementById("lockIcon").textContent = "🔓";
+        document.getElementById("timer").innerHTML =
+            "Happy New Year ❤️";
 
-            document.getElementById("lockTitle").textContent =
-                "The chapter is open ❤️";
+        return;
+    }
 
-            document.getElementById("lockText").textContent =
-                "New Year has arrived.";
-
-            document.getElementById("secretMessage").style.display = "block";
-
-            return;
-        }
-
-        const days = Math.floor(
+    const days =
+        Math.floor(
             difference / (1000 * 60 * 60 * 24)
         );
 
-        const hours = Math.floor(
+    const hours =
+        Math.floor(
             (difference / (1000 * 60 * 60)) % 24
         );
 
-        const minutes = Math.floor(
+    const minutes =
+        Math.floor(
             (difference / (1000 * 60)) % 60
         );
 
-        const seconds = Math.floor(
+    const seconds =
+        Math.floor(
             (difference / 1000) % 60
         );
 
-        document.getElementById("days").textContent = days;
-        document.getElementById("hours").textContent = hours;
-        document.getElementById("minutes").textContent = minutes;
-        document.getElementById("seconds").textContent = seconds;
-    }
+    document.getElementById("timer").innerHTML =
+        days + " days · " +
+        hours + " hours · " +
+        minutes + " minutes · " +
+        seconds + " seconds";
 
-    updateCountdown();
+}
 
-    setInterval(updateCountdown, 1000);
+updateCountdown();
+
+setInterval(updateCountdown, 1000);
 
 </script>
 
 </body>
 </html>
-
-
